@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>InventoryDetail lines mockup</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="testcontainer">
+		<!-- Detail block -->
+		<div class="cbds-detail-block">
+			<!-- Detail line header -->
+			<div class="cbds-detail-line-header">
+				<div class="cbds-detail-line-header__column">
+					Product image
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Product name
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Quantity
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Discount type
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Discount
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Discount amount
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Line total
+				</div>
+				<div class="cbds-detail-line-header__column">
+					Tools
+				</div>
+			</div>
+			<!-- // Detail line header -->
+			<!-- Detail line for inventory details -->
+			<div class="cbds-detail-line">
+				<div class="cbds-detail-line__column">
+					<div class="cbds-image-container cbds-image-container--small">
+						<img src="images/sprite.jpg" class="cbds-image--medium" />
+					</div>
+				</div>
+				<div class="cbds-detail-line__column">
+					Sprite
+				</div>
+				<div class="cbds-detail-line__column">
+					<div class="cbds-field cbds-field--number cbds-field--narrow">
+						<input type="number" />
+					</div>
+				</div>
+				<div class="cbds-detail-line__column">
+					<div class="cbds-dropdown">
+						<select>
+							<option value="percentage">Percentage</option>
+							<option value="direct">Direct</option>
+						</select>
+						<div class="cbds-dropdown__arrow"></div>
+					</div>
+				</div>
+				<div class="cbds-detail-line__column">
+					<div class="cbds-field cbds-field--number cbds-field--narrow">
+						<input type="number" />
+					</div>
+				</div>
+				<div class="cbds-detail-line__column">
+					<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+						<input type="number" />
+						<span class="cbds-field__cursymbol">&euro;</span>
+					</div>
+				</div>
+				<div class="cbds-detail-line__column">
+					<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+						<input type="number" />
+						<span class="cbds-field__cursymbol">&euro;</span>
+					</div>
+				</div>
+				<div class="cbds-detail-line__column cbds-detail-line__column--nopadding">
+					<div class="cbds-detail-line-toolbox">
+						<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Drag this line to another position">
+							<span class="cbds-icon cbds-icon--grid"></span>
+						</a>
+						<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Edit this line">
+							<span class="cbds-icon cbds-icon--pencil"></span>
+						</a>
+						<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Copy this line">
+							<span class="cbds-icon cbds-icon--copy"></span>
+						</a>
+						<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red" title="Delete this line">
+							<span class="cbds-icon cbds-icon--bin"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- // Detail line for inventory details -->
+		</div>
+		<!-- Detail block -->
+	</div>
+</body>
+</html>

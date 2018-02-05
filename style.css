@@ -1,0 +1,132 @@
+@import url("icon/style.css");
+
+#testcontainer {
+	width: 1024px;
+	margin: 0 auto;
+	font-family: Arial;
+}
+.cbds-detail-block {
+	display: table;
+	width: 100%;
+}
+.cbds-detail-line-header {
+	background-color: rgb(60,60,60);
+	color: white;
+	font-weight: 600;
+	font-size: 80%;
+	display: table-row;
+}
+.cbds-detail-line-header__column {
+	display: table-cell;
+	padding: 13px 20px;
+}
+.cbds-detail-line {
+	display: table-row;
+}
+.cbds-detail-line__column {
+	display: table-cell;
+	padding: 10px 20px;
+	vertical-align: middle;
+}
+.cbds-detail-line__column--nopadding {
+	padding: 0;
+}
+
+/* Inputs, selects and textarea's */
+.cbds-field,
+.cbds-dropdown {
+	border-bottom: 1px solid #000000;
+}
+.cbds-field--narrow input{
+	width: 50px;
+}
+.cbds-field--mediumwidth input{
+	width: 100px;
+}
+.cbds-field--wide input{
+	width: 150px;
+}
+.cbds-field input,
+.cbds-dropdown select {
+	border: none;
+	padding: 0 0 6px 0;
+}
+.cbds-field--number input {
+	-moz-appearance:textfield;
+}
+.cbds-field--number input::-webkit-inner-spin-button, 
+.cbds-field--number input::-webkit-outer-spin-button, {
+	-webkit-appearance: none;
+	margin: 0; 
+}
+.cbds-dropdown select {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	cursor:pointer;
+	padding-right: 18px;
+}
+.cbds-dropdown {
+	position: relative;
+	display: inline-block;
+}
+.cbds-dropdown__arrow {
+	border-style: solid;
+	border-width: 8px 8px 0 8px;
+	border-color: #d6d6d6 transparent transparent transparent;
+	position: absolute;
+	right: 0;
+	top: 30%;
+	pointer-events: none;
+}
+.cbds-field--currency {
+	position: relative;
+}
+.cbds-field__cursymbol {
+	position: absolute;
+	right: 0;
+	bottom: 4px;
+}
+
+
+/* Images */
+.cbds-image-container {
+	text-align: center;
+	overflow: hidden;
+}
+.cbds-image-container--small {
+	height: 80px;
+	width: 80px;
+}
+.cbds-image-container--medium {
+	height: 140px;
+	width: 140px;
+}
+.cbds-image-container--large {
+	height: 200px;
+	width: 200px;
+}
+.cbds-image-container img {
+	height: 100%;
+	width: auto;
+}
+
+/* Tools */
+.cbds-detail-line-toolbox {
+	background-color: #0079B7;
+}
+.cbds-detail-line-toolbox__tool {
+	display: block;
+	line-height: 18px;
+	padding: 6px 0;
+	text-align: center;
+	color: #ffffff;
+	text-decoration: none;
+	border-bottom: 1px solid #ffffff;
+}
+.cbds-detail-line-toolbox__tool--red {
+	background-color: #c50008;
+}
+.cbds-detail-line-toolbox__tool:last-child {
+	border-bottom: none;
+}
