@@ -32,7 +32,7 @@
 	transform: scaleY(0);
 	height: 0;
 	transform-origin: 0 0;
-	transition: transform 100ms linear;
+	transition: transform 0ms linear;
 }
 .cbds-detail-line__extra--expanded {
 	transform: scaleY(1);
