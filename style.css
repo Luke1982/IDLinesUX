@@ -32,11 +32,12 @@
 	transform: scaleY(0);
 	height: 0;
 	transform-origin: 0 0;
-	transition: transform 100ms linear, height 0ms linear;
+	transition: transform 100ms linear;
 }
 .cbds-detail-line__extra--expanded {
 	transform: scaleY(1);
 	height: auto;
+	transition: transform 100ms linear;
 }
 .cbds-detail-line__column {
 	display: flex;
