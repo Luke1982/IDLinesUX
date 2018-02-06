@@ -29,6 +29,14 @@
 	margin: 1rem 0;
 	align-items: stretch;
 	justify-content: flex-start;
+	transform: scaleY(0);
+	height: 0;
+	transform-origin: 0 0;
+	transition: transform 100ms linear, height 0ms linear;
+}
+.cbds-detail-line__extra--expanded {
+	transform: scaleY(1);
+	height: auto;
 }
 .cbds-detail-line__column {
 	display: flex;

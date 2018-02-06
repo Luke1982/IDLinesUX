@@ -3,6 +3,7 @@
 <head>
 	<title>InventoryDetail lines mockup</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
 	<div id="testcontainer">
@@ -93,7 +94,7 @@
 							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red" title="Delete this line">
 								<span class="cbds-icon cbds-icon--bin"></span>
 							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Expand or collapse this line">
+							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" data-clickfunction="toggleExtra" title="Expand or collapse this line">
 								<!-- Expander / collapser -->
 								<div class="cbds-exp-coll-tool">
 									<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
