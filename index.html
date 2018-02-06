@@ -38,6 +38,7 @@
 			<!-- // Detail line header -->
 			<!-- Detail line for inventory details -->
 			<div class="cbds-detail-line">
+				<!-- Main inventory details line -->
 				<div class="cbds-detail-line__main">
 					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
 						<div class="cbds-image-container cbds-image-container--small">
@@ -78,7 +79,7 @@
 							<span class="cbds-field__cursymbol">&euro;</span>
 						</div>
 					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--nopadding cbds-detail-line__column--width10">
+					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
 						<div class="cbds-detail-line-toolbox cbds-detail-line-toolbox--vertical">
 							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Drag this line to another position">
 								<span class="cbds-icon cbds-icon--grid"></span>
@@ -92,12 +93,163 @@
 							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red" title="Delete this line">
 								<span class="cbds-icon cbds-icon--bin"></span>
 							</a>
+							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Expand or collapse this line">
+								<!-- Expander / collapser -->
+								<div class="cbds-exp-coll-tool">
+									<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
+										<div class="cbds-exp-coll-icon__bar"></div>
+										<div class="cbds-exp-coll-icon__bar"></div>
+									</div> 
+								</div>
+								<!-- // Expander / collapser -->
+							</a>
 						</div>
 					</div>
 				</div>
+				<!-- // Main inventory details line -->
+				<!-- Extra inventory details line -->
 				<div class="cbds-detail-line__extra">
-					
+					<div class="cbds-infocard">
+						<div class="cbds-infocard__header">
+							<h5>Pricing</h5>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Unit cost price
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Line cost price
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								List price
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cbds-infocard">
+						<div class="cbds-infocard__header">
+							<h5>Logistics</h5>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Units delivered / received
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+									<input type="number" />
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Qty in stock
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+									<input type="number" />
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Currently ordered
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+									<input type="number" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cbds-infocard">
+						<div class="cbds-infocard__header">
+							<h5>Taxes</h5>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Tax 1
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--percentage cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__percsymbol">%</span>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Tax 2
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--percentage cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__percsymbol">%</span>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-infocard__label cbds-infocard__label--bold">
+								Tax 3
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--currency cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__cursymbol">&euro;</span>
+								</div>
+							</div>
+							<div class="cbds-infocard__value">
+								<div class="cbds-field cbds-field--number cbds-field--percentage cbds-field--mediumwidth">
+									<input type="number" />
+									<span class="cbds-field__percsymbol">%</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="cbds-infocard">
+						<div class="cbds-infocard__header">
+							<h5>Comments</h5>
+						</div>
+						<div class="cbds-infocard__line">
+							<div class="cbds-note cbds-note--medium">
+								<textarea></textarea>
+							</div>
+						</div>
+					</div>
 				</div>
+				<!-- // Extra inventory details line -->
 			</div>
 			<!-- // Detail line for inventory details -->
 		</div>
