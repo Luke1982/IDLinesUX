@@ -1,0 +1,30 @@
+[{
+	"meta" : {
+		"image" : "cola.jpg", 		// Where should we get this from? | string
+		"name"	: "Cola", 			// Origin: Products or services [product_name/service_name] | string
+		"divisible" : true,			// Origin: Products of Services [divisible] | bool
+		"comments" : "A comment"	// Origin: Products or Services | string
+	},
+	"pricing" : {
+		"unit_cost" : 90,		 	// Origin: Products or Services [field] | float
+		"list_price" : 15			// Origin: Products or Services [list_price] | float
+	},
+	"logistics" : {
+		"qty_in_stock" : 9,			// Origin: Products [field] | float
+		"curr_ordered" : 3			// Origin: Products [field] | float
+	},
+	"taxes" : {
+		"tax1" : {
+			"percent" : 21,			// Origin: Core [field] | float
+			"amount" : 200			// Origin: Core [field] | float
+		},
+		"tax2" : {
+			"percent" : 21,			// Origin: Core [field] | float
+			"amount" : 200			// Origin: Core [field] | float
+		},
+		"tax3" : {
+			"percent" : 21,			// Origin: Core [field] | float
+			"amount" : 200			// Origin: Core [field] | float
+		}
+	}
+}]
