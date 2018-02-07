@@ -80,7 +80,7 @@
 		collExtra 	: function() {
 						this.extraLine.classList.remove("cbds-detail-line__extra--expanded");
 						this.extraTool.children[0].children[0].classList.remove("cbds-exp-coll-icon--expanded");
-					},
+					}
 	}
 
 	/**

@@ -8,6 +8,9 @@
 .cbds-detail-block {
 	width: 100%;
 }
+.cbds-detail-line--template {
+	display: none;
+}
 .cbds-detail-line-preheader {
 	background-color: rgb(220,220,220);
 	font-weight: 600;

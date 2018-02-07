@@ -10,6 +10,9 @@ function handleClicks(e) {
 			case "collAllLines":
 				Utils.collAllLines();
 				break;
+			case "insertNewLine":
+				Utils.insertNew();
+				break;
 		}
 	}
 }
@@ -29,7 +32,7 @@ function startSort() {
 }
 
 function startLines() {
-	var lines = document.getElementsByClassName("cbds-detail-line");
+	var lines = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
 		var line = new InventoryLine(lines[i]);
 	}
@@ -65,6 +68,15 @@ var Utils = {
 				if (state == 0) window.InventoryLines[prop].collExtra();
 			}
 		}
+	},
+
+	insertNew : function() {
+		var template = document.getElementsByClassName("cbds-detail-line--template")[0];
+		var container = document.getElementsByClassName("cbds-detail-block")[0];
+		var newNode = template.cloneNode(true);
+		newNode.classList.remove("cbds-detail-line--template");
+		container.appendChild(newNode);
+		new InventoryLine(newNode);
 	}
 
 };
