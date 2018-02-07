@@ -1,16 +1,3 @@
-window.addEventListener("click", handleClicks);
-
-function handleClicks(e) {
-	var functionElement = Utils.findUp(e.target, "data-clickfunction");
-	if (functionElement !== undefined) {
-		switch (functionElement.getAttribute("data-clickfunction")) {
-			case "toggleExtra":
-				Utils.toggleExtra(functionElement, e.target);
-				break;
-		}
-	}
-}
-
 window.addEventListener("load", function(){
 	startSort();
 	startLines();
@@ -43,12 +30,5 @@ var Utils = {
 				break;
 			}
 		}
-	},
-	toggleExtra : function(functionElement, sourceElement) {
-		var lineRoot = this.findUp(functionElement, ".cbds-detail-line");
-		var extraLine = lineRoot.getElementsByClassName("cbds-detail-line__extra")[0];
-		var expandIcon = lineRoot.getElementsByClassName("cbds-exp-coll-icon")[0];
-		extraLine.classList.toggle("cbds-detail-line__extra--expanded");
-		expandIcon.classList.toggle("cbds-exp-coll-icon--expanded");
 	}
 };

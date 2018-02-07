@@ -20,44 +20,59 @@
 	 * @param {element}
 	 */
 	function InventoryLine(el){
-		this.el = el;
+		this.el 		= el,
+		this.extraLine	= _getFirstClass(el, "cbds-detail-line__extra"),
+		this.extraTool 	= _getTool(el, "extra");
 
-		/* Properties */
-		var copyTool = _getTool(el, "copy"),
-			delTool = _getTool(el, "delete");
+		/* Private properties */
+		var copyTool 	= _getTool(el, "copy"),
+			delTool 	= _getTool(el, "delete");
 
 		/* Instance listeners */
 		_on(copyTool, "click", this.copy, this);
 		_on(delTool, "click", this.delete, this);
+		_on(this.extraTool, "click", this.toggleExtra, this);
 
 	}
 
 	InventoryLine.prototype = {
-		constructor: InventoryLine,
+		constructor	: InventoryLine,
 
-		copy : function(){
-			var original = this.el,
-				newNode = original.cloneNode(true);
+		copy 		: function(){
+						var original = this.el,
+							newNode = original.cloneNode(true);
 
-			_insertAfter(original, newNode);
-			new InventoryLine(newNode);
-		},
+						_insertAfter(original, newNode);
+						new InventoryLine(newNode);
+					},
 
-		delete : function() {
-			this.el.parentNode.removeChild(this.el);
-		}
+		delete 		: function() {
+						this.el.parentNode.removeChild(this.el);
+					},
+
+		toggleExtra : function() {
+						this.extraLine.classList.toggle("cbds-detail-line__extra--expanded");
+						this.extraTool.children[0].children[0].classList.toggle("cbds-exp-coll-icon--expanded");
+					}
 	}
 
 	/**
 	  * Section with factory tools
 	  */
+
 	function _getTool(root, sort) {
 		var tool = root.getElementsByClassName("cbds-detail-line-" + sort + "tool")[0];
 		return tool === undefined ? document.createElement("div") : tool;
 	}
+
+	function _getFirstClass(root, className) {
+		return root.getElementsByClassName(className)[0];
+	}
+
 	function _on(el,type,func,context) {
 		el.addEventListener(type, func.bind(context));
 	}
+
 	function _findUp(element, searchterm) {
 		while (element = element.parentElement) {
 			if ( (searchterm.charAt(0) === "#" && element.id === searchterm.slice(1) )
@@ -69,10 +84,14 @@
 			}
 		}
 	}
+
 	function _insertAfter(referenceNode, newNode) {
 		referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 	}
 
+	/*
+	 * Export
+	 */
 	return InventoryLine;
 
 });
