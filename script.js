@@ -15,7 +15,7 @@ function startSort() {
 function startLines() {
 	var lines = document.getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
-		new InventoryLine(lines[i]);
+		var line = new InventoryLine(lines[i]);
 	}
 }
 

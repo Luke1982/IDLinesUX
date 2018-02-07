@@ -15,18 +15,31 @@
 
 })(function inventorylineFactory(){
 
+	window.InventoryLines = {},
+	window.InventoryLines.seq = 0;
+
 	/**
 	 * @class InventoryLine
 	 * @param {element}
 	 */
 	function InventoryLine(el){
+		/* Public properties */
 		this.el 		= el,
 		this.extraLine	= _getFirstClass(el, "cbds-detail-line__extra"),
 		this.extraTool 	= _getTool(el, "extra");
 
 		/* Private properties */
 		var copyTool 	= _getTool(el, "copy"),
-			delTool 	= _getTool(el, "delete");
+			delTool 	= _getTool(el, "delete"),
+			_this 		= this;
+
+		/* Instance Constructor */
+		var construct 	= function() {
+			_this.id = window.InventoryLines.seq + 1,
+			window.InventoryLines.seq++,
+			window.InventoryLines[_this.id] = _this;
+		}
+		construct();
 
 		/* Instance listeners */
 		_on(copyTool, "click", this.copy, this);
@@ -48,6 +61,10 @@
 
 		delete 		: function() {
 						this.el.parentNode.removeChild(this.el);
+						_off(this.extraTool, "click", this.toggleExtra);
+						delete window.InventoryLines[this.id];
+
+						this.el = null;
 					},
 
 		toggleExtra : function() {
@@ -71,6 +88,10 @@
 
 	function _on(el,type,func,context) {
 		el.addEventListener(type, func.bind(context));
+	}
+
+	function _off(el,type,func) {
+		el.removeEventListener(type, func);
 	}
 
 	function _findUp(element, searchterm) {
