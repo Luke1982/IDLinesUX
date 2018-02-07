@@ -145,6 +145,14 @@
 	width: auto;
 }
 
+/* Currencies */
+.cbds-field__cursymbol--euro:after {
+	content: "€";
+}
+.cbds-field__cursymbol--dollar:after {
+	content: "$";
+}
+
 /* Icons */
 .cbds-exp-coll-icon {
 	display: inline-block;
