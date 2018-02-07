@@ -23,10 +23,12 @@
 		this.el = el;
 
 		/* Properties */
-		var copyTool = _getTool(el, "copy");
+		var copyTool = _getTool(el, "copy"),
+			delTool = _getTool(el, "delete");
 
 		/* Instance listeners */
 		_on(copyTool, "click", this.copy, this);
+		_on(delTool, "click", this.delete, this);
 
 	}
 
@@ -38,7 +40,12 @@
 				newNode = original.cloneNode(true);
 
 			_insertAfter(original, newNode);
+			new InventoryLine(newNode);
 		},
+
+		delete : function() {
+			this.el.parentNode.removeChild(this.el);
+		}
 	}
 
 	/**
