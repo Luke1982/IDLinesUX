@@ -36,3 +36,12 @@
 .cbds-icon--bin:before {
   content: "\e9ac";
 }
+.cbds-icon--plus:before {
+  content: "\e901";
+}
+.cbds-icon--enlarge:before {
+  content: "\e98b";
+}
+.cbds-icon--shrink:before {
+  content: "\e98c";
+}

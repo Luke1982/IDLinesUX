@@ -8,6 +8,13 @@
 .cbds-detail-block {
 	width: 100%;
 }
+.cbds-detail-line-preheader {
+	background-color: rgb(220,220,220);
+	font-weight: 600;
+	padding: 8px 0;
+	display: flex;
+	flex-direction: row;
+}
 .cbds-detail-line-header {
 	background-color: rgb(60,60,60);
 	color: white;
@@ -173,7 +180,9 @@
 	background-color: #ffffff;
 }
 
-/* Tools */
+/* Tools
+   |
+   ----- Line Toolbox */
 .cbds-detail-line-toolbox {
 	background-color: #0079B7;
 	flex-grow: 1;
@@ -203,6 +212,28 @@
 }
 .cbds-detail-line-toolbox__tool:last-child {
 	border-bottom: none;
+}
+/* Tools
+   |
+   ----- General Toolbox */
+.cbds-toolbox {
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	border: 1px solid #035882;
+	border-radius: 3px;
+}
+.cbds-toolbox__tool {
+	flex-grow: 1;
+	background-color: #0079B7;
+	color: #ffffff;
+	text-decoration: none;
+	text-align: center;
+	padding: 7px 0;
+	border-right: 1px solid #035882;
+}
+.cbds-toolbox__tool:last-child {
+	border: none;
 }
 
 /* Infocard */
@@ -247,6 +278,10 @@
 }
 
 /* Width modifiers */
+.cbds-detail-line-header__label--width5,
+.cbds-detail-line__column--width5 {
+	width: 5%;
+}
 .cbds-detail-line-header__label--width10,
 .cbds-detail-line__column--width10 {
 	width: 10%;
