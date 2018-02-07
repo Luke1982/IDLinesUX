@@ -102,12 +102,10 @@
 	top: 30%;
 	pointer-events: none;
 }
-.cbds-field--currency,
-.cbds-field--percentage {
+.cbds-field--hassymbol {
 	position: relative;
 }
-.cbds-field__cursymbol,
-.cbds-field__percsymbol {
+.cbds-field__symbol {
 	position: absolute;
 	right: 0;
 	bottom: 4px;
@@ -145,12 +143,15 @@
 	width: auto;
 }
 
-/* Currencies */
-.cbds-field__cursymbol--euro:after {
+/* Symbols */
+.cbds-field__symbol--euro:after {
 	content: "€";
 }
-.cbds-field__cursymbol--dollar:after {
+.cbds-field__symbol--dollar:after {
 	content: "$";
+}
+.cbds-field__symbol--percent:after {
+	content: "%";
 }
 
 /* Icons */
