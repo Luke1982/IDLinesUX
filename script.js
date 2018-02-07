@@ -13,6 +13,7 @@ function handleClicks(e) {
 
 window.addEventListener("load", function(){
 	startSort();
+	startLines();
 });
 
 function startSort() {
@@ -22,6 +23,13 @@ function startSort() {
 		handle: ".cbds-detail-line-dragtool",
 		animation: 100
 	});
+}
+
+function startLines() {
+	var lines = document.getElementsByClassName("cbds-detail-line");
+	for (var i = 0; i < lines.length; i++) {
+		new InventoryLine(lines[i]);
+	}
 }
 
 var Utils = {
