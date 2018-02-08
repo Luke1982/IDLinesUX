@@ -121,6 +121,7 @@
 			});
 
 			_on(li, "click", this.click, this);
+			_on(li, "mouseover", this.onResultHover, this);
 
 			return li;
 		},
@@ -136,6 +137,14 @@
 
 		attachResultToContainer: function (resultLi) {
 			this.resultContainer.appendChild(resultLi);
+		},
+
+		onResultHover : function(e) {
+			var result = _findUp(e.target, "cbds-product-result");
+			for (var i = 0; i < this.currentResults.length; i++) {
+				this.setResultState(i,"");
+			}
+			this.setResultState(this.getResultIndexByNode(result),"selected");
 		},
 
 		clear: function() {
@@ -154,6 +163,7 @@
 		destroyResultListeners: function() {
 			for (var i = 0; i < this.currentResults.length; i++) {
 				_off(this.currentResults[i].node, "click", this.click, this);
+				_on(this.currentResults[i].node, "mouseover", this.onResultHover, this);
 			}
 		},
 
@@ -222,6 +232,12 @@
 		getMatchingResultByNode: function(node) {
 			for (var i = 0; i < this.currentResults.length; i++) {
 				if (node.isSameNode(this.currentResults[i].node)) return this.currentResults[i];
+			}
+		},
+
+		getResultIndexByNode: function(node) {
+			for (var i = 0; i < this.currentResults.length; i++) {
+				if (node.isSameNode(this.currentResults[i].node)) return i;
 			}
 		},
 
