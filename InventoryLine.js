@@ -57,6 +57,7 @@
 
 						_insertAfter(original, newNode);
 						new InventoryLine(newNode);
+						new ProductAutocomplete(_getFirstClass(newNode, "cbds-product-search"));
 					},
 
 		delete 		: function() {
