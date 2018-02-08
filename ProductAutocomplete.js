@@ -21,7 +21,7 @@
 	 */
 	function ProductAutocomplete(el){
 		this.el = el,
-		this.specialKeys = ["up","down","esc"],
+		this.specialKeys = ["up","down","esc","enter"],
 		this.threshold = 3,
 		this.input = el.getElementsByTagName("input")[0],
 		this.source = "sample-products.json",
@@ -45,6 +45,8 @@
 				this.getResults(term);
 			else if (term.length < this.threshold)
 				this.clear();
+			else if (isSpecialKey)
+				this.handleKeyInput(e.keyCode);
 		},
 
 		isSpecialKey: function(code) {
@@ -89,10 +91,16 @@
 		},
 
 		buildResults: function(results) {
+			// Empty all first
 			this.resultContainer.innerHTML = "";
+			this.currentResults = [];
+
 			for (var i = 0; i < results.length; i++) {
 				this.attachResultToContainer(this.buildResult(results[i]));
 			}
+			// Pre-select the first result
+			this.currentResults[0].node.classList.add("cbds-product-result--selected");
+			this.currentResults[0].selected = true;
 		},
 
 		buildResult: function(result) {
@@ -104,8 +112,9 @@
 			li.appendChild(this.buildResultLine("Vendor No.", result.meta.ven_no));
 
 			this.currentResults.push({
-				"obj" 	: result,
-				"node"	: li
+				"obj" 		: result,
+				"node"		: li,
+				"selected"	: false
 			});
 
 			_on(li, "click", this.click, this);
@@ -145,6 +154,60 @@
 			}
 		},
 
+		handleKeyInput : function(keyCode) {
+			if (this.active) {
+				var key = _getKey(keyCode);
+				switch(key) {
+					case "up":
+						this.selectPrev();
+						break;
+					case "down":
+						this.selectNext();
+						break;
+					case "enter":
+						var current = this.getCurrentSelectedResult();
+						this.select(this.currentResults[current]);
+						break;
+					case "esc":
+						this.clear();
+						break;
+				}
+			}
+		},
+
+		selectPrev: function() {
+			var current = this.getCurrentSelectedResult();
+			if (current != 0) {
+				this.setResultState(current, "");
+				this.setResultState((current - 1), "selected");
+			}
+		},
+
+		selectNext: function() {
+			var current = this.getCurrentSelectedResult();
+			if (current != this.currentResults.length -1) {
+				this.setResultState(current, "");
+				this.setResultState((current + 1), "selected");
+			}
+		},
+
+		setResultState: function(index, state) {
+			if (state == "selected") {
+				this.currentResults[index].node.classList.add("cbds-product-result--selected");
+				this.currentResults[index].selected = true;
+			} else {
+				this.currentResults[index].node.classList.remove("cbds-product-result--selected");
+				this.currentResults[index].selected = false;
+			}
+		},
+
+		getCurrentSelectedResult: function() {
+			for (var i = 0; i < this.currentResults.length; i++) {
+				if (this.currentResults[i].selected)
+					return i;
+			}
+		},
+
 		click: function(e) {
 			var el = _findUp(e.target, "cbds-product-result"); // Click event could fire on child
 			if (el) {
@@ -173,6 +236,7 @@
 	function _on(el,type,func,context) {
 		el.addEventListener(type, func.bind(context));
 	}
+
 	function _off(el,type,func,context) {
 		el.removeEventListener(type, func.bind(context));
 	}
@@ -203,6 +267,10 @@
 		return root.getElementsByClassName(className)[0];
 	}
 
+	function _getKey(code) {
+		return window.keycodeMap[code];
+	}
+
 	/*
 	 * Globals
 	 */
@@ -212,7 +280,8 @@
 			37: "left",
 			39: "right",
 			27: "esc",
-			9:  "tab"
+			9:  "tab",
+			13: "enter"
 		}
 	
 	/*
