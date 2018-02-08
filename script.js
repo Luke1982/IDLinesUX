@@ -42,7 +42,7 @@ function startLines() {
 function startProductAutoComplete() {
 	var acs = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-product-search");
 	for (var i = 0; i < acs.length; i++) {
-		var acs = new ProductAutocomplete(acs[i]);
+		var ac = new ProductAutocomplete(acs[i]);
 	}
 }
 
