@@ -10,4 +10,10 @@ This repo is used as a simple way to collaborate on a HTML/CSS/JS structure that
 * A CSS system prefixed with "cbds-" (CoreBos Design System, yes, stolen from LDS) that'll allow us to setup re-useable CSS classes for further Master-Detail implementations.
 
 ## What we will **not** develop here
-* The actual CRUD operations, since they require being in an actual coreBOS environment. Those will be dealt with when this repo is 'done'. 
+* The actual CRUD operations, since they require being in an actual coreBOS environment. Those will be dealt with when this repo is 'done'.
+
+## To-do
+* Implement auto-creation of an autocomplete instance in the InventoryLine module.
+* Create a module for the collection of lines
+* Create aggregations (and a module for it)
+* Merge all JS modules into a single file
