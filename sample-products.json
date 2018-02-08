@@ -1,0 +1,85 @@
+[{
+	"meta" : {
+		"image" : "images/cola.jpg",
+		"name"	: "Cola",
+		"divisible" : false,
+		"comments" : "This is cola. It is full of sugar. You could use it to get high.",
+		"ven_no" : "99876",
+		"mfr_no" : "CO-0022"
+	},
+	"pricing" : {
+		"unit_cost" : 6,
+		"list_price" : 15
+	},
+	"logistics" : {
+		"qty_in_stock" : 9,
+		"curr_ordered" : 3
+	},
+	"taxes" : {
+		"tax1" : {
+			"percent" : 21
+		},
+		"tax2" : {
+			"percent" : 8
+		},
+		"tax3" : {
+			"percent" : 2
+		}
+	}
+},{
+	"meta" : {
+		"image" : "images/sprite.jpg",
+		"name"	: "Sprite",
+		"divisible" : true,
+		"comments" : "This is sprite. It is full of sugar. You could use it to get high.",
+		"ven_no" : "33423",
+		"mfr_no" : "SP-0022"
+	},
+	"pricing" : {
+		"unit_cost" : 3,
+		"list_price" : 12
+	},
+	"logistics" : {
+		"qty_in_stock" : 3,
+		"curr_ordered" : 90
+	},
+	"taxes" : {
+		"tax1" : {
+			"percent" : 21
+		},
+		"tax2" : {
+			"percent" : 8
+		},
+		"tax3" : {
+			"percent" : 2
+		}
+	}
+},{
+	"meta" : {
+		"image" : "images/fanta.jpg",
+		"name"	: "Fanta",
+		"divisible" : false,
+		"comments" : "This is fanta. It is full of sugar. You could use it to get high.",
+		"ven_no" : "07725",
+		"mfr_no" : "FA-0022"
+	},
+	"pricing" : {
+		"unit_cost" : 5,
+		"list_price" : 8
+	},
+	"logistics" : {
+		"qty_in_stock" : 56,
+		"curr_ordered" : 2
+	},
+	"taxes" : {
+		"tax1" : {
+			"percent" : 21
+		},
+		"tax2" : {
+			"percent" : 8
+		},
+		"tax3" : {
+			"percent" : 2
+		}
+	}
+}]

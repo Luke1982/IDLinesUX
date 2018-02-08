@@ -20,6 +20,7 @@ function handleClicks(e) {
 window.addEventListener("load", function(){
 	startSort();
 	startLines();
+	startProductAutoComplete();
 });
 
 function startSort() {
@@ -35,6 +36,13 @@ function startLines() {
 	var lines = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
 		var line = new InventoryLine(lines[i]);
+	}
+}
+
+function startProductAutoComplete() {
+	var acs = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-product-search");
+	for (var i = 0; i < acs.length; i++) {
+		var acs = new ProductAutocomplete(acs[i]);
 	}
 }
 
