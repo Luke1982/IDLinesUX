@@ -85,7 +85,7 @@ var Utils = {
 		newNode.classList.remove("cbds-detail-line--template");
 		container.appendChild(newNode);
 		new InventoryLine(newNode);
-		new ProductAutocomplete(newNode.getElementsByClassName("cbds-product-search")[0]);
+		new ProductAutocomplete(newNode.getElementsByClassName("cbds-product-search")[0], function(result){console.log(result)});
 	}
 
 };

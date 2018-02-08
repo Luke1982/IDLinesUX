@@ -19,7 +19,7 @@
 	 * @class InventoryLine
 	 * @param {element}
 	 */
-	function ProductAutocomplete(el){
+	function ProductAutocomplete(el, callback){
 		this.el = el,
 		this.specialKeys = ["up","down","esc","enter"],
 		this.threshold = 3,
@@ -27,7 +27,8 @@
 		this.source = "sample-products.json",
 		this.active = false,
 		this.resultContainer,
-		this.currentResults = [];
+		this.currentResults = [],
+		this.callback = typeof callback === "function" ? callback : false;
 
 		/* Instance listeners */
 		_on(this.input, "keyup", this.trigger, this);
@@ -227,6 +228,13 @@
 			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 			this.input.value = result.obj.meta.name;
 			this.clear();
+
+			// Optional callback if provided to the constructor
+			if (this.callback)
+				this.callback({
+					"source" : this.el,
+					"result" : result.obj
+				});
 		}
 	}
 
