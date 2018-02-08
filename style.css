@@ -217,7 +217,6 @@
 	border-bottom: 1px solid #d8d8d8;
 	padding: 0.4rem;
 }
-.cbds-product-result:hover,
 .cbds-product-result--selected {
 	background-color: #0079B7;
 	color: #ffffff;
