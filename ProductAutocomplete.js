@@ -18,6 +18,8 @@
 	/**
 	 * @class InventoryLine
 	 * @param {element}
+	 * @param {function}: 	Callback for custom implementations. Will receive an object with
+	 *						the root autocomplete node and all the result data
 	 */
 	function ProductAutocomplete(el, callback){
 		this.el = el,
