@@ -258,8 +258,12 @@
 			var lineNode = _findUp(result.node, "cbds-detail-line");
 
 			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
+
 			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
 			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
+
+			_getByCl(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
+
 			this.input.value = result.obj.meta.name;
 		}
 	}
