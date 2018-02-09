@@ -288,6 +288,42 @@
 .cbds-detail-line-toolbox__tool:last-child {
 	border-bottom: none;
 }
+
+/* Hoverhelp */
+.cbds-hoverhelp {
+	display: inline-block;
+	vertical-align: bottom;
+	cursor: pointer;
+	position: relative;
+	width: 1rem;
+	height: 1rem;
+}
+.cbds-hoverhelp__text {
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+.cbds-hoverhelp:hover .cbds-hoverhelp__text {
+	position: : absolute;
+	z-index: 1;
+	width: 10rem;
+	height: auto;
+	top: 100%;
+	background-color: #f9f9f2;
+	color: #474747;
+	font-weight: 400;
+	padding: 1.2rem;
+	margin-left: 0.5rem;
+	-webkit-transform: translate3d(-50%, 1rem, 0);
+	-moz-transform: translate3d(-50%, 1rem, 0);
+	transform: translate3d(-50%, 1rem, 0);
+
+	-webkit-box-shadow: 0px 1px 5px -1px rgba(102,102,102,0.61);
+	-moz-box-shadow: 0px 1px 5px -1px rgba(102,102,102,0.61);
+	box-shadow: 0px 1px 5px -1px rgba(102,102,102,0.61);
+}
+
 /* Tools
    |
    ----- General Toolbox */

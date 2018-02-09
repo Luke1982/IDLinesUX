@@ -45,3 +45,6 @@
 .cbds-icon--shrink:before {
   content: "\e98c";
 }
+.cbds-icon--help:before {
+  content: "\e903";
+}
