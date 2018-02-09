@@ -242,22 +242,25 @@
 		},
 
 		select: function(result) {
-			var lineNode = _findUp(result.node, "cbds-detail-line");
-
-			// Fill the line
-			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
-			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
-			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
-			this.input.value = result.obj.meta.name;
-
-			this.clear(); // Clear autocomplete
-
 			// Optional callback if provided to the constructor
 			if (this.callback)
 				this.callback({
 					"source" : this.el,
 					"result" : result.obj
 				});
+			else
+				this.fillLine(result);
+
+			this.clear(); // Clear autocomplete
+		},
+
+		fillLine: function(result) {
+			var lineNode = _findUp(result.node, "cbds-detail-line");
+
+			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
+			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
+			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
+			this.input.value = result.obj.meta.name;
 		}
 	}
 
