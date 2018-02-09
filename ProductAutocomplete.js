@@ -247,6 +247,7 @@
 			// Fill the line
 			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
+			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
 			this.input.value = result.obj.meta.name;
 
 			this.clear(); // Clear autocomplete
