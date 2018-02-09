@@ -243,9 +243,13 @@
 
 		select: function(result) {
 			var lineNode = _findUp(result.node, "cbds-detail-line");
+
+			// Fill the line
 			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
+			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
 			this.input.value = result.obj.meta.name;
-			this.clear();
+
+			this.clear(); // Clear autocomplete
 
 			// Optional callback if provided to the constructor
 			if (this.callback)
