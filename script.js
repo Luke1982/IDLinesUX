@@ -24,7 +24,7 @@ window.addEventListener("load", function(){
 });
 
 function startSort() {
-	var container = document.getElementsByClassName("cbds-detail-block")[0];
+	var container = document.getElementsByClassName("cbds-detail-lines")[0];
 	var sortable = Sortable.create(container, {
 		draggable: ".cbds-detail-line",
 		handle: ".cbds-detail-line-dragtool",
@@ -33,14 +33,14 @@ function startSort() {
 }
 
 function startLines() {
-	var lines = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-detail-line");
+	var lines = document.getElementsByClassName("cbds-detail-lines")[0].getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
 		var line = new InventoryLine(lines[i]);
 	}
 }
 
 function startProductAutoComplete() {
-	var acs = document.getElementsByClassName("cbds-detail-block")[0].getElementsByClassName("cbds-product-search");
+	var acs = document.getElementsByClassName("cbds-detail-lines")[0].getElementsByClassName("cbds-product-search");
 	for (var i = 0; i < acs.length; i++) {
 		var ac = new ProductAutocomplete(acs[i]);
 	}
@@ -80,7 +80,7 @@ var Utils = {
 
 	insertNew : function() {
 		var template = document.getElementsByClassName("cbds-detail-line--template")[0];
-		var container = document.getElementsByClassName("cbds-detail-block")[0];
+		var container = document.getElementsByClassName("cbds-detail-lines")[0];
 		var newNode = template.cloneNode(true);
 		newNode.classList.remove("cbds-detail-line--template");
 		container.appendChild(newNode);

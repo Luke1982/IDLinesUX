@@ -75,442 +75,474 @@
 				</div>
 			</div>
 			<!-- // Detail line header -->
-			<!-- Detail line for inventory details -->
-			<div class="cbds-detail-line">
-				<!-- Main inventory details line -->
-				<div class="cbds-detail-line__main">
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-image-container cbds-image-container--small">
-							<img src="images/sprite.jpg" class="cbds-image cbds-product-line-image" />
+			<div class="cbds-detail-lines">
+				<!-- Detail line for inventory details -->
+				<div class="cbds-detail-line">
+					<!-- Main inventory details line -->
+					<div class="cbds-detail-line__main">
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-image-container cbds-image-container--small">
+								<img src="images/sprite.jpg" class="cbds-image cbds-product-line-image" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width20">
+							<div class="cbds-field cbds-field--text cbds-field--extrawide cbds-product-search">
+								<input type="text" value="Sprite" placeholder="type to search" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--narrow">
+								<input type="number" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-dropdown">
+								<select>
+									<option value="percentage">Percentage</option>
+									<option value="direct">Direct</option>
+								</select>
+								<div class="cbds-dropdown__arrow"></div>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--narrow">
+								<input type="number" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+								<input type="number" />
+								<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+								<input type="number" />
+								<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-detail-line-toolbox cbds-detail-line-toolbox--stacked">
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-dragtool" title="Drag this line to another position">
+									<span class="cbds-icon cbds-icon--grid"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Edit this line">
+									<span class="cbds-icon cbds-icon--pencil"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-copytool" title="Copy this line">
+									<span class="cbds-icon cbds-icon--copy"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red cbds-detail-line-deletetool" title="Delete this line">
+									<span class="cbds-icon cbds-icon--bin"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-extratool" title="Expand or collapse this line">
+									<!-- Expander / collapser -->
+									<div class="cbds-exp-coll-tool">
+										<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
+											<div class="cbds-exp-coll-icon__bar"></div>
+											<div class="cbds-exp-coll-icon__bar"></div>
+										</div> 
+									</div>
+									<!-- // Expander / collapser -->
+								</a>
+							</div>
 						</div>
 					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width20">
-						<div class="cbds-field cbds-field--text cbds-field--extrawide cbds-product-search">
-							<input type="text" value="Sprite" placeholder="type to search" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--narrow">
-							<input type="number" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-dropdown">
-							<select>
-								<option value="percentage">Percentage</option>
-								<option value="direct">Direct</option>
-							</select>
-							<div class="cbds-dropdown__arrow"></div>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--narrow">
-							<input type="number" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-							<input type="number" />
-							<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-							<input type="number" />
-							<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-detail-line-toolbox cbds-detail-line-toolbox--stacked">
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-dragtool" title="Drag this line to another position">
-								<span class="cbds-icon cbds-icon--grid"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Edit this line">
-								<span class="cbds-icon cbds-icon--pencil"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-copytool" title="Copy this line">
-								<span class="cbds-icon cbds-icon--copy"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red cbds-detail-line-deletetool" title="Delete this line">
-								<span class="cbds-icon cbds-icon--bin"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-extratool" title="Expand or collapse this line">
-								<!-- Expander / collapser -->
-								<div class="cbds-exp-coll-tool">
-									<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
-										<div class="cbds-exp-coll-icon__bar"></div>
-										<div class="cbds-exp-coll-icon__bar"></div>
-									</div> 
+					<!-- // Main inventory details line -->
+					<!-- Extra inventory details line -->
+					<div class="cbds-detail-line__extra">
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Pricing</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Unit cost price
 								</div>
-								<!-- // Expander / collapser -->
-							</a>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-unitcost" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Line cost price
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									List price
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-listprice" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Logistics</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Units delivered / received
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" />
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Qty in stock
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-qtyinstock" />
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Currently ordered
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-currordered" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Taxes</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 1
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 2
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 3
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Comments</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-note cbds-note--medium">
+									<textarea class="cbds-product-line-comments"></textarea>
+								</div>
+							</div>
 						</div>
 					</div>
+					<!-- // Extra inventory details line -->
 				</div>
-				<!-- // Main inventory details line -->
-				<!-- Extra inventory details line -->
-				<div class="cbds-detail-line__extra">
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Pricing</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Unit cost price
+				<!-- // Detail line for inventory details -->
+				<!-- Detail line for inventory details -->
+				<div class="cbds-detail-line">
+					<!-- Main inventory details line -->
+					<div class="cbds-detail-line__main">
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-image-container cbds-image-container--small">
+								<img src="images/sprite.jpg" class="cbds-image cbds-product-line-image" />
 							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-unitcost" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width20">
+							<div class="cbds-field cbds-field--text cbds-field--extrawide cbds-product-search">
+								<input type="text" value="Sprite" placeholder="type to search" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--narrow">
+								<input type="number" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-dropdown">
+								<select>
+									<option value="percentage">Percentage</option>
+									<option value="direct">Direct</option>
+								</select>
+								<div class="cbds-dropdown__arrow"></div>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--narrow">
+								<input type="number" />
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+								<input type="number" />
+								<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+								<input type="number" />
+								<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							</div>
+						</div>
+						<div class="cbds-detail-line__column cbds-detail-line__column--width10">
+							<div class="cbds-detail-line-toolbox cbds-detail-line-toolbox--stacked">
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-dragtool" title="Drag this line to another position">
+									<span class="cbds-icon cbds-icon--grid"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Edit this line">
+									<span class="cbds-icon cbds-icon--pencil"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-copytool" title="Copy this line">
+									<span class="cbds-icon cbds-icon--copy"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red cbds-detail-line-deletetool" title="Delete this line">
+									<span class="cbds-icon cbds-icon--bin"></span>
+								</a>
+								<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-extratool" title="Expand or collapse this line">
+									<!-- Expander / collapser -->
+									<div class="cbds-exp-coll-tool">
+										<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
+											<div class="cbds-exp-coll-icon__bar"></div>
+											<div class="cbds-exp-coll-icon__bar"></div>
+										</div> 
+									</div>
+									<!-- // Expander / collapser -->
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- // Main inventory details line -->
+					<!-- Extra inventory details line -->
+					<div class="cbds-detail-line__extra">
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Pricing</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Unit cost price
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-unitcost" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Line cost price
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									List price
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-listprice" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Line cost price
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Logistics</h5>
 							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Units delivered / received
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" />
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Qty in stock
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-qtyinstock" />
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Currently ordered
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
+										<input type="number" class="cbds-product-line-currordered" />
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								List price
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Taxes</h5>
 							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-listprice" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 1
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 2
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-infocard__label cbds-infocard__label--bold">
+									Tax 3
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
+									</div>
+								</div>
+								<div class="cbds-infocard__value">
+									<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+										<input type="number" />
+										<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cbds-infocard">
+							<div class="cbds-infocard__header">
+								<h5>Comments</h5>
+							</div>
+							<div class="cbds-infocard__line">
+								<div class="cbds-note cbds-note--medium">
+									<textarea class="cbds-product-line-comments"></textarea>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Logistics</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Units delivered / received
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" />
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Qty in stock
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-qtyinstock" />
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Currently ordered
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-currordered" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Taxes</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 1
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 2
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 3
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Comments</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-note cbds-note--medium">
-								<textarea class="cbds-product-line-comments"></textarea>
-							</div>
-						</div>
-					</div>
+					<!-- // Extra inventory details line -->
 				</div>
-				<!-- // Extra inventory details line -->
+				<!-- // Detail line for inventory details -->
 			</div>
-			<!-- // Detail line for inventory details -->
-			<!-- Detail line for inventory details -->
-			<div class="cbds-detail-line">
-				<!-- Main inventory details line -->
-				<div class="cbds-detail-line__main">
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-image-container cbds-image-container--small">
-							<img src="images/sprite.jpg" class="cbds-image cbds-product-line-image" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width20">
-						<div class="cbds-field cbds-field--text cbds-field--extrawide cbds-product-search">
-							<input type="text" value="Sprite" placeholder="type to search" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--narrow">
-							<input type="number" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-dropdown">
-							<select>
-								<option value="percentage">Percentage</option>
-								<option value="direct">Direct</option>
-							</select>
-							<div class="cbds-dropdown__arrow"></div>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--narrow">
-							<input type="number" />
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-							<input type="number" />
-							<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-							<input type="number" />
-							<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-						</div>
-					</div>
-					<div class="cbds-detail-line__column cbds-detail-line__column--width10">
-						<div class="cbds-detail-line-toolbox cbds-detail-line-toolbox--stacked">
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-dragtool" title="Drag this line to another position">
-								<span class="cbds-icon cbds-icon--grid"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool" title="Edit this line">
-								<span class="cbds-icon cbds-icon--pencil"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-copytool" title="Copy this line">
-								<span class="cbds-icon cbds-icon--copy"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-toolbox__tool--red cbds-detail-line-deletetool" title="Delete this line">
-								<span class="cbds-icon cbds-icon--bin"></span>
-							</a>
-							<a href="javascript:void(0);" class="cbds-detail-line-toolbox__tool cbds-detail-line-extratool" title="Expand or collapse this line">
-								<!-- Expander / collapser -->
-								<div class="cbds-exp-coll-tool">
-									<div class="cbds-exp-coll-icon cbds-exp-coll-icon--medium cbds-exp-coll-icon--white">
-										<div class="cbds-exp-coll-icon__bar"></div>
-										<div class="cbds-exp-coll-icon__bar"></div>
-									</div> 
-								</div>
-								<!-- // Expander / collapser -->
-							</a>
-						</div>
+			<!-- Aggregations block -->
+			<div class="cbds-product-lines-aggr">
+				<div class="cbds-product-lines-aggr__column">
+					<span class="cbds-fieldlabel cbds-fieldlabel--strong">
+						No. of lines
+					</span>
+					<div class="cbds-field cbds-field--number cbds-field--readonly cbds-field--mediumwidth">
+						<input type="number" readonly="readonly" value="23" />
 					</div>
 				</div>
-				<!-- // Main inventory details line -->
-				<!-- Extra inventory details line -->
-				<div class="cbds-detail-line__extra">
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Pricing</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Unit cost price
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-unitcost" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Line cost price
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								List price
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-listprice" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Logistics</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Units delivered / received
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" />
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Qty in stock
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-qtyinstock" />
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Currently ordered
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--mediumwidth">
-									<input type="number" class="cbds-product-line-currordered" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Taxes</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 1
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 2
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-infocard__label cbds-infocard__label--bold">
-								Tax 3
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--euro"></span>
-								</div>
-							</div>
-							<div class="cbds-infocard__value">
-								<div class="cbds-field cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
-									<input type="number" />
-									<span class="cbds-field__symbol cbds-field__symbol--percent"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="cbds-infocard">
-						<div class="cbds-infocard__header">
-							<h5>Comments</h5>
-						</div>
-						<div class="cbds-infocard__line">
-							<div class="cbds-note cbds-note--medium">
-								<textarea class="cbds-product-line-comments"></textarea>
-							</div>
-						</div>
+				<div class="cbds-product-lines-aggr__column">
+					<span class="cbds-fieldlabel cbds-fieldlabel--strong">
+						Total sum
+					</span>
+					<div class="cbds-field cbds-field--readonly cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+						<input readonly="readonly" value="1.347,20" />
+						<span class="cbds-field__symbol cbds-field__symbol--bottomflush cbds-field__symbol--euro"></span>
 					</div>
 				</div>
-				<!-- // Extra inventory details line -->
+				<div class="cbds-product-lines-aggr__column">
+					<span class="cbds-fieldlabel cbds-fieldlabel--strong">
+						Discount sum
+					</span>
+					<div class="cbds-field cbds-field--readonly cbds-field--number cbds-field--hassymbol cbds-field--mediumwidth">
+						<input readonly="readonly" value="42,67" />
+						<span class="cbds-field__symbol cbds-field__symbol--bottomflush cbds-field__symbol--euro"></span>
+					</div>
+				</div>
 			</div>
-			<!-- // Detail line for inventory details -->
+			<!-- // Aggregations block -->
 		</div>
 		<!-- Detail block -->
 		<!-- Template -->
