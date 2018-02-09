@@ -17,3 +17,4 @@ This repo is used as a simple way to collaborate on a HTML/CSS/JS structure that
 * Create a module for the collection of lines
 * Create aggregations (and a module for it)
 * Merge all JS modules into a single file
+* Create a throttle function in the JS modules to avoid slow screen response
