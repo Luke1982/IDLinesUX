@@ -290,7 +290,7 @@
 	}
 
 	function _getByCl(root, className) {
-		return root.getElementsByClassName(className)[0];
+		return root.getElementsByClassName(className)[0] != undefined ? root.getElementsByClassName(className)[0] : {};
 	}
 
 	function _getKey(code) {
