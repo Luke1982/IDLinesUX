@@ -13,6 +13,9 @@ function handleClicks(e) {
 			case "insertNewLine":
 				Utils.insertNew();
 				break;
+			case "deleteAllLines":
+				Utils.deleteAllLines();
+				break;
 		}
 	}
 }
@@ -75,6 +78,13 @@ var Utils = {
 				if (state == 1) window.InventoryLines[prop].expandExtra();
 				if (state == 0) window.InventoryLines[prop].collExtra();
 			}
+		}
+	},
+
+	deleteAllLines : function() {
+		for (prop in window.InventoryLines) {
+			if (prop != "seq")
+				window.InventoryLines[prop].delete();
 		}
 	},
 

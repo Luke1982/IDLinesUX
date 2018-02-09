@@ -364,21 +364,30 @@
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
-	border: 1px solid #035882;
-	border-radius: 3px;
 }
 .cbds-toolbox__tool {
 	flex-grow: 1;
 	background-color: #0079B7;
+	border: 1px solid #035882;
 	color: #ffffff;
 	text-decoration: none;
 	text-align: center;
 	padding: 7px 0;
 	border-right: 1px solid #035882;
 }
-.cbds-toolbox__tool:last-child {
-	border: none;
+.cbds-toolbox__tool:first-child {
+	border-radius: 3px 0 0 3px;
 }
+.cbds-toolbox__tool:last-child {
+	border-radius: 0 3px 3px 0;
+}
+.cbds-toolbox__tool--red {
+	background-color: #c50008;
+}
+.cbds-toolbox__tool--red {
+	border: 1px solid #91080d;
+}
+
 
 /* Infocard */
 .cbds-infocard {
