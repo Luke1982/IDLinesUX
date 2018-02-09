@@ -263,7 +263,9 @@
 			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
 
 			_getByCl(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
+			_getByCl(lineNode, "cbds-product-line-currordered").value = result.obj.logistics.curr_ordered;
 
+			_getByCl(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
 		}
 	}
