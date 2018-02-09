@@ -250,6 +250,7 @@
 				});
 			else
 				this.fillLine(result);
+				_getByCl(_findUp(this.el, "cbds-detail-line"), "cbds-product-qty").focus();
 
 			this.clear(); // Clear autocomplete
 		},
