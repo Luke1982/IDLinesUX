@@ -254,8 +254,17 @@
 .cbds-detail-line-toolbox--vertical {
 	flex-direction: column;
 }
+.cbds-detail-line-toolbox--stacked,
 .cbds-detail-line-toolbox--horizontal {
 	flex-direction: row;
+}
+.cbds-detail-line-toolbox--stacked {
+	flex-wrap: wrap;
+}
+.cbds-detail-line-toolbox--stacked .cbds-detail-line-toolbox__tool{
+	width: 50%;
+	border-right: 1px solid #ffffff;
+	box-sizing: border-box;
 }
 .cbds-detail-line-toolbox__tool {
 	display: block;
