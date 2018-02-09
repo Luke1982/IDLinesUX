@@ -23,7 +23,6 @@ function handleClicks(e) {
 window.addEventListener("load", function(){
 	startSort();
 	startLines();
-	startProductAutoComplete();
 });
 
 function startSort() {
@@ -39,13 +38,6 @@ function startLines() {
 	var lines = document.getElementsByClassName("cbds-detail-lines")[0].getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
 		var line = new InventoryLine(lines[i]);
-	}
-}
-
-function startProductAutoComplete() {
-	var acs = document.getElementsByClassName("cbds-detail-lines")[0].getElementsByClassName("cbds-product-search");
-	for (var i = 0; i < acs.length; i++) {
-		var ac = new ProductAutocomplete(acs[i]);
 	}
 }
 
@@ -95,7 +87,6 @@ var Utils = {
 		newNode.classList.remove("cbds-detail-line--template");
 		container.appendChild(newNode);
 		new InventoryLine(newNode);
-		new ProductAutocomplete(newNode.getElementsByClassName("cbds-product-search")[0]);
 	}
 
 };

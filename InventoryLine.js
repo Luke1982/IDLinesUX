@@ -38,6 +38,7 @@
 			_this.id = window.InventoryLines.seq + 1,
 			window.InventoryLines.seq++,
 			window.InventoryLines[_this.id] = _this;
+			new ProductAutocomplete(_getFirstClass(_this.el, "cbds-product-search"));
 		}
 		construct();
 
@@ -57,7 +58,6 @@
 
 						_insertAfter(original, newNode);
 						new InventoryLine(newNode);
-						new ProductAutocomplete(_getFirstClass(newNode, "cbds-product-search"));
 					},
 
 		delete 		: function() {
