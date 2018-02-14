@@ -20,21 +20,31 @@
 				<div class="cbds-detail-line__column cbds-detail-line__column--width70">
 					Preheader
 				</div>
-				<div class="cbds-detail-line__column cbds-detail-line__column--width20">
-					<div class="cbds-toolbox">
-						<a href="javascript:void(0);" class="cbds-toolbox__tool" data-clickfunction="expandAllLines" title="Expand / collapse all lines">
-							<span class="cbds-icon cbds-icon--enlarge"></span>
-						</a>
-						<a href="javascript:void(0);" class="cbds-toolbox__tool" data-clickfunction="collAllLines" title="Expand / collapse all lines">
-							<span class="cbds-icon cbds-icon--shrink"></span>
-						</a>
-						<a href="javascript:void(0);" class="cbds-toolbox__tool" data-clickfunction="insertNewLine" title="Add line">
-							<span class="cbds-icon cbds-icon--plus"></span>
-						</a>
-						<a href="javascript:void(0);" class="cbds-toolbox__tool cbds-toolbox__tool--red" data-clickfunction="deleteAllLines" title="Remove all lines">
-							<span class="cbds-icon cbds-icon--bin"></span>
-						</a>
-					</div>
+				<div class="slds-button-group">
+					<button class="slds-button slds-button_icon slds-button_icon-brand cbds-toolbox__tool" data-clickfunction="expandAllLines" title="Expand all lines" aria-pressed="false">
+						<svg class="slds-button__icon" aria-hidden="true">
+							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#expand_all"></use>
+						</svg>
+						<span class="slds-assistive-text">Expand or collapse this line</span>
+					</button>
+					<button class="slds-button slds-button_icon slds-button_icon-brand cbds-toolbox__tool" data-clickfunction="collAllLines" title="Collapse all lines" aria-pressed="false">
+						<svg class="slds-button__icon" aria-hidden="true">
+							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#collapse_all"></use>
+						</svg>
+						<span class="slds-assistive-text">Expand or collapse this line</span>
+					</button>
+					<button class="slds-button slds-button_icon slds-button_icon-brand cbds-toolbox__tool" data-clickfunction="insertNewLine" title="Add line" aria-pressed="false">
+						<svg class="slds-button__icon" aria-hidden="true">
+							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#add"></use>
+						</svg>
+						<span class="slds-assistive-text">Expand or collapse this line</span>
+					</button>
+					<button class="slds-button slds-button_icon slds-button_icon-brand cbds-toolbox__tool" data-clickfunction="deleteAllLines" title="Delete all lines" aria-pressed="false">
+						<svg class="slds-button__icon" aria-hidden="true">
+							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#delete"></use>
+						</svg>
+						<span class="slds-assistive-text">Expand or collapse this line</span>
+					</button>
 				</div>
 				<div class="cbds-detail-line__column cbds-detail-line__column--width5"></div>
 			</div>

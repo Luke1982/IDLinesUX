@@ -283,7 +283,7 @@
 /* Tools
    |
    ----- Line Toolbox */
-.cbds-detail-line-toolbox {
+/*.cbds-detail-line-toolbox {
 	background-color: #0079B7;
 	flex-grow: 1;
 	display: flex;
@@ -298,7 +298,7 @@
 .cbds-detail-line-toolbox--stacked {
 	flex-wrap: wrap;
 }
-.cbds-detail-line-toolbox--stacked .cbds-detail-line-toolbox__tool {
+*//*.cbds-detail-line-toolbox--stacked .cbds-detail-line-toolbox__tool {
 	width: 50%;
 	border-right: 1px solid #ffffff;
 	box-sizing: border-box;
@@ -325,7 +325,7 @@
 .cbds-detail-line-toolbox__tool:last-child {
 	border-bottom: none;
 }
-.cbds-detail-line-dragtool {
+*/.cbds-detail-line-dragtool {
 	position: relative;
 	text-align: center;
 	cursor: pointer;
@@ -383,7 +383,7 @@
 /* Tools
    |
    ----- General Toolbox */
-.cbds-toolbox {
+/*.cbds-toolbox {
 	display: flex;
 	flex-direction: row;
 	flex-grow: 1;
@@ -409,7 +409,7 @@
 }
 .cbds-toolbox__tool--red {
 	border: 1px solid #91080d;
-}
+}*/
 
 
 /* Infocard */
