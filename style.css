@@ -31,6 +31,9 @@
 	padding: 1rem 0;
 	flex-grow: 1;
 }
+.cbds-detail-line {
+	background-color: #ffffff;
+}
 .cbds-detail-line__main,
 .cbds-detail-line__extra,
 .cbds-product-lines-aggr {
@@ -322,6 +325,17 @@
 .cbds-detail-line-toolbox__tool:last-child {
 	border-bottom: none;
 }
+.cbds-detail-line-dragtool {
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+}
+.cbds-detail-line-dragtool svg {
+	position: absolute;
+	top: 0;
+	transform: translate3d(-50%, 50%, 0);
+}
+
 
 /* Hoverhelp */
 .cbds-hoverhelp {
