@@ -133,3 +133,8 @@
 	top: 0;
 	transform: translate3d(-50%, 50%, 0);
 }
+
+.cbds-panelheader {
+	background-color: #3f5a82;
+	padding: 0.5rem;
+}
