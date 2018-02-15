@@ -43,7 +43,7 @@ function startLines() {
 }
 
 function startComboboxes() {
-	var cBoxes = document.getElementsByClassName("slds-combobox");
+	var cBoxes = document.getElementsByClassName("slds-combobox-picklist");
 	for (var i = 0; i < cBoxes.length; i++) {
 		var cBox = new ldsCombobox(cBoxes[i]);
 	}
