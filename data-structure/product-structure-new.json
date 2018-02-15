@@ -1,6 +1,13 @@
 [{
 	"meta" : {
-		"image" : "cola.jpg", 		// Where should we get this from? | string
+		"images": {
+			"image1" : "cola.jpg", 		// Where should we get this from? | string
+			"image2" : "cola.jpg",
+			"image3" : "cola.jpg",
+			"image4" : "cola.jpg",
+			"image5" : "cola.jpg",
+			"image6" : "cola.jpg",
+		},
 		"name"	: "Cola", 			// Origin: Products or services [product_name/service_name] | string
 		"divisible" : true,			// Origin: Products of Services [divisible] | bool
 		"comments" : "A comment"	// Origin: Products or Services | string
