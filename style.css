@@ -152,3 +152,9 @@
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
+
+.slds-form--compound .cbds-m-bottom_none,
+.slds-form_compound .cbds-m-bottom_none,
+.cbds-m-bottom_none {
+	margin-bottom: 0;
+}
