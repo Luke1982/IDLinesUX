@@ -23,6 +23,7 @@ function handleClicks(e) {
 window.addEventListener("load", function(){
 	startSort();
 	startLines();
+	startComboboxes();
 });
 
 function startSort() {
@@ -38,6 +39,13 @@ function startLines() {
 	var lines = document.getElementsByClassName("cbds-detail-lines")[0].getElementsByClassName("cbds-detail-line");
 	for (var i = 0; i < lines.length; i++) {
 		var line = new InventoryLine(lines[i]);
+	}
+}
+
+function startComboboxes() {
+	var cBoxes = document.getElementsByClassName("slds-combobox");
+	for (var i = 0; i < cBoxes.length; i++) {
+		var cBox = new ldsCombobox(cBoxes[i]);
 	}
 }
 
