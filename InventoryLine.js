@@ -70,17 +70,17 @@
 
 		toggleExtra : function() {
 						this.extraLine.classList.toggle("cbds-detail-line__extra--expanded");
-						this.extraTool.children[0].children[0].classList.toggle("cbds-exp-coll-icon--expanded");
+						this.extraTool.children[0].classList.toggle("cbds-exp-coll-icon--expanded");
 					},
 
 		expandExtra : function() {
 						this.extraLine.classList.add("cbds-detail-line__extra--expanded");
-						this.extraTool.children[0].children[0].classList.add("cbds-exp-coll-icon--expanded");
+						this.extraTool.children[0].classList.add("cbds-exp-coll-icon--expanded");
 					},
 
 		collExtra 	: function() {
 						this.extraLine.classList.remove("cbds-detail-line__extra--expanded");
-						this.extraTool.children[0].children[0].classList.remove("cbds-exp-coll-icon--expanded");
+						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
 					}
 	}
 
