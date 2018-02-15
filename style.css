@@ -134,6 +134,14 @@
 	transform: translate3d(-50%, 50%, 0);
 }
 
+.cbds-button--delete {
+	background-color: #d17575;
+}
+.cbds-button--delete use,
+.cbds-button--delete svg {
+	color: #ffffff;
+}
+
 .cbds-panelheader {
 	background-color: #3f5a82;
 	padding: 0.5rem;
