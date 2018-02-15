@@ -29,7 +29,7 @@
 			var isOption = Utils.findUp(e.target, ".slds-listbox__item");
 			if (isOption)
 				var value = isOption.getElementsByClassName("slds-truncate")[0].innerText;
-				this.input.value = value;
+				this.input.value = value == undefined ? this.input.value : value;
 		}
 	}
 
