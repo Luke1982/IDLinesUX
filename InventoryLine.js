@@ -109,18 +109,6 @@
 		el.removeEventListener(type, func);
 	}
 
-	function _findUp(element, searchterm) {
-		while (element = element.parentElement) {
-			if ( (searchterm.charAt(0) === "#" && element.id === searchterm.slice(1) )
-				|| ( searchterm.charAt(0) === "." && element.classList.contains(searchterm.slice(1) ) 
-				|| ( element.hasAttribute(searchterm) ))) {
-				return element;
-			} else if (element == document.body) {
-				break;
-			}
-		}
-	}
-
 	function _insertAfter(referenceNode, newNode) {
 		referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 	}
