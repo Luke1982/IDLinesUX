@@ -13,8 +13,8 @@ This repo is used as a simple way to collaborate on a HTML/CSS/JS structure that
 * The actual CRUD operations, since they require being in an actual coreBOS environment. Those will be dealt with when this repo is 'done'.
 
 ## To-do
-* Implement auto-creation of an autocomplete instance in the InventoryLine module.
-* Create a module for the collection of lines
+* ~~Implement auto-creation of an autocomplete instance in the InventoryLine module.~~
+* ~~Create a module for the collection of lines~~
 * Create aggregations (and a module for it)
 * Merge all JS modules into a single file
 * Create a throttle function in the JS modules to avoid slow screen response
