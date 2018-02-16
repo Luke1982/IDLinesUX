@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="ldsCombobox.js"></script>
 </head>
 <body>
+	{include file='./templates/Components.tpl'}
 	<div id="testcontainer">
 		<!-- Detail block -->
 		<div class="cbds-detail-block cbds-inventory-block">
