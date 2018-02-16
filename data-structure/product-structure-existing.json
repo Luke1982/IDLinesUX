@@ -32,5 +32,13 @@
 			"percent" : 21,			// Origin: InventoryDetails [field] | float
 			"amount" : 200			// Origin: InventoryDetails [field] | float
 		}
+	},
+	"custom" : {
+		"color" : {
+			"type" : "dropdown",
+			"available" : ["red", "white", "blue"],
+			"selected" : "blue"
+		},
+		"size" : "XXL"				// Origin: InventoryDetails [field]
 	}
 }]
