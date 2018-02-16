@@ -26,11 +26,13 @@
 		/* Public properties */
 		this.el 		= el,
 		this.extraLine	= _getFirstClass(el, "cbds-detail-line__extra"),
-		this.extraTool 	= _getTool(el, "extra");
+		this.extraTool 	= _getTool(el, "extra"),
+		this.comboBoxes	= [];
 
 		/* Private properties */
 		var copyTool 	= _getTool(el, "copy"),
 			delTool 	= _getTool(el, "delete"),
+			comboBoxes	= el.getElementsByClassName("slds-combobox-picklist"),
 			_this 		= this;
 
 		/* Instance Constructor */
@@ -39,6 +41,9 @@
 			window.InventoryLines.seq++,
 			window.InventoryLines[_this.id] = _this;
 			new ProductAutocomplete(_getFirstClass(_this.el, "cbds-product-search"));
+			for (var i = 0; i < comboBoxes.length; i++) {
+				_this.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
+			}
 		}
 		construct();
 
