@@ -67,7 +67,7 @@
 		delete 		: function() {
 						this.el.parentNode.removeChild(this.el);
 						this.root.utils.off(this.extraTool, "click", this.toggleExtra);
-						this.root.inventoryLines[this.id];
+						delete this.root.inventoryLines[this.id];
 
 						this.el = null;
 					},
