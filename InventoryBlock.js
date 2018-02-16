@@ -41,16 +41,16 @@
 			if (functionElement !== undefined) {
 				switch (functionElement.getAttribute("data-clickfunction")) {
 					case "expandAllLines":
-						this.utils.expandAllLines();
+						this.expandAllLines();
 						break;
 					case "collAllLines":
-						this.utils.collAllLines();
+						this.collAllLines();
 						break;
 					case "insertNewLine":
-						this.utils.insertNew(this);
+						this.insertNew(this);
 						break;
 					case "deleteAllLines":
-						this.utils.deleteAllLines();
+						this.deleteAllLines();
 						break;
 				}
 			}
@@ -71,6 +71,39 @@
 			}
 		},
 
+		expandAllLines : function() {
+			this.setAllExtraStates(1);
+		},
+
+		collAllLines : function() {
+			this.setAllExtraStates(0);
+		},
+
+		setAllExtraStates : function(state) {
+			for (prop in this.inventoryLines) {
+				if (typeof this.inventoryLines[prop].expandExtra == "function") {
+					if (state == 1) this.inventoryLines[prop].expandExtra();
+					if (state == 0) this.inventoryLines[prop].collExtra();
+				}
+			}
+		},
+
+		deleteAllLines : function() {
+			for (prop in this.inventoryLines) {
+				if (prop != "seq")
+					this.inventoryLines[prop].delete();
+			}
+		},
+
+		insertNew : function() {
+			var template = document.getElementsByClassName("cbds-detail-line--template")[0];
+			var container = document.getElementsByClassName("cbds-detail-lines")[0];
+			var newNode = template.cloneNode(true);
+			newNode.classList.remove("cbds-detail-line--template");
+			container.appendChild(newNode);
+			new InventoryLine(newNode, this);
+		},
+
 		/*
 		 * Class utilities
 		 */
@@ -86,39 +119,6 @@
 						break;
 					}
 				}
-			},
-
-			expandAllLines : function() {
-				this.setAllExtraStates(1);
-			},
-
-			collAllLines : function() {
-				this.setAllExtraStates(0);
-			},
-
-			setAllExtraStates : function(state) {
-				for (prop in window.InventoryLines) {
-					if (typeof window.InventoryLines[prop].expandExtra == "function") {
-						if (state == 1) window.InventoryLines[prop].expandExtra();
-						if (state == 0) window.InventoryLines[prop].collExtra();
-					}
-				}
-			},
-
-			deleteAllLines : function() {
-				for (prop in window.InventoryLines) {
-					if (prop != "seq")
-						window.InventoryLines[prop].delete();
-				}
-			},
-
-			insertNew : function(root) {
-				var template = document.getElementsByClassName("cbds-detail-line--template")[0];
-				var container = document.getElementsByClassName("cbds-detail-lines")[0];
-				var newNode = template.cloneNode(true);
-				newNode.classList.remove("cbds-detail-line--template");
-				container.appendChild(newNode);
-				new InventoryLine(newNode, root);
 			}
 		}
 	}
