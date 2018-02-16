@@ -82,7 +82,6 @@
 				this.resultContainer = this.buildResultContainer();
 				this.resultBox.appendChild(this.resultContainer);
 				this.active = true;
-				console.log(this.active);
 			}
 
 			// Build results

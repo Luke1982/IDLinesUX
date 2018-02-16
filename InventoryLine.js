@@ -21,10 +21,12 @@
 	/**
 	 * @class InventoryLine
 	 * @param {element}
+	 * @param {root} : InventoryBlock instance that is parent
 	 */
-	function InventoryLine(el){
+	function InventoryLine(el, rootBlock){
 		/* Public properties */
 		this.el 		= el,
+		this.root		= rootBlock,
 		this.extraLine	= _getFirstClass(el, "cbds-detail-line__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [];
