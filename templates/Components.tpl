@@ -6,7 +6,7 @@
 	<div class="slds-grid slds-gutters cbds-detail-line__main">
 		<div class="slds-col slds-size_1-of-12">
 			<div class="cbds-image-container cbds-image-container--small">
-				<img src="images/sprite.jpg" class="cbds-image cbds-product-line-image" />
+				<img src="{if !$template && isset($data.meta.image) && $data.meta.image != ''}{$data.meta.image}{/if}" class="cbds-image cbds-product-line-image" />
 			</div>
 		</div>
 		<!-- Nested column with input fields -->
@@ -20,7 +20,7 @@
 							<div class="slds-combobox_container slds-has-inline-listbox cbds-product-search">
 								<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-lookup" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 									<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-										<input class="slds-input slds-combobox__input" aria-autocomplete="list" aria-controls="listbox-unique-id" autocomplete="off" role="textbox" placeholder="Search Products and services" type="text" />
+										<input class="slds-input slds-combobox__input" aria-autocomplete="list" aria-controls="listbox-unique-id" autocomplete="off" role="textbox" placeholder="Search Products and services" type="text" value="{if !$template}{$data.meta.name}{/if}" />
 										<span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#search" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -34,7 +34,7 @@
 						<!-- Product quantity form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control">
-								<input type="text" class="slds-input cbds-product-qty" />
+								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.quantity}{/if}" />
 							</div>
 						</div>
 						<!-- // Product quantity form element -->
@@ -44,7 +44,7 @@
 								<div class="slds-combobox_container">
 									<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 										<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-											<input class="slds-input slds-combobox__input" aria-controls="" autocomplete="off" role="textbox" placeholder="Discount type" readonly="readonly" type="text" />
+											<input class="slds-input slds-combobox__input" aria-controls="" autocomplete="off" role="textbox" placeholder="Discount type" readonly="readonly" type="text" value="{if !$template}{if $data.meta.discount_type == 'p'}Percentage{else}Direct{/if}{/if}"/>
 											<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
 												<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 													<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#down" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -77,7 +77,7 @@
 						<!-- Discount number (percent/direct) form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" />
+								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.discount_amount}{/if}"/>
 								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
 									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -101,7 +101,7 @@
 						<!-- Line total form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" />
+								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.line_total}{/if}"/>
 								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
 									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -156,39 +156,9 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
-						<label class="slds-form-element__label">Unit cost price</label>
-						<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-							<input type="text" class="slds-input cbds-product-line-unitcost" />
-							<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-								<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-									<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-								</svg>
-							</span>
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<label class="slds-form-element__label">Line cost price</label>
-						<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-							<input type="text" class="slds-input" />
-							<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-								<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-									<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-								</svg>
-							</span>
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<label class="slds-form-element__label">List price</label>
-						<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-							<input type="text" class="slds-input cbds-product-line-listprice" />
-							<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-								<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-									<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-								</svg>
-							</span>
-						</div>
-					</div>
+					{call name=ProductPanelSection fieldname='unit_cost' label='Unit cost price' value=$data.pricing.unit_cost symbol='euro'}
+					{call name=ProductPanelSection fieldname='line_cost' label='Line cost price' value=$data.pricing.line_cost symbol='euro'}
+					{call name=ProductPanelSection fieldname='list_price' label='Line cost price' value=$data.pricing.list_price symbol='euro'}
 				</div>
 			</div>
 		</div>
@@ -200,24 +170,9 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Logistics</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Units delivered / received</span>
-						<div class="slds-form-element__control">
-							<input type="text" class="slds-input" />
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Qty in stock</span>
-						<div class="slds-form-element__control">
-							<input type="text" class="slds-input cbds-product-line-qtyinstock" />
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Currently ordered</span>
-						<div class="slds-form-element__control">
-							<input type="text" class="slds-input cbds-product-line-currordered" />
-						</div>
-					</div>
+					{call name=ProductPanelSection fieldname='units_delrec' label='Units delivered / received' value=$data.logistics.units_delrec symbol='none'}
+					{call name=ProductPanelSection fieldname='qty_in_stock' label='Qty in stock' value=$data.logistics.qty_in_stock symbol='none'}
+					{call name=ProductPanelSection fieldname='curr_ordered' label='Currently ordered' value=$data.logistics.curr_ordered symbol='none'}
 				</div>
 			</div>
 		</div>
@@ -229,81 +184,9 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Taxes</div>
 				</div>
 				<div class="slds-form slds-form_compound slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Tax 1</span>
-						<div class="slds-form-element__row cbds-m-bottom_none">
-							<div class="slds-form-element slds-size_5-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-							<div class="slds-form-element slds-size_7-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Tax 2</span>
-						<div class="slds-form-element__row cbds-m-bottom_none">
-							<div class="slds-form-element slds-size_5-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-							<div class="slds-form-element slds-size_7-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="slds-panel__section slds-border_bottom">
-						<span class="slds-form-element__label">Tax 3</span>
-						<div class="slds-form-element__row cbds-m-bottom_none">
-							<div class="slds-form-element slds-size_5-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-							<div class="slds-form-element slds-size_7-of-12">
-								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-									<input type="text" class="slds-input" />
-									<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-										<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-											<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-										</svg>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>									
+					{foreach from=$data.taxes item=tax key=key}
+						{call name=ProductTaxPanelSection fieldname=$key label=$key amount=$tax.amount percent=$tax.percent symbol='euro'}
+					{/foreach}									
 				</div>
 			</div>
 		</div>
@@ -330,4 +213,48 @@
 	<!-- // Extra LDS inventory line -->
 </div>
 <!-- // LDS Detail line for inventorydetails -->
+{/function}
+
+{function name=ProductPanelSection fieldname='' label='' value='' symbol='euro'}
+<div class="slds-panel__section slds-border_bottom">
+	<label class="slds-form-element__label">{$label}</label>
+	<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
+		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{$value}" />
+		{if $symbol != 'none'}
+		<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
+			<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+				<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$symbol}" xmlns:xlink="http://www.w3.org/1999/xlink" />
+			</svg>
+		</span>
+		{/if}
+	</div>
+</div>
+{/function}
+
+{function name=ProductTaxPanelSection fieldname='' label='' amount='' percent='' symbol='euro'}
+<div class="slds-panel__section slds-border_bottom">
+	<span class="slds-form-element__label">{$label}</span>
+	<div class="slds-form-element__row cbds-m-bottom_none">
+		<div class="slds-form-element slds-size_5-of-12">
+			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+				<input type="text" class="slds-input" value="{$percent}" />
+				<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
+					<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+						<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
+					</svg>
+				</span>
+			</div>
+		</div>
+		<div class="slds-form-element slds-size_7-of-12">
+			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+				<input type="text" class="slds-input" value="{$amount}" />
+				<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
+					<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+						<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$symbol}" xmlns:xlink="http://www.w3.org/1999/xlink" />
+					</svg>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
 {/function}

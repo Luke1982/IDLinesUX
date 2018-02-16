@@ -91,8 +91,9 @@
 			</div>
 			<!-- // LDS Detail line header -->
 			<div class="cbds-detail-lines">
-				{call name=InventoryLine}
-				{call name=InventoryLine}
+				{foreach from=$testarray item=productline}
+					{call name=InventoryLine data=$productline}
+				{/foreach}
 			</div>
 			<!-- LDS Aggregations block -->
 			<article class="slds-card">

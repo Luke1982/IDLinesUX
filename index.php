@@ -5,7 +5,7 @@ $smarty = new Smarty();
 
 $line1 = array(
 	'meta' 		=> array(
-		'image' 			=> 'cola.jpg',
+		'image' 			=> 'images/cola.jpg',
 		'name'				=> 'Cola',
 		'quantity'			=> 1,
 		'discount_type' 	=> 'p',
@@ -56,7 +56,9 @@ $line1 = array(
 	)
 );
 
-$smarty->assign('testarray', $line1);
+$testarray = array();
+$testarray[] = $line1;
+$smarty->assign('testarray', $testarray);
 
 $smarty->display('idlines.tpl');
 
