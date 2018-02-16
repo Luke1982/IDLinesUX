@@ -58,7 +58,7 @@
 		},
 
 		handleClick: function(e) {
-			var isOption = Utils.findUp(e.target, ".slds-listbox__item");
+			var isOption = _findUp(e.target, ".slds-listbox__item");
 			if (isOption != undefined) {
 				var index = this.getIndexByNode(isOption);
 				for (var i = 0; i < this.optionNodes.length; i++) {
@@ -145,6 +145,19 @@
 
 	function _getKey(code) {
 		return window.keycodeMap[code];
+	}
+
+	function _findUp : function(element, searchterm) {
+		element = element.children[0] != undefined ? element.children[0] : element; // Include the current element
+		while (element = element.parentElement) {
+			if ( (searchterm.charAt(0) === "#" && element.id === searchterm.slice(1) )
+				|| ( searchterm.charAt(0) === "." && element.classList.contains(searchterm.slice(1) ) 
+				|| ( element.hasAttribute(searchterm) ))) {
+				return element;
+			} else if (element == document.body) {
+				break;
+			}
+		}
 	}
 
 	return ldsCombobox;
