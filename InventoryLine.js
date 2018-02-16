@@ -20,11 +20,11 @@
 	 * @param {element}
 	 * @param {root} : InventoryBlock instance that is parent
 	 */
-	function InventoryLine(el, rootBlock){
+	function InventoryLine(el, rootObj){
 		/* Public properties */
 		this.el 		= el,
-		this.root		= rootBlock,
-		this.extraLine	= _getFirstClass(el, "cbds-detail-line__extra"),
+		this.root		= rootObj,
+		this.extraLine	= this.root.utils.getFirstClass(el, "cbds-detail-line__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [];
 
@@ -39,7 +39,7 @@
 			me.id = me.root.inventoryLines.seq + 1,
 			me.root.inventoryLines.seq++,
 			me.root.inventoryLines[me.id] = me;
-			new ProductAutocomplete(_getFirstClass(me.el, "cbds-product-search"));
+			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me.root);
 			for (var i = 0; i < comboBoxes.length; i++) {
 				me.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
 			}
@@ -47,9 +47,9 @@
 		construct(this);
 
 		/* Instance listeners */
-		_on(copyTool, "click", this.copy, this);
-		_on(delTool, "click", this.delete, this);
-		_on(this.extraTool, "click", this.toggleExtra, this);
+		this.root.utils.on(copyTool, "click", this.copy, this);
+		this.root.utils.on(delTool, "click", this.delete, this);
+		this.root.utils.on(this.extraTool, "click", this.toggleExtra, this);
 
 	}
 
@@ -60,13 +60,13 @@
 						var original = this.el,
 							newNode = original.cloneNode(true);
 
-						_insertAfter(original, newNode);
+						this.root.utils.insertAfter(original, newNode);
 						new InventoryLine(newNode, this.root);
 					},
 
 		delete 		: function() {
 						this.el.parentNode.removeChild(this.el);
-						_off(this.extraTool, "click", this.toggleExtra);
+						this.root.utils.off(this.extraTool, "click", this.toggleExtra);
 						this.root.inventoryLines[this.id];
 
 						this.el = null;
@@ -95,22 +95,6 @@
 	function _getTool(root, sort) {
 		var tool = root.getElementsByClassName("cbds-detail-line-" + sort + "tool")[0];
 		return tool === undefined ? document.createElement("div") : tool;
-	}
-
-	function _getFirstClass(root, className) {
-		return root.getElementsByClassName(className)[0];
-	}
-
-	function _on(el,type,func,context) {
-		el.addEventListener(type, func.bind(context));
-	}
-
-	function _off(el,type,func) {
-		el.removeEventListener(type, func);
-	}
-
-	function _insertAfter(referenceNode, newNode) {
-		referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 	}
 
 	/*

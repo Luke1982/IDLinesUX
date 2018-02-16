@@ -27,7 +27,7 @@
 		this.inventoryLines.seq = 0;
 
 		// Constructor function
-		_on(window, "click", this.handleClicks, this);
+		this.utils.on(window, "click", this.handleClicks, this);
 		this.startSortable();
 		this.startLines();
 
@@ -110,6 +110,7 @@
 		utils : {
 			/*
 			 * Util: 'findUp'
+			 * Returns the first element up the DOM that matches the search
 			 *
 			 * @param: element: 	the node to start from
 			 * @param: searchterm: 	Can be a class (prefix with '.'), ID (prefix with '#')
@@ -126,21 +127,53 @@
 						break;
 					}
 				}
+			},
+			/*
+			 * Util: 'getFirstClass'
+			 * Returns the first element from the root that matches
+			 * the classname
+			 *
+			 * @param: root: 		the node to start from
+			 * @param: className: 	The classname to search for
+			 */
+			getFirstClass: function(root, className) {
+				return root.getElementsByClassName(className)[0] != undefined ? root.getElementsByClassName(className)[0] : {};
+			},
+			/*
+			 * Util: 'on'
+			 * Adds an event listener
+			 *
+			 * @param: el: 			The node to attach the listener to
+			 * @param: type: 		The type of event
+			 * @param: func: 		The function to perform
+			 * @param: context: 	The context to bind the listener to
+			 */
+			on: function(el,type,func,context) {
+				el.addEventListener(type, func.bind(context));
+			},
+			/*
+			 * Util: 'off'
+			 * Removes an event listener
+			 *
+			 * @param: el: 			The node to remove the listener from
+			 * @param: type: 		The type of event
+			 * @param: func: 		The function to remove
+			 */
+			off: function(el,type,func) {
+				el.removeEventListener(type, func);
+			},
+			/*
+			 * Util: 'insertAfter'
+			 * Inserts a new node after the given
+			 *
+			 * @param: referenceNode: 	The node to insert after
+			 * @param: newNode: 		The node to insert
+			 */
+			insertAfter: function(referenceNode, newNode) {
+				referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 			}
 		}
 	}
-
-	/**
-	  * Section with factory tools
-	  */
-	function _on(el,type,func,context) {
-		el.addEventListener(type, func.bind(context));
-	}
-
-	function _off(el,type,func) {
-		el.removeEventListener(type, func);
-	}
-
 
 	/*
 	 * Export
