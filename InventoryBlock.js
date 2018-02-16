@@ -1,0 +1,183 @@
+/****
+	* InventoryBlock
+	* @author: MajorLabel <info@majorlabel.nl>
+	* @license GNU
+	*/
+(function inventoryblockModule(factory){
+
+	if (typeof define === "function" && define.amd) {
+		define(factory);
+	} else if (typeof module != "undefined" && typeof module.exports != "undefined") {
+		module.exports = factory();
+	} else {
+		window["InventoryBlock"] = factory();
+	}
+
+})(function inventoryblockFactory(){
+
+	/**
+	 * @class InventoryBlock
+	 * @param {element} (class: "cbds-inventory-block")
+	 */
+	function InventoryBlock(el){
+		/* Public properties */
+		this.el = el,
+		this.linesContainer = el.getElementsByClassName("cbds-detail-lines")[0],
+		this.inventoryLines = {},
+		this.inventoryLines.seq = 0;
+
+		// Constructor function
+		this.utils.on(window, "click", this.handleClicks, this);
+		this.startSortable();
+		this.startLines();
+
+	}
+
+	InventoryBlock.prototype = {
+		constructor	: InventoryBlock,
+
+		handleClicks: function(e) {
+			var functionElement = this.utils.findUp(e.target, "data-clickfunction");
+			if (functionElement !== undefined) {
+				switch (functionElement.getAttribute("data-clickfunction")) {
+					case "expandAllLines":
+						this.expandAllLines();
+						break;
+					case "collAllLines":
+						this.collAllLines();
+						break;
+					case "insertNewLine":
+						this.insertNew(this);
+						break;
+					case "deleteAllLines":
+						this.deleteAllLines();
+						break;
+				}
+			}
+		},
+
+		startSortable: function() {
+			Sortable.create(this.linesContainer, {
+				draggable: ".cbds-detail-line",
+				handle: ".cbds-detail-line-dragtool",
+				animation: 100
+			});
+		},
+
+		startLines : function() {
+			var lines = this.linesContainer.getElementsByClassName("cbds-detail-line");
+			for (var i = 0; i < lines.length; i++) {
+				var line = new InventoryLine(lines[i], this);
+			}
+		},
+
+		expandAllLines : function() {
+			this.setAllExtraStates(1);
+		},
+
+		collAllLines : function() {
+			this.setAllExtraStates(0);
+		},
+
+		setAllExtraStates : function(state) {
+			for (prop in this.inventoryLines) {
+				if (typeof this.inventoryLines[prop].expandExtra == "function") {
+					if (state == 1) this.inventoryLines[prop].expandExtra();
+					if (state == 0) this.inventoryLines[prop].collExtra();
+				}
+			}
+		},
+
+		deleteAllLines : function() {
+			for (prop in this.inventoryLines) {
+				if (prop != "seq")
+					this.inventoryLines[prop].delete();
+			}
+		},
+
+		insertNew : function() {
+			var template = document.getElementsByClassName("cbds-detail-line--template")[0];
+			var container = document.getElementsByClassName("cbds-detail-lines")[0];
+			var newNode = template.cloneNode(true);
+			newNode.classList.remove("cbds-detail-line--template");
+			container.appendChild(newNode);
+			new InventoryLine(newNode, this);
+		},
+
+		/*
+		 * Class utilities
+		 */
+		utils : {
+			/*
+			 * Util: 'findUp'
+			 * Returns the first element up the DOM that matches the search
+			 *
+			 * @param: element: 	the node to start from
+			 * @param: searchterm: 	Can be a class (prefix with '.'), ID (prefix with '#')
+			 *						or an attribute (default when no prefix)
+			 */
+			findUp : function(element, searchterm) {
+				element = element.children[0] != undefined ? element.children[0] : element; // Include the current element
+				while (element = element.parentElement) {
+					if ( (searchterm.charAt(0) === "#" && element.id === searchterm.slice(1) )
+						|| ( searchterm.charAt(0) === "." && element.classList.contains(searchterm.slice(1) ) 
+						|| ( element.hasAttribute(searchterm) ))) {
+						return element;
+					} else if (element == document.body) {
+						break;
+					}
+				}
+			},
+			/*
+			 * Util: 'getFirstClass'
+			 * Returns the first element from the root that matches
+			 * the classname
+			 *
+			 * @param: root: 		the node to start from
+			 * @param: className: 	The classname to search for
+			 */
+			getFirstClass: function(root, className) {
+				return root.getElementsByClassName(className)[0] != undefined ? root.getElementsByClassName(className)[0] : {};
+			},
+			/*
+			 * Util: 'on'
+			 * Adds an event listener
+			 *
+			 * @param: el: 			The node to attach the listener to
+			 * @param: type: 		The type of event
+			 * @param: func: 		The function to perform
+			 * @param: context: 	The context to bind the listener to
+			 */
+			on: function(el,type,func,context) {
+				el.addEventListener(type, func.bind(context));
+			},
+			/*
+			 * Util: 'off'
+			 * Removes an event listener
+			 *
+			 * @param: el: 			The node to remove the listener from
+			 * @param: type: 		The type of event
+			 * @param: func: 		The function to remove
+			 */
+			off: function(el,type,func) {
+				el.removeEventListener(type, func);
+			},
+			/*
+			 * Util: 'insertAfter'
+			 * Inserts a new node after the given
+			 *
+			 * @param: referenceNode: 	The node to insert after
+			 * @param: newNode: 		The node to insert
+			 */
+			insertAfter: function(referenceNode, newNode) {
+				referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+			}
+		}
+	}
+
+	/*
+	 * Export
+	 */
+	return InventoryBlock;
+
+});

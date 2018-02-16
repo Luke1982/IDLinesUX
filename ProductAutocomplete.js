@@ -18,11 +18,13 @@
 	/**
 	 * @class InventoryLine
 	 * @param {element}
+	 * @param {element}:	Root 'InventoryBlock' Object
 	 * @param {function}: 	Callback for custom implementations. Will receive an object with
 	 *						the root autocomplete node and all the result data
 	 */
-	function ProductAutocomplete(el, callback){
+	function ProductAutocomplete(el, rootObj, callback){
 		this.el = el,
+		this.root = rootObj,
 		this.specialKeys = ["up","down","esc","enter"],
 		this.threshold = 3,
 		this.input = el.getElementsByTagName("input")[0],
@@ -30,13 +32,13 @@
 		this.active = false,
 		this.resultContainer,
 		this.resultBox,
-		this.lookupContainer = _getByCl(el,"slds-combobox-lookup"),
+		this.lookupContainer = this.root.utils.getFirstClass(el,"slds-combobox-lookup"),
 		this.currentResults = [],
 		this.callback = typeof callback === "function" ? callback : false;
 
 		/* Instance listeners */
-		_on(this.input, "keyup", this.trigger, this);
-		_on(this.input, "blur", this.delayedClear, this);
+		this.root.utils.on(this.input, "keyup", this.trigger, this);
+		this.root.utils.on(this.input, "blur", this.delayedClear, this);
 	}
 
 	ProductAutocomplete.prototype = {
@@ -82,7 +84,6 @@
 				this.resultContainer = this.buildResultContainer();
 				this.resultBox.appendChild(this.resultContainer);
 				this.active = true;
-				console.log(this.active);
 			}
 
 			// Build results
@@ -123,7 +124,7 @@
 			}
 
 			// Pre-select the first result
-			_getByCl(this.currentResults[0].node, "slds-listbox__option").classList.add("slds-has-focus");
+			this.root.utils.getFirstClass(this.currentResults[0].node, "slds-listbox__option").classList.add("slds-has-focus");
 			this.currentResults[0].selected = true;
 		},
 
@@ -143,8 +144,8 @@
 				"selected"	: false
 			});
 
-			_on(li, "click", this.click, this);
-			_on(li, "mouseover", this.onResultHover, this);
+			this.root.utils.on(li, "click", this.click, this);
+			this.root.utils.on(li, "mouseover", this.onResultHover, this);
 
 			return li;
 		},
@@ -190,7 +191,7 @@
 		},
 
 		onResultHover : function(e) {
-			var result = _findUp(e.target, "slds-listbox__item");
+			var result = this.root.utils.findUp(e.target, ".slds-listbox__item");
 			for (var i = 0; i < this.currentResults.length; i++) {
 				this.setResultState(i,"");
 			}
@@ -212,8 +213,8 @@
 
 		destroyResultListeners: function() {
 			for (var i = 0; i < this.currentResults.length; i++) {
-				_off(this.currentResults[i].node, "click", this.click, this);
-				_on(this.currentResults[i].node, "mouseover", this.onResultHover, this);
+				this.root.utils.off(this.currentResults[i].node, "click", this.click, this);
+				this.root.utils.on(this.currentResults[i].node, "mouseover", this.onResultHover, this);
 			}
 		},
 
@@ -256,10 +257,10 @@
 
 		setResultState: function(index, state) {
 			if (state == "selected") {
-				_getByCl(this.currentResults[index].node, "slds-listbox__option").classList.add("slds-has-focus");
+				this.root.utils.getFirstClass(this.currentResults[index].node, "slds-listbox__option").classList.add("slds-has-focus");
 				this.currentResults[index].selected = true;
 			} else {
-				_getByCl(this.currentResults[index].node, "slds-listbox__option").classList.remove("slds-has-focus");
+				this.root.utils.getFirstClass(this.currentResults[index].node, "slds-listbox__option").classList.remove("slds-has-focus");
 				this.currentResults[index].selected = false;
 			}
 		},
@@ -272,7 +273,7 @@
 		},
 
 		click: function(e) {
-			var el = _findUp(e.target, "slds-listbox__item"); // Click event could fire on child
+			var el = this.root.utils.findUp(e.target, ".slds-listbox__item"); // Click event could fire on child
 			if (el) {
 				result = this.getMatchingResultByNode(el);
 				this.select(result);
@@ -300,23 +301,23 @@
 				});
 			else
 				this.fillLine(result);
-				_getByCl(_findUp(this.el, "cbds-detail-line"), "cbds-product-qty").focus();
+				this.root.utils.getFirstClass(this.root.utils.findUp(this.el, ".cbds-detail-line"), "cbds-product-qty").focus();
 
 			this.clear(); // Clear autocomplete
 		},
 
 		fillLine: function(result) {
-			var lineNode = _findUp(result.node, "cbds-detail-line");
+			var lineNode = this.root.utils.findUp(result.node, ".cbds-detail-line");
 
-			_getByCl(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 
-			_getByCl(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
-			_getByCl(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
 
-			_getByCl(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
-			_getByCl(lineNode, "cbds-product-line-currordered").value = result.obj.logistics.curr_ordered;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-currordered").value = result.obj.logistics.curr_ordered;
 
-			_getByCl(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
 		}
 	}
@@ -324,14 +325,6 @@
 	/**
 	  * Section with factory tools
 	  */
-	function _on(el,type,func,context) {
-		el.addEventListener(type, func.bind(context));
-	}
-
-	function _off(el,type,func,context) {
-		el.removeEventListener(type, func.bind(context));
-	}
-
 	function _createEl(elType, className, inner) {
 		var el = document.createElement(elType);
 
@@ -346,25 +339,6 @@
 
 		if (inner != undefined) el.innerHTML = inner;
 		return el;
-	}
-
-	function _findUp(el, className) {
-		if (el.classList.contains(className)) {
-			return el;
-		} else {
-			while (el = el.parentElement) {
-				if (el.classList.contains(className)) {
-					return el;
-					break;
-				} else if (el === document.body) {
-					return false;
-				}
-			}
-		}
-	}
-
-	function _getByCl(root, className) {
-		return root.getElementsByClassName(className)[0] != undefined ? root.getElementsByClassName(className)[0] : {};
 	}
 
 	function _getKey(code) {
