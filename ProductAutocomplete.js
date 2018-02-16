@@ -29,6 +29,8 @@
 		this.source = "sample-products.json",
 		this.active = false,
 		this.resultContainer,
+		this.resultBox,
+		this.lookupContainer = _getByCl(el,"slds-combobox-lookup"),
 		this.currentResults = [],
 		this.callback = typeof callback === "function" ? callback : false;
 
@@ -74,23 +76,41 @@
 
 		processResult: function(res) {
 			// Build and attach container
-			if (!this.active)
+			if (!this.active) {
+				this.resultBox = this.buildResultBox();
+				this.attachResultBox(this.resultBox);
 				this.resultContainer = this.buildResultContainer();
-				this.attachResultContainer(this.resultContainer);
+				this.resultBox.appendChild(this.resultContainer);
 				this.active = true;
+				console.log(this.active);
+			}
 
 			// Build results
 			var results = this.buildResults(res);
 		},
 
+		buildResultBox: function() {
+			var div = _createEl("div", "");
+			div.setAttribute("role", "listbox");
+			return div;
+		},
+
 		buildResultContainer: function() {
-			var ul = document.createElement("ul");
-			ul.classList.add("cbds-product-search__results");
+			var ul 	= _createEl("ul", "slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid");
+			ul.setAttribute("role", "presentation");
 			return ul;
 		},
 
-		attachResultContainer: function(containerUl) {
-			this.el.appendChild(containerUl);
+		attachResultBox: function(containerDiv) {
+			this.lookupContainer.appendChild(containerDiv);
+			this.lookupContainer.classList.add("slds-is-open");
+			this.lookupContainer.setAttribute("aria-expanded", "true");
+		},
+
+		removeResultBox: function() {
+			this.lookupContainer.classList.remove("slds-is-open");
+			this.lookupContainer.removeAttribute("aria-expanded", "true");
+			this.lookupContainer.removeChild(this.resultBox);
 		},
 
 		buildResults: function(results) {
@@ -101,19 +121,22 @@
 			for (var i = 0; i < results.length; i++) {
 				this.attachResultToContainer(this.buildResult(results[i]));
 			}
+
 			// Pre-select the first result
-			this.currentResults[0].node.classList.add("cbds-product-result--selected");
+			_getByCl(this.currentResults[0].node, "slds-listbox__option").classList.add("slds-has-focus");
 			this.currentResults[0].selected = true;
 		},
 
 		buildResult: function(result) {
-			var li = _createEl("li", "cbds-product-result");
-			var title = _createEl("div", "cbds-product-result__title", result.meta.name);
-			
-			li.appendChild(title);
-			li.appendChild(this.buildResultLine("Manufacturer No.", result.meta.mfr_no));
-			li.appendChild(this.buildResultLine("Vendor No.", result.meta.ven_no));
+			var media = this.buildResultMedia(result.meta.name, [
+				{"label" : "Manufacturer No.", "value" : result.meta.mfr_no},
+				{"label" : "Vendor No.", "value" : result.meta.ven_no}
+			]);
 
+			var li = _createEl("li", "slds-listbox__item slds-border_bottom");
+			li.setAttribute("role", "presentation");
+			li.appendChild(media);
+			
 			this.currentResults.push({
 				"obj" 		: result,
 				"node"		: li,
@@ -126,13 +149,40 @@
 			return li;
 		},
 
-		buildResultLine: function(label, value) {
-			var label = _createEl("span", "cbds-product-result-line__label", label);
-			var value = _createEl("span", "cbds-product-result-line__value", value);
-			var line = _createEl("div", "cbds-product-result-line");
-			line.appendChild(label);
-			line.appendChild(value);
-			return line;
+		buildResultMedia: function(name, lines) {
+			var mediaBody = _createEl("div", "slds-media__body");
+			var listboxText = _createEl("span", "slds-listbox__option-text slds-listbox__option-text_entity", name);
+			var listboxMetas = this.buildListboxMetas(lines);
+
+			mediaBody.appendChild(listboxText);
+			for (var i = 0; i < listboxMetas.length; i++) {
+				mediaBody.appendChild(listboxMetas[i]);
+			}
+
+			var media = _createEl("div", "slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta");
+			media.setAttribute("role", "option");
+			media.appendChild(mediaBody);
+			return media;
+		},
+
+		buildListboxMetas: function(lines) {
+			var returnLines = [];
+			for (var i = 0; i < lines.length; i++) {
+				returnLines.push(this.buildListboxMeta(lines[i]));
+			}
+			return returnLines;
+		},
+
+		buildListboxMeta: function(line) {
+			var grid = _createEl("div", "slds-grid slds-has-flexi-truncate slds-p-top_xx-small");
+			var title = _createEl("div", "slds-col slds-size_1-of-2 slds-p-left_none slds-text-title slds-truncate", line.label);
+			var value = _createEl("div", "slds-col slds-size_1-of-2 slds-p-left_none", line.value);
+			grid.appendChild(title);
+			grid.appendChild(value);
+			
+			var meta = _createEl("span", "slds-listbox__option-meta slds-listbox__option-meta_entity");
+			meta.appendChild(grid);
+			return meta;
 		},
 
 		attachResultToContainer: function (resultLi) {
@@ -140,16 +190,16 @@
 		},
 
 		onResultHover : function(e) {
-			var result = _findUp(e.target, "cbds-product-result");
+			var result = _findUp(e.target, "slds-listbox__item");
 			for (var i = 0; i < this.currentResults.length; i++) {
 				this.setResultState(i,"");
 			}
-			this.setResultState(this.getResultIndexByNode(result),"selected");
+			this.setResultState(this.getResultIndexByNode(result),"slds-has-focus");
 		},
 
 		clear: function() {
 			if (this.active)
-				this.resultContainer.parentElement.removeChild(this.resultContainer);
+				this.removeResultBox();
 				this.destroyResultListeners();
 				this.currentResults = [];
 				this.active = false;
@@ -206,10 +256,10 @@
 
 		setResultState: function(index, state) {
 			if (state == "selected") {
-				this.currentResults[index].node.classList.add("cbds-product-result--selected");
+				_getByCl(this.currentResults[index].node, "slds-listbox__option").classList.add("slds-has-focus");
 				this.currentResults[index].selected = true;
 			} else {
-				this.currentResults[index].node.classList.remove("cbds-product-result--selected");
+				_getByCl(this.currentResults[index].node, "slds-listbox__option").classList.remove("slds-has-focus");
 				this.currentResults[index].selected = false;
 			}
 		},
@@ -222,7 +272,7 @@
 		},
 
 		click: function(e) {
-			var el = _findUp(e.target, "cbds-product-result"); // Click event could fire on child
+			var el = _findUp(e.target, "slds-listbox__item"); // Click event could fire on child
 			if (el) {
 				result = this.getMatchingResultByNode(el);
 				this.select(result);
@@ -284,7 +334,16 @@
 
 	function _createEl(elType, className, inner) {
 		var el = document.createElement(elType);
-		el.classList.add(className);
+
+		if (className.indexOf(" ") == -1 && className != undefined && className != "") {
+			el.classList.add(className);
+		} else {
+			var classes = className.split(" ");
+			for (var i = 0; i < classes.length; i++) {
+				if (classes[i] != "") el.classList.add(classes[i]);
+			}
+		}
+
 		if (inner != undefined) el.innerHTML = inner;
 		return el;
 	}
