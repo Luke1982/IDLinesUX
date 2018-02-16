@@ -26,6 +26,7 @@
 
 		/* Instance listeners */
 		_on(el, "click", this.handleClick, this);
+		_on(el, "click", this.trigger, this);
 		_on(this.input, "focus", this.trigger, this);
 		_on(this.input, "keyup", this.trigger, this);
 		_on(this.input, "blur", this.close, this);
@@ -53,13 +54,18 @@
 			window.setTimeout(function(){
 				_this.el.classList.remove("slds-is-open");
 				_this.active = false;
-			},200);
+			},150);
 		},
 
 		handleClick: function(e) {
 			var isOption = Utils.findUp(e.target, ".slds-listbox__item");
 			if (isOption != undefined) {
-				this.curSel = isOption.getElementsByClassName("slds-truncate")[0].innerText;
+				var index = this.getIndexByNode(isOption);
+				for (var i = 0; i < this.optionNodes.length; i++) {
+					this.setOptionState(i, "unselected");
+				}
+				this.setOptionState(index, "selected");
+				this.curSelIndex = index;
 				this.select();
 			}
 		},
@@ -121,6 +127,12 @@
 		select: function() {
 			this.input.value = this.curSel;
 			this.close();
+		},
+
+		getIndexByNode: function(node) {
+			for (var i = 0; i < this.optionNodes.length; i++) {
+				if (node.isSameNode(this.optionNodes[i])) return i;
+			}
 		}
 	}
 
