@@ -108,6 +108,13 @@
 		 * Class utilities
 		 */
 		utils : {
+			/*
+			 * Util: 'findUp'
+			 *
+			 * @param: element: 	the node to start from
+			 * @param: searchterm: 	Can be a class (prefix with '.'), ID (prefix with '#')
+			 *						or an attribute (default when no prefix)
+			 */
 			findUp : function(element, searchterm) {
 				element = element.children[0] != undefined ? element.children[0] : element; // Include the current element
 				while (element = element.parentElement) {
