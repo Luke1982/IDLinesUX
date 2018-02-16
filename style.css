@@ -78,6 +78,9 @@
 .slds-listbox__item:last-child {
 	border-bottom: none;
 }
+.cbds-product-search-title {
+	color: rgb(22, 50, 92);
+}
 
 /* Tools */
 .cbds-detail-line-dragtool {

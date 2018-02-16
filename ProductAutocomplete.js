@@ -151,7 +151,7 @@
 
 		buildResultMedia: function(name, lines) {
 			var mediaBody = _createEl("div", "slds-media__body");
-			var listboxText = _createEl("span", "slds-listbox__option-text slds-listbox__option-text_entity", name);
+			var listboxText = _createEl("span", "slds-listbox__option-text slds-listbox__option-text_entity slds-text-title_caps cbds-product-search-title", name);
 			var listboxMetas = this.buildListboxMetas(lines);
 
 			mediaBody.appendChild(listboxText);
