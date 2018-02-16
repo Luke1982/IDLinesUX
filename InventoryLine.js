@@ -15,9 +15,6 @@
 
 })(function inventorylineFactory(){
 
-	window.InventoryLines = {},
-	window.InventoryLines.seq = 0;
-
 	/**
 	 * @class InventoryLine
 	 * @param {element}
@@ -38,16 +35,16 @@
 			_this 		= this;
 
 		/* Instance Constructor */
-		var construct 	= function() {
-			_this.id = window.InventoryLines.seq + 1,
-			window.InventoryLines.seq++,
-			window.InventoryLines[_this.id] = _this;
-			new ProductAutocomplete(_getFirstClass(_this.el, "cbds-product-search"));
+		var construct 	= function(me) {
+			me.id = me.root.inventoryLines.seq + 1,
+			me.root.inventoryLines.seq++,
+			me.root.inventoryLines[me.id] = me;
+			new ProductAutocomplete(_getFirstClass(me.el, "cbds-product-search"));
 			for (var i = 0; i < comboBoxes.length; i++) {
-				_this.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
+				me.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
 			}
 		}
-		construct();
+		construct(this);
 
 		/* Instance listeners */
 		_on(copyTool, "click", this.copy, this);
@@ -64,13 +61,13 @@
 							newNode = original.cloneNode(true);
 
 						_insertAfter(original, newNode);
-						new InventoryLine(newNode);
+						new InventoryLine(newNode, this.root);
 					},
 
 		delete 		: function() {
 						this.el.parentNode.removeChild(this.el);
 						_off(this.extraTool, "click", this.toggleExtra);
-						delete window.InventoryLines[this.id];
+						this.root.inventoryLines[this.id];
 
 						this.el = null;
 					},

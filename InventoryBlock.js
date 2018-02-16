@@ -15,7 +15,6 @@
 
 })(function inventoryblockFactory(){
 
-
 	/**
 	 * @class InventoryBlock
 	 * @param {element} (class: "cbds-inventory-block")
@@ -23,7 +22,9 @@
 	function InventoryBlock(el){
 		/* Public properties */
 		this.el = el,
-		this.linesContainer = el.getElementsByClassName("cbds-detail-lines")[0];
+		this.linesContainer = el.getElementsByClassName("cbds-detail-lines")[0],
+		this.inventoryLines = {},
+		this.inventoryLines.seq = 0;
 
 		// Constructor function
 		_on(window, "click", this.handleClicks, this);
@@ -46,7 +47,7 @@
 						this.utils.collAllLines();
 						break;
 					case "insertNewLine":
-						this.utils.insertNew();
+						this.utils.insertNew(this);
 						break;
 					case "deleteAllLines":
 						this.utils.deleteAllLines();
@@ -111,13 +112,13 @@
 				}
 			},
 
-			insertNew : function() {
+			insertNew : function(root) {
 				var template = document.getElementsByClassName("cbds-detail-line--template")[0];
 				var container = document.getElementsByClassName("cbds-detail-lines")[0];
 				var newNode = template.cloneNode(true);
 				newNode.classList.remove("cbds-detail-line--template");
 				container.appendChild(newNode);
-				new InventoryLine(newNode);
+				new InventoryLine(newNode, root);
 			}
 		}
 	}
