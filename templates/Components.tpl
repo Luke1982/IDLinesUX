@@ -101,7 +101,7 @@
 						<!-- Line total form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.line_total}{/if}"/>
+								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.linetotal}{/if}"/>
 								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
 									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -156,9 +156,9 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					{call name=ProductPanelSection fieldname='unit_cost' label='Unit cost price' value=$data.pricing.unit_cost symbol='euro'}
-					{call name=ProductPanelSection fieldname='line_cost' label='Line cost price' value=$data.pricing.line_cost symbol='euro'}
-					{call name=ProductPanelSection fieldname='list_price' label='Line cost price' value=$data.pricing.list_price symbol='euro'}
+					{call name=ProductPanelSection fieldname='cost_price' label='Unit cost price' value=$data.pricing.cost_price symbol='euro'}
+					{call name=ProductPanelSection fieldname='cost_gross' label='Line cost price' value=$data.pricing.cost_gross symbol='euro'}
+					{call name=ProductPanelSection fieldname='unit_price' label='Line cost price' value=$data.pricing.unit_price symbol='euro'}
 				</div>
 			</div>
 		</div>
@@ -170,9 +170,9 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Logistics</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					{call name=ProductPanelSection fieldname='units_delrec' label='Units delivered / received' value=$data.logistics.units_delrec symbol='none'}
-					{call name=ProductPanelSection fieldname='qty_in_stock' label='Qty in stock' value=$data.logistics.qty_in_stock symbol='none'}
-					{call name=ProductPanelSection fieldname='curr_ordered' label='Currently ordered' value=$data.logistics.curr_ordered symbol='none'}
+					{call name=ProductPanelSection fieldname='units_delivered_received' label='Units delivered / received' value=$data.logistics.units_delivered_received symbol='none'}
+					{call name=ProductPanelSection fieldname='qtyinstock' label='Qty in stock' value=$data.logistics.qtyinstock symbol='none'}
+					{call name=ProductPanelSection fieldname='qtyindemand' label='Currently ordered' value=$data.logistics.qtyindemand symbol='none'}
 				</div>
 			</div>
 		</div>
@@ -185,7 +185,7 @@
 				</div>
 				<div class="slds-form slds-form_compound slds-grow">
 					{foreach from=$data.taxes item=tax key=key}
-						{call name=ProductTaxPanelSection fieldname=$key label=$key amount=$tax.amount percent=$tax.percent symbol='euro'}
+						{call name=ProductTaxPanelSection fieldname='tax'|cat:$key label=$tax.taxname amount=$tax.amount percent=$tax.percent symbol='euro'}
 					{/foreach}
 				</div>
 			</div>
@@ -201,7 +201,7 @@
 					<div class="slds-panel__section slds-border_bottom">
 						<div class="slds-form-element">
 							<div class="slds-form-element__control">
-								<textarea rows="10" class="slds-textarea cbds-product-line-comments" placeholder="Type a comment">{if $data.meta.comments != ''}{$data.meta.comments}{/if}</textarea>
+								<textarea rows="10" class="slds-textarea cbds-product-line-comments" placeholder="Type a comment">{if $data.meta.description != ''}{$data.meta.description}{/if}</textarea>
 							</div>
 						</div>
 					</div>
