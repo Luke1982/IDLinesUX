@@ -100,6 +100,7 @@
 .cbds-button--delete use,
 .cbds-button--delete svg {
 	color: #ffffff;
+	fill: #ffffff;
 }
 
 .cbds-panelheader {

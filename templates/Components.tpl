@@ -57,30 +57,10 @@
 		<!-- LDS Line tools column -->
 		<div class="slds-col slds-size_2-of-12 slds-align-middle">
 			<div class="slds-button-group">
-				<div class="slds-button slds-button_icon slds-button_icon-border-filled cbds-detail-line-dragtool" title="Drag this line" aria-pressed="false">
-					<svg class="slds-button__icon" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#move"></use>
-					</svg>
-					<span class="slds-assistive-text">Drag this line to another location</span>
-				</div>
-				<button class="slds-button slds-button_icon slds-button_icon-border-filled cbds-detail-line-copytool" title="Copy this line" aria-pressed="false">
-					<svg class="slds-button__icon" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#copy"></use>
-					</svg>
-					<span class="slds-assistive-text">Copy this line</span>
-				</button>
-				<button class="slds-button slds-button_icon slds-button_icon-border-filled cbds-button--delete cbds-detail-line-deletetool" title="Delete this line" aria-pressed="false">
-					<svg class="slds-button__icon" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#delete"></use>
-					</svg>
-					<span class="slds-assistive-text">Delete this line</span>
-				</button>
-				<button class="slds-button slds-button_icon slds-button_icon-border-filled cbds-detail-line-extratool" title="Expand or collapse this line" aria-pressed="false">
-					<svg class="slds-button__icon" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#switch"></use>
-					</svg>
-					<span class="slds-assistive-text">Expand or collapse this line</span>
-				</button>
+				{call name=LDSButton el='div' iconlib='utility' icon='move' iconsize='x-small' extraclass='cbds-detail-line-dragtool' title='Drag this line'}
+				{call name=LDSButton el='button' iconlib='utility' icon='copy' iconsize='x-small' extraclass='cbds-detail-line-copytool' title='Copy this line'}
+				{call name=LDSButton el='button' iconlib='utility' icon='delete' iconsize='x-small' extraclass='cbds-button--delete cbds-detail-line-deletetool' title='Delete this line'}
+				{call name=LDSButton el='button' iconlib='utility' icon='switch' iconsize='x-small' extraclass='cbds-detail-line-extratool' title='Expand or collapse this line'}
 			</div>
 		</div>
 		<!-- // LDS Line tools column -->
@@ -294,4 +274,26 @@
 		<use xlink:href="lib/LDS/icons/{$lib}-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
 	</svg>
 {if $container}</span>{/if}
+{/function}
+
+{*
+ * Function: LDSButton
+ * ----------------------------------------------------------------------
+ * Outputs a LDS button, optionally with an icon
+ *
+ * @param: The HTML tag to be used, defaults to 'button'
+ * @param: The icon library name, could be 'corebos' or any one
+ *			from https://www.lightningdesignsystem.com/icons
+ * @param: The icon name, or 'none' (prevents icon from being output)
+ * @param: The icon size
+ * @param: An optional extra class to be given to the element
+ * @param: The button title (used on hovers)
+*}
+{function name=LDSButton el='button' iconlib='utility' icon='' iconsize='x-small' extraclass='' title=''}
+<{$el} class="slds-button{if $icon != 'none'} slds-button_icon slds-button_icon-border-filled{/if}{if extraclass != ''} {$extraclass}{/if}" title="{$title}" aria-pressed="false">
+	{if $icon != ''}
+	{call name=LDSIcon lib=$iconlib icon=$icon size=$iconsize container=false}
+	{/if}
+	<span class="slds-assistive-text">Copy this line</span>
+</{$el}>
 {/function}
