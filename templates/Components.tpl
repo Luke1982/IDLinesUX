@@ -21,11 +21,7 @@
 								<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-lookup" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 									<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
 										<input class="slds-input slds-combobox__input" aria-autocomplete="list" aria-controls="listbox-unique-id" autocomplete="off" role="textbox" placeholder="Search Products and services" type="text" value="{if !$template}{$data.meta.name}{/if}" />
-										<span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
-											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-												<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#search" xmlns:xlink="http://www.w3.org/1999/xlink" />
-											</svg>
-										</span>
+										{call name=LDSIcon lib='utility' icon='search' align='right' size='x-small'}
 									</div>
 								</div>
 							</div>
@@ -164,11 +160,7 @@
 	<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
 		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{$value}" />
 		{if $symbol != 'none'}
-		<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-			<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-				<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$symbol}" xmlns:xlink="http://www.w3.org/1999/xlink" />
-			</svg>
-		</span>
+			{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
 		{/if}
 	</div>
 </div>
@@ -181,21 +173,13 @@
 		<div class="slds-form-element slds-size_5-of-12">
 			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
 				<input type="text" class="slds-input" value="{$percent}" />
-				<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-					<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
-					</svg>
-				</span>
+				{call name=LDSIcon lib='corebos' icon='percent' align='left' size='x-small'}
 			</div>
 		</div>
 		<div class="slds-form-element slds-size_7-of-12">
 			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
 				<input type="text" class="slds-input" value="{$amount}" />
-				<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-					<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-						<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$symbol}" xmlns:xlink="http://www.w3.org/1999/xlink" />
-					</svg>
-				</span>
+				{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
 			</div>
 		</div>
 	</div>
@@ -206,11 +190,7 @@
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
 		<input type="text" class="slds-input cbds-product-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
-		<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
-			<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-				<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
-			</svg>
-		</span>
+		{call name=LDSIcon lib='corebos' icon=$icon align='left' size='x-small'}
 	</div>
 </div>
 {/function}
@@ -222,11 +202,7 @@
 			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
 					<input class="slds-input slds-combobox__input cbds-productline-{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
-					<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
-						<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#down" xmlns:xlink="http://www.w3.org/1999/xlink" />
-						</svg>
-					</span>
+					{call name=LDSIcon lib='utility' icon='down' align='right' size='x-small'}
 				</div>
 				<div role="listbox">
 					<ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
@@ -245,4 +221,12 @@
 		</div>
 	</div>
 </div>
+{/function}
+
+{function name=LDSIcon lib='utility' icon='' align='left' size='x-small'}
+<span class="slds-icon_container slds-icon-{$lib}-{$icon} slds-input__icon slds-input__icon_{$align}">
+	<svg class="slds-icon slds-icon slds-icon_{$size} slds-icon-text-default" aria-hidden="true">
+		<use xlink:href="lib/LDS/icons/{$lib}-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
+	</svg>
+</span>
 {/function}
