@@ -8,6 +8,32 @@
 	{$data.meta.extgross = 0}
 	{$data.meta.extnet = 0}
 	{$data.meta.linetotal = 0}
+	{$data.meta.description = ''}
+
+	{$data.pricing = []}
+	{$data.pricing.cost_price = 0}
+	{$data.pricing.cost_gross = 0}
+	{$data.pricing.unit_price = 0}
+
+	{$data.logistics = []}
+	{$data.logistics.units_delivered_received = 0}
+	{$data.logistics.qtyinstock = 0}
+	{$data.logistics.qtyindemand = 0}
+
+	{$data.taxes = []}
+	
+	{$data.taxes.1 = []}
+	{$data.taxes.1.percent = 0}
+	{$data.taxes.1.amount = 0}
+	{$data.taxes.1.taxname = 'VAT'}
+	{$data.taxes.2 = []}
+	{$data.taxes.2.percent = 0}
+	{$data.taxes.2.amount = 0}
+	{$data.taxes.2.taxname = 'Sales tax'}
+	{$data.taxes.3 = []}
+	{$data.taxes.3.percent = 0}
+	{$data.taxes.3.amount = 0}
+	{$data.taxes.3.taxname = 'Service tax'}
 {/if}
 <!-- LDS Detail line for inventorydetails -->
 <div class="cbds-detail-line slds-p-vertical_small{if $template} cbds-detail-line--template{/if}">
