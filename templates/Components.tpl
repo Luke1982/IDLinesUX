@@ -279,18 +279,19 @@
 {*
  * Function: LDSIcon
  * ----------------------------------------------------------------------
- * Outputs a LDS icon, including the container
+ * Outputs a LDS icon, optionally with a container
  *
  * @param: The library for the icon, can be 'corebos' or one of the
  * 			ones mentioned on https://www.lightningdesignsystem.com/icons
  * @param: The icon name
  * @param: Where the icon should align: 'left' or 'right'
  * @param: The size: https://www.lightningdesignsystem.com/utilities/sizing
+ * @param: Boolean that indicates of a container should be used
 *}
-{function name=LDSIcon lib='utility' icon='' align='left' size='x-small'}
-<span class="slds-icon_container slds-icon-{$lib}-{$icon} slds-input__icon slds-input__icon_{$align}">
+{function name=LDSIcon lib='utility' icon='' align='left' size='x-small' container=true}
+{if $container}<span class="slds-icon_container slds-icon-{$lib}-{$icon} slds-input__icon slds-input__icon_{$align}">{/if}
 	<svg class="slds-icon slds-icon slds-icon_{$size} slds-icon-text-default" aria-hidden="true">
 		<use xlink:href="lib/LDS/icons/{$lib}-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
 	</svg>
-</span>
+{if $container}</span>{/if}
 {/function}
