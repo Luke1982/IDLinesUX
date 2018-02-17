@@ -154,6 +154,19 @@
 <!-- // LDS Detail line for inventorydetails -->
 {/function}
 
+
+{*
+ * Function: ProductPanelSection
+ * ----------------------------------------------------------------------
+ * Creates a panel section for the product panels in the extra
+ * line.
+ *
+ * @param: The fieldname, should be the internal coreBOS fieldname
+ * @param: The label, should be the field label
+ * @param: The value, should be the current value of the field, if any
+ * @param: The symbol. Should be the symbol. Current options are 'percent',
+ * 			'euro', of 'none' (prevents symbol output)
+*}
 {function name=ProductPanelSection fieldname='' label='' value='' symbol='euro'}
 <div class="slds-panel__section slds-border_bottom">
 	<label class="slds-form-element__label">{$label}</label>
@@ -166,6 +179,17 @@
 </div>
 {/function}
 
+{*
+ * Function: ProductTaxPanelSection
+ * ----------------------------------------------------------------------
+ * Special function that outputs a custom panel section for the taxes,
+ * these should have two fields, percentage and amount
+ *
+ * @param: The fieldname, should be the internal coreBOS fieldname
+ * @param: The label, should be the field label
+ * @param: The amount, should be the tax amount in the chosen currency
+ * @param: The symbol, should be the currency symbol for the current user.
+*}
 {function name=ProductTaxPanelSection fieldname='' label='' amount='' percent='' symbol='euro'}
 <div class="slds-panel__section slds-border_bottom">
 	<span class="slds-form-element__label">{$label}</span>
@@ -186,15 +210,44 @@
 </div>
 {/function}
 
+{*
+ * Function: ProductIconFormElement
+ * ----------------------------------------------------------------------
+ * Outputs a form element, optionally with an icon (right now fixed to
+ * the corebos library of icons)
+ *
+ * @param: The size of the form element, check LDS documentation
+ * 			on: https://www.lightningdesignsystem.com/utilities/sizing
+ * @param: The fieldname, should be the coreBOS fieldname
+ * @param: The value, the value of the input field, if any
+ * @param: The icon, should be the icon name from the corebos icon lib,
+ * 			or 'none' (prevents icon output)
+ * @param: Boolean that indicates if this is a build of the template
+*}
 {function name=ProductIconFormElement size='1-of-1' fieldname='' value='' icon='' istemplate=false}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
 		<input type="text" class="slds-input cbds-product-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		{if $icon != 'none'}
 		{call name=LDSIcon lib='corebos' icon=$icon align='left' size='x-small'}
+		{/if}
 	</div>
 </div>
 {/function}
 
+{*
+ * Function: ProductDropdownFormElement
+ * ----------------------------------------------------------------------
+ * Outputs a form element with a dropdown
+ *
+ * @param: The size of the form element, check LDS documentation
+ * 			on: https://www.lightningdesignsystem.com/utilities/sizing
+ * @param: The fieldname, should be the coreBOS fieldname
+ * @param: The value, the value of the input field, if any
+ * @param: The placeholder text
+ * @param: Flat array of options that the dropdown should include
+ * @param: Boolean that indicates if this is a build of the template
+*}
 {function name=ProductDropdownFormElement size='1-of-1' fieldname='' value='' placeholder='' options=[] istemplate=false}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control">
@@ -223,6 +276,17 @@
 </div>
 {/function}
 
+{*
+ * Function: LDSIcon
+ * ----------------------------------------------------------------------
+ * Outputs a LDS icon, including the container
+ *
+ * @param: The library for the icon, can be 'corebos' or one of the
+ * 			ones mentioned on https://www.lightningdesignsystem.com/icons
+ * @param: The icon name
+ * @param: Where the icon should align: 'left' or 'right'
+ * @param: The size: https://www.lightningdesignsystem.com/utilities/sizing
+*}
 {function name=LDSIcon lib='utility' icon='' align='left' size='x-small'}
 <span class="slds-icon_container slds-icon-{$lib}-{$icon} slds-input__icon slds-input__icon_{$align}">
 	<svg class="slds-icon slds-icon slds-icon_{$size} slds-icon-text-default" aria-hidden="true">
