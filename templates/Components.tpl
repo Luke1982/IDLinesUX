@@ -39,76 +39,19 @@
 						</div>
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
-						<div class="slds-form-element slds-size_1-of-8">
-							<div class="slds-form-element__control">
-								<div class="slds-combobox_container">
-									<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-										<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-											<input class="slds-input slds-combobox__input" aria-controls="" autocomplete="off" role="textbox" placeholder="Discount type" readonly="readonly" type="text" value="{if !$template}{if $data.meta.discount_type == 'p'}Percentage{else}Direct{/if}{/if}"/>
-											<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
-												<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-													<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#down" xmlns:xlink="http://www.w3.org/1999/xlink" />
-												</svg>
-											</span>
-										</div>
-										<div role="listbox">
-											<ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
-												<li role="presentation" class="slds-listbox__item">
-													<div class="slds-listbox__option slds-listbox__option_plain" role="option">
-														<span class="slds-media__body">
-															<span class="slds-truncate" title="Direct">Direct</span>
-														</span>
-													</div>
-												</li>
-												<li role="presentation" class="slds-listbox__item">
-													<div class="slds-listbox__option slds-listbox__option_plain" role="option">
-														<span class="slds-media__body">
-															<span class="slds-truncate" title="Percentage">Percentage</span>
-														</span>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
+						{$options = ['Direct', 'Percentage']}
+						{call name=ProductDropdownFormElement size='1-of-8' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
 						<!-- // Discount type form element -->
 						<!-- Discount number (percent/direct) form element -->
-						<div class="slds-form-element slds-size_1-of-8">
-							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.discount_amount}{/if}"/>
-								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
-									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink" />
-									</svg>
-								</span>
-							</div>
-						</div>
+						{call name=ProductIconFormElement size='1-of-8' fieldname='discount_amount' value=$data.meta.discount_amount icon='percent' istemplate=$template}
 						<!-- // Discount number (percent/direct) form element -->
 						<!-- Discount amount form element -->
-						<div class="slds-form-element slds-size_1-of-8">
-							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" value="{$data.meta.extgross - $data.meta.extnet}" />
-								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
-									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-									</svg>
-								</span>
-							</div>
-						</div>
+						{$discount_total = $data.meta.extgross - $data.meta.extnet}
+						{call name=ProductIconFormElement size='1-of-8' fieldname='discount_total' value=$discount_total icon='euro' istemplate=$template}
 						<!-- // Discount amount form element -->
 						<!-- Line total form element -->
-						<div class="slds-form-element slds-size_1-of-8">
-							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.linetotal}{/if}"/>
-								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
-									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
-									</svg>
-								</span>
-							</div>
-						</div>
+						{call name=ProductIconFormElement size='1-of-8' fieldname='linetotal' value=$data.meta.linetotal icon='euro' istemplate=$template}
 						<!-- // Line total form element -->
 					</div>
 				</div>
@@ -253,6 +196,51 @@
 						<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$symbol}" xmlns:xlink="http://www.w3.org/1999/xlink" />
 					</svg>
 				</span>
+			</div>
+		</div>
+	</div>
+</div>
+{/function}
+
+{function name=ProductIconFormElement size='1-of-1' fieldname='' value='' icon='' istemplate=false}
+<div class="slds-form-element slds-size_{$size}">
+	<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+		<input type="text" class="slds-input cbds-product-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
+			<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+				<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
+			</svg>
+		</span>
+	</div>
+</div>
+{/function}
+
+{function name=ProductDropdownFormElement size='1-of-1' fieldname='' value='' placeholder='' options=[] istemplate=false}
+<div class="slds-form-element slds-size_{$size}">
+	<div class="slds-form-element__control">
+		<div class="slds-combobox_container">
+			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+					<input class="slds-input slds-combobox__input cbds-productline-{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
+					<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+						<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#down" xmlns:xlink="http://www.w3.org/1999/xlink" />
+						</svg>
+					</span>
+				</div>
+				<div role="listbox">
+					<ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
+						{foreach from=$options item=option key=key name=name}
+						<li role="presentation" class="slds-listbox__item">
+							<div class="slds-listbox__option slds-listbox__option_plain" role="option">
+								<span class="slds-media__body">
+									<span class="slds-truncate" title="{$option}">{$option}</span>
+								</span>
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
