@@ -1,44 +1,64 @@
 [{
 	"meta" : {
-		"image" : "cola.jpg", 		// Where should we get this from? | string
-		"name"	: "Cola", 			// Origin: Products or services [product_name/service_name] | string
-		"quantity" : 1, 			// Origin: InventoryDetails [field] | float
-		"discount_type" : "p", 		// Origin: InventoryDetails [field] | string
-		"discount_amount" : 0.5, 	// Origin: InventoryDetails [field] | float
-		"line_total" : 18.5, 		// Origin: InventoryDetails [field] | float
-		"divisible" : true,			// Origin: Products of Services [divisible] | bool
-		"comments" : "A comment"	// Origin: InventoryDetails [cdescription] | string
+		"crmid" : 992883,				// The InventoryDetails CRM id
+		"image" : "cola.jpg", 			// Where should we get this from? | string
+		"name"	: "Cola", 				// Origin: Products or services [product_name/service_name] | string
+		"product_id" : 87,				// Origin: InventoryDetails [productid] | INT
+		"quantity" : 1, 				// Origin: InventoryDetails [field] | float
+		"discount_type" : "p", 			// Origin: InventoryDetails, decided based on content of fields discount_percent and discount_amount | string
+		"discount_amount" : 0.5, 		// Origin: InventoryDetails [discount_amount] | float
+		"discount_percent" : 0, 		// Origin: InventoryDetails [discount_percent] | float
+		"linetotal" : 18.5, 			// Origin: InventoryDetails [linetotal] | float
+		"divisible" : true,				// Origin: Products of Services [divisible] | bool
+		"description" : "A comment",	// Origin: InventoryDetails [description] | string
+		"extgross" : 1976,				// Origin: InventoryDetails [extgross] | float
+		"extnet" : 1936,				// Origin: InventoryDetails [extnet] | float
 	},
 	"pricing" : {
-		"unit_cost" : 90,		 	// Origin: InventoryDetails [field] | float
-		"line_cost" : 180,			// Origin: InventoryDetails [field] | float
-		"list_price" : 15			// Origin: Products or Services [list_price] | float
+		"cost_price" : 90,		 		// Origin: InventoryDetails [cost_price] | float
+		"cost_gross" : 180,				// Origin: InventoryDetails [cost_gross] | float
+		"unit_price" : 15				// Origin: Products or Services [unit_price] | float
 	},
 	"logistics" : {
-		"units_delrec" : 2,			// Origin: InventoryDetails [field] | float
-		"qty_in_stock" : 9,			// Origin: Products [field] | float
-		"curr_ordered" : 3			// Origin: Products [field] | float
+		"units_delivered_received" : 2,	// Origin: InventoryDetails [units_delivered_received] | float
+		"qtyinstock" : 9,				// Origin: Products [qtyinstock] | float
+		"qtyindemand" : 3				// Origin: Products [qtyindemand] | float
 	},
 	"taxes" : {
-		"tax1" : {
-			"percent" : 21,			// Origin: InventoryDetails [field] | float
-			"amount" : 200			// Origin: InventoryDetails [field] | float
+		"1" : {
+			"percent" : 21,				// Origin: InventoryDetails [field] | float
+			"amount" : 200,				// Origin: InventoryDetails [field] | float
+			"taxname" : "VAT"			// Origin: Core or Inventorydetails?
 		},
-		"tax2" : {
-			"percent" : 21,			// Origin: InventoryDetails [field] | float
-			"amount" : 200			// Origin: InventoryDetails [field] | float
+		"2" : {
+			"percent" : 21,				// Origin: InventoryDetails [field] | float
+			"amount" : 200,				// Origin: InventoryDetails [field] | float
+			"taxname" : "Sales tax"		// Origin: Core or Inventorydetails?
+
 		},
-		"tax3" : {
-			"percent" : 21,			// Origin: InventoryDetails [field] | float
-			"amount" : 200			// Origin: InventoryDetails [field] | float
+		"3" : {
+			"percent" : 21,				// Origin: InventoryDetails [field] | float
+			"amount" : 200,				// Origin: InventoryDetails [field] | float
+			"taxname" : "Service tax"	// Origin: Core or Inventorydetails?
 		}
 	},
 	"custom" : {
 		"color" : {
 			"type" : "dropdown",
 			"available" : ["red", "white", "blue"],
-			"selected" : "blue"
+			"selected" : "blue",
+			"label" : "Color"
 		},
-		"size" : "XXL"				// Origin: InventoryDetails [field]
+		"size" : {
+			"type" : "dropdown",
+			"available" : ["S", "M", "L"],
+			"selected" : "M",
+			"label" : "Size"
+		},
+		"tag" : {
+			"type" : "text",
+			"value" : "I am text",
+			"label" : "Tags"
+		}
 	}
 }]
