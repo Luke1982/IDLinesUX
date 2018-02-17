@@ -1,5 +1,14 @@
 {* Define the product line component *}
 {function name=InventoryLine template=false data=[]}
+{* Set some defaults when this is a template call *}
+{if $template}
+	{$data.meta = []}
+	{$data.meta.discount_type = 'p'}
+	{$data.meta.discount_amount = 0}
+	{$data.meta.extgross = 0}
+	{$data.meta.extnet = 0}
+	{$data.meta.linetotal = 0}
+{/if}
 <!-- LDS Detail line for inventorydetails -->
 <div class="cbds-detail-line slds-p-vertical_small{if $template} cbds-detail-line--template{/if}">
 	<!-- Main LDS inventory details line -->
