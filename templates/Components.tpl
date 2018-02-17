@@ -186,7 +186,7 @@
 				<div class="slds-form slds-form_compound slds-grow">
 					{foreach from=$data.taxes item=tax key=key}
 						{call name=ProductTaxPanelSection fieldname=$key label=$key amount=$tax.amount percent=$tax.percent symbol='euro'}
-					{/foreach}									
+					{/foreach}
 				</div>
 			</div>
 		</div>
@@ -201,7 +201,7 @@
 					<div class="slds-panel__section slds-border_bottom">
 						<div class="slds-form-element">
 							<div class="slds-form-element__control">
-								<textarea rows="10" class="slds-textarea cbds-product-line-comments" placeholder="Type a comment"></textarea>
+								<textarea rows="10" class="slds-textarea cbds-product-line-comments" placeholder="Type a comment">{if $data.meta.comments != ''}{$data.meta.comments}{/if}</textarea>
 							</div>
 						</div>
 					</div>
