@@ -89,7 +89,7 @@
 						<!-- Discount amount form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-								<input type="text" class="slds-input cbds-product-qty" />
+								<input type="text" class="slds-input cbds-product-qty" value="{$data.meta.extgross - $data.meta.extnet}" />
 								<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
 									<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 										<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
