@@ -63,11 +63,7 @@
 						</div>
 						<!-- // Product name form element -->
 						<!-- Product quantity form element -->
-						<div class="slds-form-element slds-size_1-of-8">
-							<div class="slds-form-element__control">
-								<input type="text" class="slds-input cbds-product-line-quantity" value="{if !$template}{$data.meta.quantity}{/if}" />
-							</div>
-						</div>
+						{call name=ProductIconFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity icon='none' istemplate=$template}
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
