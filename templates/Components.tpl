@@ -237,7 +237,7 @@
 *}
 {function name=ProductIconFormElement size='1-of-1' fieldname='' value='' icon='' istemplate=false}
 <div class="slds-form-element slds-size_{$size}">
-	<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
 		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib='corebos' icon=$icon align='left' size='x-small'}
