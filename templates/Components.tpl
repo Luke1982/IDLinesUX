@@ -242,7 +242,7 @@
 {function name=ProductIconFormElement size='1-of-1' fieldname='' value='' icon='' istemplate=false}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-		<input type="text" class="slds-input cbds-product-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib='corebos' icon=$icon align='left' size='x-small'}
 		{/if}
@@ -269,7 +269,7 @@
 		<div class="slds-combobox_container">
 			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-					<input class="slds-input slds-combobox__input cbds-productline-{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
+					<input class="slds-input slds-combobox__input cbds-product-line-{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
 					{call name=LDSIcon lib='utility' icon='down' align='right' size='x-small'}
 				</div>
 				<div role="listbox">
