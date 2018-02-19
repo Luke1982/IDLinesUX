@@ -65,7 +65,7 @@
 						<!-- Product quantity form element -->
 						<div class="slds-form-element slds-size_1-of-8">
 							<div class="slds-form-element__control">
-								<input type="text" class="slds-input cbds-product-qty" value="{if !$template}{$data.meta.quantity}{/if}" />
+								<input type="text" class="slds-input cbds-product-line-quantity" value="{if !$template}{$data.meta.quantity}{/if}" />
 							</div>
 						</div>
 						<!-- // Product quantity form element -->
