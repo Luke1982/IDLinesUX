@@ -71,7 +71,7 @@
 						{call name=ProductDropdownFormElement size='1-of-8' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
 						<!-- // Discount type form element -->
 						<!-- Discount number (percent/direct) form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon='percent' istemplate=$template}
+						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon='percent' istemplate=$template type='number' error='Please input a numeric value into this field'}
 						<!-- // Discount number (percent/direct) form element -->
 						<!-- Discount amount form element -->
 						{$discount_total = $data.meta.extgross - $data.meta.extnet}
@@ -106,7 +106,7 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					{call name=ProductPanelSection fieldname='cost_price' label='Unit cost price' value=$data.pricing.cost_price symbol='euro'}
+					{call name=ProductPanelSection fieldname='cost_price' label='Unit cost price' value=$data.pricing.cost_price symbol='euro' type='currency' error="Please enter a valid currency amount"}
 					{call name=ProductPanelSection fieldname='cost_gross' label='Line cost price' value=$data.pricing.cost_gross symbol='euro'}
 					{call name=ProductPanelSection fieldname='unit_price' label='Line cost price' value=$data.pricing.unit_price symbol='euro'}
 				</div>
@@ -178,14 +178,17 @@
  * @param: The symbol. Should be the symbol. Current options are 'percent',
  * 			'euro', of 'none' (prevents symbol output)
 *}
-{function name=ProductPanelSection fieldname='' label='' value='' symbol='euro'}
+{function name=ProductPanelSection fieldname='' label='' value='' symbol='euro' type='' error=''}
 <div class="slds-panel__section slds-border_bottom">
-	<label class="slds-form-element__label">{$label}</label>
-	<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{$value}" />
-		{if $symbol != 'none'}
-			{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
-		{/if}
+	<div class="slds-form-element">
+		<label class="slds-form-element__label">{$label}</label>
+		<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
+			<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{$value}" data-type="{$type}" data-error-mess="{$error}" />
+			{if $symbol != 'none'}
+				{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
+			{/if}
+		</div>
+		<div class="slds-form-element__help"></div>
 	</div>
 </div>
 {/function}
@@ -248,7 +251,7 @@
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}
 	</div>
-	<div class="slds-form-element__help"></div>
+	<div class="slds-form-element__help cbds-form-element__help--fixed"></div>
 </div>
 {/function}
 

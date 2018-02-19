@@ -58,7 +58,7 @@
 		this.root.utils.on(copyTool, "click", this.copy, this);
 		this.root.utils.on(delTool, "click", this.delete, this);
 		this.root.utils.on(this.extraTool, "click", this.toggleExtra, this);
-		this.root.utils.on(el, "input", this.handleInput, this);
+		this.root.utils.on(el, "keyup", this.handleInput, this);
 	}
 
 	InventoryLine.prototype = {
