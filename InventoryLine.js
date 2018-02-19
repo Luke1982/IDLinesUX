@@ -26,12 +26,14 @@
 		this.root		= rootObj,
 		this.extraLine	= this.root.utils.getFirstClass(el, "cbds-detail-line__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
-		this.comboBoxes	= [];
+		this.comboBoxes	= [],
+		this.inputs		= [];
 
 		/* Private properties */
 		var copyTool 	= _getTool(el, "copy"),
 			delTool 	= _getTool(el, "delete"),
 			comboBoxes	= el.getElementsByClassName("slds-combobox-picklist"),
+			inputs 		= el.getElementsByTagName("input"),
 			_this 		= this;
 
 		/* Instance Constructor */
@@ -39,9 +41,15 @@
 			me.id = me.root.inventoryLines.seq + 1,
 			me.root.inventoryLines.seq++,
 			me.root.inventoryLines[me.id] = me;
-			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me.root);
+
+			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), rootObj);
+
 			for (var i = 0; i < comboBoxes.length; i++) {
 				me.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
+			}
+
+			for (var i = 0; i < inputs.length; i++) {
+				me.inputs.push(new InventoryField(inputs[i], rootObj));
 			}
 		}
 		construct(this);
@@ -87,11 +95,20 @@
 						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
 					},
 		handleInput	: function(e) {
-						var validated = _validateInput(e.target);
+						var input = this.getInputObj(e.target),
+							validated = input.validate();
+
 						if (!validated) {
-							_setInputState(this.root.utils, e.target, "error");
+							input.setState("error");
 						} else {
-							_setInputState(this.root.utils, e.target, "normal");
+							input.setState("normal");
+						}
+		},
+		getInputObj : function(node) {
+						for (var i = 0; i < this.inputs.length; i++) {
+							if (this.inputs[i].el.isSameNode(node)) {
+								return this.inputs[i];
+							}
 						}
 		}
 	}
@@ -107,42 +124,6 @@
 
 	function _deductPerc(base, percentage) {
 		return (base * (1 - (percentage / 100)));
-	}
-
-	function _getType(el) {
-		return el.hasAttribute("data-type") ? el.getAttribute("data-type") : false;
-	}
-
-	function _validateInput(input) {
-		var type = _getType(input);
-		switch(type) {
-			case "number":
-			return _isNumber(input.value);
-			break;
-		}
-	}
-
-	function _isNumber(val) {
-		val = _sanitizeNumberString(val);
-		return isNaN(val) ? false : true;
-	}
-
-	function _sanitizeNumberString(number) {
-		if (window.userDecimalSeparator != ".") {
-			return number.replace(window.userDecimalSeparator, ".");
-		}
-	}
-
-	function _setInputState(utils, input, state) {
-		var formElement = utils.findUp(input, ".slds-form-element");
-		switch(state) {
-			case "error":
-				formElement.classList.add("slds-has-error");
-				break;
-			case "normal":
-				formElement.classList.remove("slds-has-error");
-				break;
-		}
 	}
 
 	// ONLY FOR DEVELOPMENT, REMOVE WHEN USED IN COREBOS

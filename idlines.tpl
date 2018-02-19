@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="script.js"></script>
 	<script type="text/javascript" src="Sortable.min.js"></script>
 	<script type="text/javascript" src="InventoryLine.js"></script>
+	<script type="text/javascript" src="InventoryField.js"></script>
 	<script type="text/javascript" src="InventoryBlock.js"></script>
 	<script type="text/javascript" src="ProductAutocomplete.js"></script>
 	<script type="text/javascript" src="ldsCombobox.js"></script>

@@ -40,6 +40,9 @@
 .cbds-detail-line .slds-has-inline-listbox .slds-combobox__input[value] {
 	box-shadow: none;
 }
+.cbds-detail-line .slds-form-element__help {
+	position: absolute;
+}
 
 /* Images */
 .cbds-image-container {

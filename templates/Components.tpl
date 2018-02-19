@@ -248,6 +248,7 @@
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}
 	</div>
+	<div class="slds-form-element__help"></div>
 </div>
 {/function}
 
