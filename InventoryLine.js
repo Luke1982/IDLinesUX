@@ -26,14 +26,7 @@
 		this.root		= rootObj,
 		this.extraLine	= this.root.utils.getFirstClass(el, "cbds-detail-line__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
-		this.comboBoxes	= [],
-		this.fields		= {
-			"cost_price"		: this.root.utils.getFirstClass(el, "cbds-product-line-cost_price"),
-			"discount_amount"	: this.root.utils.getFirstClass(el, "cbds-product-line-discount_amount"),
-			"discount_type"		: this.root.utils.getFirstClass(el, "cbds-product-line-discount_type"),
-			"quantity"			: this.root.utils.getFirstClass(el, "cbds-product-line-quantity"),
-			"discount_total"	: this.root.utils.getFirstClass(el, "cbds-product-line-discount_total")
-		};
+		this.comboBoxes	= [];
 
 		/* Private properties */
 		var copyTool 	= _getTool(el, "copy"),
@@ -92,39 +85,7 @@
 		collExtra 	: function() {
 						this.extraLine.classList.remove("cbds-detail-line__extra--expanded");
 						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
-					},
-		handleInput	: function(e) {
-						var inputFunctions = e.target.hasAttribute("data-inputfunc") ? e.target.getAttribute("data-inputfunc") : "";
-						inputFunctions = inputFunctions.indexOf(",") == -1 ? inputFunctions : inputFunctions.split(",");
-						if (typeof inputFunctions == "object")
-							for (var i = 0; i < inputFunctions.length; i++) {
-								this.selectInputHandler(inputFunctions[i]);
-							}
-						else
-							this.selectInputHandler(inputFunctions);
-		},
-		selectInputHandler : function(funcName) {
-						switch(funcName) {
-							case "updateDiscountAmount":
-								this.updateDiscount();
-								break;
-						}
-		},
-		updateDiscount : function() {
-						var unitCost 	= Number(this.fields.cost_price.value),
-							discAmount 	= Number(this.fields.discount_amount.value),
-							discType 	= this.fields.discount_type.value,
-							qty			= Number(this.fields.quantity.value),
-							discTotal	= 0;
-
-						if (discType == "( -/- )") {
-							discTotal = (qty * unitCost) - discAmount;
-						} else {
-							discTotal = _deductPerc((qty * unitCost), discAmount);
-						}
-
-						this.fields.discount_total.value = discTotal;
-		}
+					}
 	}
 
 	/**
