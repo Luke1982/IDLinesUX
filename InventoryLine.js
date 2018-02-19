@@ -85,7 +85,15 @@
 		collExtra 	: function() {
 						this.extraLine.classList.remove("cbds-detail-line__extra--expanded");
 						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
-					}
+					},
+		handleInput	: function(e) {
+						var validated = _validateInput(e.target);
+						if (!validated) {
+							_setInputState(this.root.utils, e.target, "error");
+						} else {
+							_setInputState(this.root.utils, e.target, "normal");
+						}
+		}
 	}
 
 	/**
@@ -100,6 +108,46 @@
 	function _deductPerc(base, percentage) {
 		return (base * (1 - (percentage / 100)));
 	}
+
+	function _getType(el) {
+		return el.hasAttribute("data-type") ? el.getAttribute("data-type") : false;
+	}
+
+	function _validateInput(input) {
+		var type = _getType(input);
+		switch(type) {
+			case "number":
+			return _isNumber(input.value);
+			break;
+		}
+	}
+
+	function _isNumber(val) {
+		val = _sanitizeNumberString(val);
+		return isNaN(val) ? false : true;
+	}
+
+	function _sanitizeNumberString(number) {
+		if (window.userDecimalSeparator != ".") {
+			return number.replace(window.userDecimalSeparator, ".");
+		}
+	}
+
+	function _setInputState(utils, input, state) {
+		var formElement = utils.findUp(input, ".slds-form-element");
+		switch(state) {
+			case "error":
+				formElement.classList.add("slds-has-error");
+				break;
+			case "normal":
+				formElement.classList.remove("slds-has-error");
+				break;
+		}
+	}
+
+	// ONLY FOR DEVELOPMENT, REMOVE WHEN USED IN COREBOS
+	window.userDecimalSeparator = ",";
+	window.userCurrencySeparator = ".";
 
 	/*
 	 * Export

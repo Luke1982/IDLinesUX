@@ -63,7 +63,7 @@
 						</div>
 						<!-- // Product name form element -->
 						<!-- Product quantity form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template}
+						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a numeric value into this field'}
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
@@ -236,11 +236,14 @@
  * @param: The icon, should be the icon name from the corebos icon lib,
  * 			or 'none' (prevents icon output)
  * @param: Boolean that indicates if this is a build of the template
+ * @param: 'text', 'number' or 'currency'. Sets the data-type attribute
+ * @param: The error message that will be displayed when this input
+ *         fails the validation that belongs to the type.
 *}
-{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false}
+{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error=''}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" data-type="{$type}" data-error-mess="{$error}" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}
