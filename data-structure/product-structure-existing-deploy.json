@@ -1,0 +1,126 @@
+[{
+	"meta" : {
+		"crmid" : 992883,
+		"image" : "images/cola.jpg",
+		"name"	: "Cola",
+		"product_id" : 87,
+		"quantity" : 1,
+		"discount_type" : "p",
+		"discount_amount" : 0.5,
+		"discount_percent" : 0,
+		"linetotal" : 18.5,
+		"divisible" : true,
+		"description" : "A comment",
+		"extgross" : 1976,
+		"extnet" : 1936
+	},
+	"pricing" : {
+		"cost_price" : 90,
+		"cost_gross" : 180,
+		"unit_price" : 15
+	},
+	"logistics" : {
+		"units_delivered_received" : 2,
+		"qtyinstock" : 9,
+		"qtyindemand" : 3
+	},
+	"taxes" : {
+		"1" : {
+			"percent" : 21,
+			"amount" : 200,
+			"taxname" : "VAT"
+		},
+		"2" : {
+			"percent" : 21,
+			"amount" : 200,
+			"taxname" : "Sales tax"
+		},
+		"3" : {
+			"percent" : 21,
+			"amount" : 200,
+			"taxname" : "Service tax"
+		}
+	},
+	"custom" : {
+		"color" : {
+			"type" : "dropdown",
+			"available" : ["red", "white", "blue"],
+			"selected" : "blue",
+			"label" : "Color"
+		},
+		"size" : {
+			"type" : "dropdown",
+			"available" : ["S", "M", "L"],
+			"selected" : "M",
+			"label" : "Size"
+		},
+		"tag" : {
+			"type" : "text",
+			"value" : "I am text",
+			"label" : "Tags"
+		}
+	}
+},
+{
+	"meta" : {
+		"crmid" : 98,
+		"image" : "images/fanta.jpg",
+		"name"	: "Fanta",
+		"product_id" : 456,
+		"quantity" : 6,
+		"discount_type" : "d",
+		"discount_amount" : 0,
+		"discount_percent" : 200,
+		"linetotal" : 3009,
+		"divisible" : false,
+		"description" : "A comment for Fanta",
+		"extgross" : 2334,
+		"extnet" : 333
+	},
+	"pricing" : {
+		"cost_price" : 45,
+		"cost_gross" : 23,
+		"unit_price" : 2346
+	},
+	"logistics" : {
+		"units_delivered_received" : -7,
+		"qtyinstock" : 3,
+		"qtyindemand" : 89
+	},
+	"taxes" : {
+		"1" : {
+			"percent" : 12,
+			"amount" : 1122,
+			"taxname" : "VAT"
+		},
+		"2" : {
+			"percent" : 2,
+			"amount" : 557,
+			"taxname" : "Sales tax"
+		},
+		"3" : {
+			"percent" : 1,
+			"amount" : 2,
+			"taxname" : "Service tax"
+		}
+	},
+	"custom" : {
+		"color" : {
+			"type" : "dropdown",
+			"available" : ["red", "white", "blue"],
+			"selected" : "red",
+			"label" : "Color"
+		},
+		"size" : {
+			"type" : "dropdown",
+			"available" : ["S", "M", "L"],
+			"selected" : "L",
+			"label" : "Size"
+		},
+		"tag" : {
+			"type" : "text",
+			"value" : "I am fanta text",
+			"label" : "Tags"
+		}
+	}
+}]
