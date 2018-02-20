@@ -311,11 +311,11 @@
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-unitcost").value = result.obj.pricing.unit_cost;
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-listprice").value = result.obj.pricing.list_price;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_price").value = result.obj.pricing.unit_cost;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_gross").value = result.obj.pricing.list_price;
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-currordered").value = result.obj.logistics.curr_ordered;
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-qtyindemand").value = result.obj.logistics.curr_ordered;
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
