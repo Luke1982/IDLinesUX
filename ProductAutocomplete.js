@@ -301,7 +301,7 @@
 				});
 			else
 				this.fillLine(result);
-				this.root.utils.getFirstClass(this.root.utils.findUp(this.el, ".cbds-detail-line"), "cbds-product-qty").focus();
+				this.root.utils.getFirstClass(this.root.utils.findUp(this.el, ".cbds-detail-line"), "cbds-product-line-quantity").focus();
 
 			this.clear(); // Clear autocomplete
 		},
