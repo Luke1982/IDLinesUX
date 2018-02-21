@@ -214,7 +214,7 @@
 	<div class="slds-form-element__row cbds-m-bottom_none">
 		<div class="slds-form-element slds-size_5-of-12">
 			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-				<input type="text" class="slds-input" value="{$percent}" />
+				<input type="text" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$percent}" />
 				{call name=LDSIcon lib='corebos' icon='percent' align='left' size='x-small'}
 			</div>
 		</div>
