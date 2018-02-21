@@ -65,7 +65,8 @@
 						this.insertNew(this);
 						break;
 					case "deleteAllLines":
-						this.deleteAllLines();
+						if (confirm("Are you sure you want to delete ALL lines?"))
+							this.deleteAllLines();
 						break;
 				}
 			}
