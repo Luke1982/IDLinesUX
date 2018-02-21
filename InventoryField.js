@@ -65,6 +65,7 @@
 					return _isCurrency(this.val);
 					break;
 			}
+			return true;
 		},
 
 		format : function(e) {
