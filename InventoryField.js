@@ -55,6 +55,7 @@
 		},
 
 		validate : function() {
+			if (this.isReadOnly()) return true;
 			var type = this.getType();
 			switch(type) {
 				case "number":
