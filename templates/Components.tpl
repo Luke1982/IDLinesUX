@@ -8,6 +8,7 @@
 	{$data.meta.extgross = 0}
 	{$data.meta.extnet = 0}
 	{$data.meta.linetotal = 0}
+	{$data.meta.quantity = 0}
 	{$data.meta.description = ''}
 
 	{$data.pricing = []}
