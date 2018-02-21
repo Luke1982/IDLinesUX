@@ -91,7 +91,7 @@
 				</div>
 			</div>
 			<!-- // LDS Detail line header -->
-			<div class="cbds-detail-lines">
+			<div class="cbds-detail-lines cbds-inventorylines">
 				{foreach from=$testarray item=productline}
 					{call name=InventoryLine data=$productline}
 				{/foreach}

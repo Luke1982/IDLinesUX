@@ -301,28 +301,29 @@
 				});
 			else
 				this.fillLine(result);
-				this.root.utils.getFirstClass(this.root.utils.findUp(this.el, ".cbds-detail-line"), "cbds-product-line-quantity").focus();
+				this.root.utils.getFirstClass(this.root.utils.findUp(this.el, "." + this.root.lineClass), this.root.inputPrefix + "--quantity").focus();
 
 			this.clear(); // Clear autocomplete
 		},
 
 		fillLine: function(result) {
-			var lineNode = this.root.utils.findUp(result.node, ".cbds-detail-line");
+			var lineNode = this.root.utils.findUp(result.node, "." + this.root.lineClass);
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_price").value = result.obj.pricing.unit_cost;
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_gross").value = result.obj.pricing.list_price;
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--cost_price").value = result.obj.pricing.unit_cost;
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--unit_price").value = result.obj.pricing.list_price;
 
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-qtyinstock").value = result.obj.logistics.qty_in_stock;
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-qtyindemand").value = result.obj.logistics.curr_ordered;
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--qtyinstock").value = result.obj.logistics.qty_in_stock;
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--qtyindemand").value = result.obj.logistics.curr_ordered;
 
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
+			this.root.utils.getFirstClass(lineNode, this.root.linePrefix + "--comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
 
 			// Dispatch some custom events on the currency fields
 			var evt = new CustomEvent("acFill");
-			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_price").dispatchEvent(evt);
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--cost_price").dispatchEvent(evt);
+			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--unit_price").dispatchEvent(evt);
 		}
 	}
 

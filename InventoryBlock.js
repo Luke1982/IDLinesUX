@@ -19,12 +19,27 @@
 	 * @class InventoryBlock
 	 * @param {element} (class: "cbds-inventory-block")
 	 */
-	function InventoryBlock(el){
+	function InventoryBlock(el, params){
+
+		var defaults = {
+			"linesContClass" : "cbds-inventorylines",
+			"lineClass" : "cbds-inventoryline",
+			"linePrefix" : "cbds-inventoryline",
+			"inputPrefix" : "cbds-inventoryline__input"
+		};
+
+		params = params == undefined ? defaults : params;
+
 		/* Public properties */
+		this.linesContClass = params.linesContClass,
+		this.lineClass = params.lineClass,
+		this.linePrefix = params.linePrefix,
+		this.inputPrefix = params.inputPrefix,
 		this.el = el,
-		this.linesContainer = el.getElementsByClassName("cbds-detail-lines")[0],
+		this.linesContainer = el.getElementsByClassName(this.linesContClass)[0],
 		this.inventoryLines = {},
 		this.inventoryLines.seq = 0;
+
 
 		// Constructor function
 		this.utils.on(window, "click", this.handleClicks, this);
@@ -58,14 +73,14 @@
 
 		startSortable: function() {
 			Sortable.create(this.linesContainer, {
-				draggable: ".cbds-detail-line",
+				draggable: "." + this.lineClass,
 				handle: ".cbds-detail-line-dragtool",
 				animation: 100
 			});
 		},
 
 		startLines : function() {
-			var lines = this.linesContainer.getElementsByClassName("cbds-detail-line");
+			var lines = this.linesContainer.getElementsByClassName(this.lineClass);
 			for (var i = 0; i < lines.length; i++) {
 				var line = new InventoryLine(lines[i], this);
 			}
@@ -96,10 +111,10 @@
 		},
 
 		insertNew : function() {
-			var template = document.getElementsByClassName("cbds-detail-line--template")[0];
-			var container = document.getElementsByClassName("cbds-detail-lines")[0];
+			var template = document.getElementsByClassName(this.lineClass + "--template")[0];
+			var container = document.getElementsByClassName(this.linesContClass)[0];
 			var newNode = template.cloneNode(true);
-			newNode.classList.remove("cbds-detail-line--template");
+			newNode.classList.remove(this.lineClass + "--template");
 			container.appendChild(newNode);
 			new InventoryLine(newNode, this);
 		},

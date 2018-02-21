@@ -1,3 +1,6 @@
+{$productline_classprefix = 'cbds-inventoryline' scope=global}
+{$productline_inputprefix = 'cbds-inventoryline__input' scope=global}
+
 {* Define the product line component *}
 {function name=InventoryLine template=false data=[]}
 {* Set some defaults when this is a template call *}
@@ -37,7 +40,7 @@
 	{$data.taxes.3.taxname = 'Service tax'}
 {/if}
 <!-- LDS Detail line for inventorydetails -->
-<div class="cbds-detail-line slds-p-vertical_small{if $template} cbds-detail-line--template{/if}">
+<div class="{$productline_classprefix} slds-p-vertical_small{if $template} {$productline_classprefix}--template{/if}">
 	<!-- Main LDS inventory details line -->
 	<div class="slds-grid slds-gutters cbds-detail-line__main">
 		<div class="slds-col slds-size_1-of-12">
@@ -99,7 +102,7 @@
 	</div>
 	<!-- // Main LDS inventory details line -->
 	<!-- Extra LDS inventory line -->
-	<div class="slds-grid slds-gutters slds-p-vertical_medium cbds-detail-line__extra">
+	<div class="slds-grid slds-gutters slds-p-vertical_medium {$productline_classprefix}__extra">
 		<!-- LDS extra inventoryline column -->
 		<div class="slds-col slds-size_1-of-4">
 			<div class="slds-panel">
@@ -152,7 +155,7 @@
 					<div class="slds-panel__section slds-border_bottom">
 						<div class="slds-form-element">
 							<div class="slds-form-element__control">
-								<textarea rows="10" class="slds-textarea cbds-product-line-comments" placeholder="Type a comment">{if $data.meta.description != ''}{$data.meta.description}{/if}</textarea>
+								<textarea rows="10" class="slds-textarea {$productline_classprefix}--comments" placeholder="Type a comment">{if $data.meta.description != ''}{$data.meta.description}{/if}</textarea>
 							</div>
 						</div>
 					</div>
@@ -184,7 +187,7 @@
 	<div class="slds-form-element">
 		<label class="slds-form-element__label">{$label}</label>
 		<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
-			<input type="text" class="slds-input cbds-product-line-{$fieldname}" value="{$value}" data-type="{$type}" data-error-mess="{$error}" />
+			<input type="text" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$value}" data-type="{$type}" data-error-mess="{$error}" />
 			{if $symbol != 'none'}
 				{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
 			{/if}
@@ -249,7 +252,7 @@
 {function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" data-type="{$type}"{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" data-type="{$type}"{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}

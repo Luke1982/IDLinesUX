@@ -24,7 +24,7 @@
 		/* Public properties */
 		this.el 		= el,
 		this.root		= rootObj,
-		this.extraLine	= this.root.utils.getFirstClass(el, "cbds-detail-line__extra"),
+		this.extraLine	= this.root.utils.getFirstClass(el, this.root.lineClass + "__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [],
 		this.inputs		= [];
@@ -85,17 +85,17 @@
 					},
 
 		toggleExtra : function() {
-						this.extraLine.classList.toggle("cbds-detail-line__extra--expanded");
+						this.extraLine.classList.toggle(this.root.lineClass + "__extra--expanded");
 						this.extraTool.children[0].classList.toggle("cbds-exp-coll-icon--expanded");
 					},
 
 		expandExtra : function() {
-						this.extraLine.classList.add("cbds-detail-line__extra--expanded");
+						this.extraLine.classList.add(this.root.lineClass + "__extra--expanded");
 						this.extraTool.children[0].classList.add("cbds-exp-coll-icon--expanded");
 					},
 
 		collExtra 	: function() {
-						this.extraLine.classList.remove("cbds-detail-line__extra--expanded");
+						this.extraLine.classList.remove(this.root.lineClass + "__extra--expanded");
 						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
 					},
 		handleInput	: function(e) {
