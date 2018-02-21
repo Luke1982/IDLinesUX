@@ -34,7 +34,7 @@
 		this.errorSet 	= false,
 		this.errorMess  = this.el.hasAttribute("data-error-mess") ? this.el.getAttribute("data-error-mess") : "",
 		this.type 		= this.getType(),
-		this.val 		= "",
+		this.val 		= _sanitizeNumberString(this.el.value),
 		this.specialKeys= [",", ".", "backspace"],
 		this.decimals 	= params.decimals || defaults.decimals,
 		this.decSep 	= params.decSep || defaults.decSep,
