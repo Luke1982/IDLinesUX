@@ -76,7 +76,7 @@
 						<!-- // Discount number (percent/direct) form element -->
 						<!-- Discount amount form element -->
 						{$discount_total = $data.meta.extgross - $data.meta.extnet}
-						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template}
+						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template readonly=true}
 						<!-- // Discount amount form element -->
 						<!-- Line total form element -->
 						{call name=ProductInputFormElement size='1-of-8' fieldname='linetotal' value=$data.meta.linetotal iconlib='corebos' icon='euro' istemplate=$template}
