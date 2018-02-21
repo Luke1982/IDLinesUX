@@ -109,7 +109,7 @@
 				<div class="slds-form slds-form_stacked slds-grow">
 					{call name=ProductPanelSection fieldname='cost_price' label='Unit cost price' value=$data.pricing.cost_price symbol='euro' type='currency' error="Please enter a valid currency amount"}
 					{call name=ProductPanelSection fieldname='cost_gross' label='Line cost price' value=$data.pricing.cost_gross symbol='euro'}
-					{call name=ProductPanelSection fieldname='unit_price' label='Unit price' value=$data.pricing.unit_price symbol='euro'}
+					{call name=ProductPanelSection fieldname='unit_price' label='Unit price' value=$data.pricing.unit_price symbol='euro' type='currency' error="Please enter a valid currency amount"}
 				</div>
 			</div>
 		</div>
