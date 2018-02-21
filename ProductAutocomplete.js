@@ -22,9 +22,10 @@
 	 * @param {function}: 	Callback for custom implementations. Will receive an object with
 	 *						the root autocomplete node and all the result data
 	 */
-	function ProductAutocomplete(el, rootObj, callback){
+	function ProductAutocomplete(el, parent, rootObj, callback){
 		this.el = el,
 		this.root = rootObj,
+		this.parent = parent,
 		this.specialKeys = ["up","down","esc","enter"],
 		this.threshold = 3,
 		this.input = el.getElementsByTagName("input")[0],
@@ -319,6 +320,8 @@
 
 			this.root.utils.getFirstClass(lineNode, this.root.linePrefix + "--comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
+
+			this.parent.expandExtra();
 
 			// Dispatch some custom events on the currency fields
 			var evt = new CustomEvent("acFill");

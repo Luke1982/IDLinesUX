@@ -42,7 +42,7 @@
 			me.root.inventoryLines.seq++,
 			me.root.inventoryLines[me.id] = me;
 
-			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), rootObj);
+			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me, rootObj);
 
 			for (var i = 0; i < comboBoxes.length; i++) {
 				me.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
