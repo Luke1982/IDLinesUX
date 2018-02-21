@@ -217,7 +217,7 @@
 		</div>
 		<div class="slds-form-element slds-size_7-of-12">
 			<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-				<input type="text" class="slds-input" value="{$amount}" />
+				<input type="text" class="slds-input" readonly="readonly" value="{$amount}" />
 				{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
 			</div>
 		</div>
