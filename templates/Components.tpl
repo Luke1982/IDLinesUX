@@ -243,11 +243,13 @@
  * @param: 'text', 'number' or 'currency'. Sets the data-type attribute
  * @param: The error message that will be displayed when this input
  *         fails the validation that belongs to the type.
+ * @param: Readonly, boolean that indicates if the input should be
+ *         readonly
 *}
-{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error=''}
+{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" data-type="{$type}" data-error-mess="{$error}" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" data-type="{$type}"{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input cbds-product-line-{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}
