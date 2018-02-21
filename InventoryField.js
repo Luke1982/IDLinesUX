@@ -50,6 +50,10 @@
 			return this.el.hasAttribute("data-type") ? this.el.getAttribute("data-type") : false;
 		},
 
+		isReadOnly : function() {
+			return this.el.hasAttribute("readonly");
+		},
+
 		validate : function() {
 			var type = this.getType();
 			switch(type) {
@@ -68,7 +72,7 @@
 				case "currency":
 					if (e.type == "acFill") {
 						this.handleCurAcFill();
-					} else if (e.type == "keyup") {
+					} else if (e.type == "keyup" && !this.isReadOnly()) {
 						this.handleCurKeyUp(e);
 					}
 			}
