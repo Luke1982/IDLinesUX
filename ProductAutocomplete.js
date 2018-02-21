@@ -319,6 +319,10 @@
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
+
+			// Dispatch some custom events on the currency fields
+			var evt = new CustomEvent("acFill");
+			this.root.utils.getFirstClass(lineNode, "cbds-product-line-cost_price").dispatchEvent(evt);
 		}
 	}
 

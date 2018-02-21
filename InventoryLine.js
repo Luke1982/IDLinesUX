@@ -49,7 +49,11 @@
 			}
 
 			for (var i = 0; i < inputs.length; i++) {
-				me.inputs.push(new InventoryField(inputs[i], rootObj));
+				me.inputs.push(new InventoryField(inputs[i], rootObj, {
+					"decimals" : 2,
+					"decSep" : window.userDecimalSeparator,
+					"curSep" : window.userCurrencySeparator
+				}));
 			}
 		}
 		construct(this);
@@ -102,6 +106,7 @@
 							input.setState("error");
 						} else {
 							input.setState("normal");
+							input.format(e);
 						}
 		},
 		getInputObj : function(node) {
