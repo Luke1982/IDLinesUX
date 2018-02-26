@@ -50,12 +50,27 @@
 			return this.el.hasAttribute("data-type") ? this.el.getAttribute("data-type") : false;
 		},
 
+		getFieldName : function() {
+			var classes = this.el.classList;
+			for (var i = 0; i < classes.length; i++) {
+				if (classes[i].indexOf("cbds-inventoryline__input") > -1)
+					return classes[i].split("--")[1];
+			}
+		},
+
 		isReadOnly : function() {
 			return this.el.hasAttribute("readonly");
 		},
 
 		getData : function(type) {
 			return this.el.getAttribute("data-" + type);
+		},
+
+		getValue : function() {
+			if (this.getType() != "text")
+				return _sanitizeNumberString(this.el.value);
+			else
+				return this.el.value;
 		},
 
 		validate : function() {

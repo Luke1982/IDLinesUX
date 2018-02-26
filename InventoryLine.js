@@ -27,7 +27,8 @@
 		this.extraLine	= this.root.utils.getFirstClass(el, this.root.lineClass + "__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [],
-		this.inputs		= [];
+		this.inputs		= [],
+		this.fields 	= {};
 
 		/* Private properties */
 		var copyTool 	= _getTool(el, "copy"),
@@ -56,6 +57,11 @@
 					"decSep" : window.userDecimalSeparator,
 					"curSep" : window.userCurrencySeparator
 				}));
+			}
+
+			for (var i = 0; i < me.inputs.length; i++) {
+				if (me.inputs[i].getFieldName() != undefined)
+					me.fields[me.inputs[i].getFieldName()] = me.inputs[i].getValue(); 
 			}
 		}
 		construct(this);
@@ -110,6 +116,8 @@
 							input.setState("normal");
 							input.format(e);
 						}
+
+						this.calcLine();
 		},
 		getInputObj : function(node) {
 						for (var i = 0; i < this.inputs.length; i++) {
@@ -130,6 +138,22 @@
 							use.setAttribute("xlink:href", symbol[0] + "#percent");
 						else
 							use.setAttribute("xlink:href", symbol[0] + "#euro");
+		},
+		calcLine 	: function() {
+						var validated = this.validate();
+		},
+		validate 	: function() {
+						var validated = false;
+						for (var i = 0; i < this.inputs.length; i++) {
+							console.log(this.inputs[i].getFieldName());
+							if (!this.inputs[i].validate()) {
+								validated = false;
+								break;
+							} else {
+								validated = true;
+							}
+						}
+						return validated;
 		}
 	}
 
