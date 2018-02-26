@@ -53,7 +53,7 @@
 		getFieldName : function() {
 			var classes = this.el.classList;
 			for (var i = 0; i < classes.length; i++) {
-				if (classes[i].indexOf("cbds-inventoryline__input") > -1)
+				if (classes[i].indexOf(this.root.inputPrefix) > -1)
 					return classes[i].split("--")[1];
 			}
 		},
