@@ -40,7 +40,7 @@
 		this.decSep 	= params.decSep || defaults.decSep,
 		this.curSep 	= params.curSep || defaults.curSep;
 
-		this.u.on(this.el, "acFill", this.format, this);
+		this.u.on(this.el, "jsInput", this.format, this);
 	}
 
 	InventoryField.prototype = {
@@ -90,8 +90,8 @@
 			var type = this.getType();
 			switch(type) {
 				case "currency":
-					if (e.type == "acFill") {
-						this.handleCurAcFill();
+					if (e.type == "jsInput") {
+						this.handleCurJsInput();
 					} else if (e.type == "keyup" && !this.isReadOnly()) {
 						this.handleCurKeyUp(e);
 					}
@@ -140,7 +140,7 @@
 			this.el.value = this.getCurConvertedVal();
 		},
 
-		handleCurAcFill : function() {
+		handleCurJsInput : function() {
 			this.val = this.el.value;
 			this.el.value = this.getCurConvertedVal();
 		},

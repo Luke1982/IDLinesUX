@@ -324,7 +324,7 @@
 			this.parent.expandExtra();
 
 			// Dispatch some custom events on the currency fields
-			var evt = new CustomEvent("acFill");
+			var evt = new CustomEvent("jsInput");
 			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--cost_price").dispatchEvent(evt);
 			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--unit_price").dispatchEvent(evt);
 		}
