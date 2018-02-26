@@ -258,7 +258,7 @@
 	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
 		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
-		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
+		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small' extraclass=$productline_classprefix|cat:'__symbol--'|cat:$fieldname}
 		{/if}
 	</div>
 	<div class="slds-form-element__help cbds-form-element__help--fixed"></div>
@@ -317,10 +317,11 @@
  * @param: Where the icon should align: 'left' or 'right'
  * @param: The size: https://www.lightningdesignsystem.com/utilities/sizing
  * @param: Boolean that indicates of a container should be used
+ * @param: An optional extra class that can be used on the SVG item
 *}
-{function name=LDSIcon lib='utility' icon='' align='left' size='x-small' container=true}
+{function name=LDSIcon lib='utility' icon='' align='left' size='x-small' container=true extraclass=''}
 {if $container}<span class="slds-icon_container slds-icon-{$lib}-{$icon} slds-input__icon slds-input__icon_{$align}">{/if}
-	<svg class="slds-icon slds-icon slds-icon_{$size} slds-icon-text-default" aria-hidden="true">
+	<svg class="slds-icon slds-icon slds-icon_{$size} slds-icon-text-default{if $extraclass != ''} {$extraclass}{/if}" aria-hidden="true">
 		<use xlink:href="lib/LDS/icons/{$lib}-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
 	</svg>
 {if $container}</span>{/if}
