@@ -59,10 +59,7 @@
 				}));
 			}
 
-			for (var i = 0; i < me.inputs.length; i++) {
-				if (me.inputs[i].getFieldName() != undefined)
-					me.fields[me.inputs[i].getFieldName()] = me.inputs[i].getValue(); 
-			}
+			me.getFields();
 		}
 		construct(this);
 
@@ -138,6 +135,12 @@
 							use.setAttribute("xlink:href", symbol[0] + "#percent");
 						else
 							use.setAttribute("xlink:href", symbol[0] + "#euro");
+		},
+		getFields 	: function() {
+						for (var i = 0; i < this.inputs.length; i++) {
+							if (this.inputs[i].getFieldName() != undefined)
+								this.fields[this.inputs[i].getFieldName()] = this.inputs[i].getValue(); 
+						}
 		},
 		calcLine 	: function() {
 						var validated = this.validate();
