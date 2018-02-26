@@ -9,7 +9,7 @@
 	{$data.meta.discount_type = 'p'}
 	{$data.meta.discount_amount = 0}
 	{$data.meta.linetotal = 0}
-	{$data.meta.quantity = 0}
+	{$data.meta.quantity = 1}
 	{$data.meta.description = ''}
 
 	{$data.pricing = []}
