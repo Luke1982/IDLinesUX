@@ -45,7 +45,9 @@
 			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me, rootObj);
 
 			for (var i = 0; i < comboBoxes.length; i++) {
-				me.comboBoxes.push(new ldsCombobox(comboBoxes[i]));
+				me.comboBoxes.push(new ldsCombobox(comboBoxes[i], {
+					"onSelect" : me.setDiscType.bind(me)
+				}));
 			}
 
 			for (var i = 0; i < inputs.length; i++) {
@@ -115,6 +117,19 @@
 								return this.inputs[i];
 							}
 						}
+		},
+		getDiscType: function(){
+						return this.root.utils.getFirstClass(this.el, this.root.inputPrefix + "--discount_type").value;
+		},
+		setDiscType: function() {
+						var use = this.root.utils.getFirstClass(this.el, "cbds-inventoryline__symbol--discount_amount").getElementsByTagName("use")[0],
+							symbol = use.getAttribute("xlink:href").split("#"),
+							newType = this.getDiscType();
+
+						if (newType == "Percentage")
+							use.setAttribute("xlink:href", symbol[0] + "#percent");
+						else
+							use.setAttribute("xlink:href", symbol[0] + "#euro");
 		}
 	}
 
