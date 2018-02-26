@@ -312,21 +312,16 @@
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--cost_price").value = result.obj.pricing.unit_cost;
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--unit_price").value = result.obj.pricing.list_price;
-
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--qtyinstock").value = result.obj.logistics.qty_in_stock;
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--qtyindemand").value = result.obj.logistics.curr_ordered;
+			this.parent.setField("cost_price", result.obj.pricing.unit_cost);
+			this.parent.setField("unit_price", result.obj.pricing.list_price);
+			this.parent.setField("qtyinstock", result.obj.logistics.qty_in_stock);
+			this.parent.setField("qtyindemand", result.obj.logistics.curr_ordered);
 
 			this.root.utils.getFirstClass(lineNode, this.root.linePrefix + "--comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
 
 			this.parent.expandExtra();
-
-			// Dispatch some custom events on the currency fields
-			var evt = new CustomEvent("jsInput");
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--cost_price").dispatchEvent(evt);
-			this.root.utils.getFirstClass(lineNode, this.root.inputPrefix + "--unit_price").dispatchEvent(evt);
+			this.parent.calcLine();
 		}
 	}
 
