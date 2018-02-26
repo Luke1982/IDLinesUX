@@ -148,7 +148,6 @@
 		validate 	: function() {
 						var validated = false;
 						for (var i = 0; i < this.inputs.length; i++) {
-							console.log(this.inputs[i].getFieldName());
 							if (!this.inputs[i].validate()) {
 								validated = false;
 								break;
