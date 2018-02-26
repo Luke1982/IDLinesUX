@@ -46,7 +46,7 @@
 
 			for (var i = 0; i < comboBoxes.length; i++) {
 				me.comboBoxes.push(new ldsCombobox(comboBoxes[i], {
-					"onSelect" : me.setDiscType.bind(me)
+					"onSelect" : comboBoxes[i].getElementsByTagName("input")[0].classList.contains("cbds-inventoryline__input--discount_type") ? me.setDiscType.bind(me) : null
 				}));
 			}
 
