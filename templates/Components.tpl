@@ -67,7 +67,7 @@
 						</div>
 						<!-- // Product name form element -->
 						<!-- Product quantity form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0'}
+						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0.5'}
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
