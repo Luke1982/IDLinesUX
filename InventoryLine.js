@@ -27,7 +27,6 @@
 		this.extraLine	= this.root.utils.getFirstClass(el, this.root.lineClass + "__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [],
-		this.inputs		= [],
 		this.fields 	= {};
 
 		/* Private properties */
@@ -52,14 +51,13 @@
 			}
 
 			for (var i = 0; i < inputs.length; i++) {
-				me.inputs.push(new InventoryField(inputs[i], rootObj, {
+				var field = new InventoryField(inputs[i], rootObj, {
 					"decimals" : 2,
 					"decSep" : window.userDecimalSeparator,
 					"curSep" : window.userCurrencySeparator
-				}));
+				});
+				me.fields[field.getFieldName()] = field;
 			}
-
-			me.getFields();
 		}
 		construct(this);
 
@@ -107,19 +105,15 @@
 						var input = this.getInputObj(e.target),
 							validated = input.validate();
 
-						if (!validated) {
-							input.setState("error");
-						} else {
-							input.setState("normal");
+						if (validated)
 							input.format(e);
-						}
 
 						this.calcLine();
 		},
 		getInputObj : function(node) {
-						for (var i = 0; i < this.inputs.length; i++) {
-							if (this.inputs[i].el.isSameNode(node)) {
-								return this.inputs[i];
+						for (field in this.fields) {
+							if (this.fields[field].el.isSameNode(node)) {
+								return this.fields[field];
 							}
 						}
 		},
@@ -136,25 +130,17 @@
 						else
 							use.setAttribute("xlink:href", symbol[0] + "#euro");
 		},
-		getFields 	: function() {
-						for (var i = 0; i < this.inputs.length; i++) {
-							if (this.inputs[i].getFieldName() != undefined)
-								this.fields[this.inputs[i].getFieldName()] = this.inputs[i].getValue(); 
-						}
-		},
 		calcLine 	: function() {
 						var validated = this.validate();
 		},
 		validate 	: function() {
-						var validated = false;
-						for (var i = 0; i < this.inputs.length; i++) {
-							if (!this.inputs[i].validate()) {
+						var validated = true;
+						for (field in this.fields) {
+							if (!this.fields[field].validate()) {
 								validated = false;
-								this.inputs[i].setState("error");
-								break;
+								this.fields[field].setState("error");
 							} else {
-								this.inputs[i].setState("normal");
-								validated = true;
+								this.fields[field].setState("normal");
 							}
 						}
 						return validated;
