@@ -284,7 +284,7 @@
 		<div class="slds-combobox_container">
 			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 				<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-					<input class="slds-input slds-combobox__input cbds-product-line-{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
+					<input class="slds-input slds-combobox__input {$productline_inputprefix}--{$fieldname}" aria-controls="" autocomplete="off" role="textbox" placeholder="{$placeholder}" readonly="readonly" type="text" value="{$value}"/>
 					{call name=LDSIcon lib='utility' icon='down' align='right' size='x-small'}
 				</div>
 				<div role="listbox">
