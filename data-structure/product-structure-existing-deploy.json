@@ -10,14 +10,14 @@
 		"discount_percent" : 0,
 		"linetotal" : 18.5,
 		"divisible" : true,
-		"description" : "A comment",
-		"extgross" : 1976,
-		"extnet" : 1936
+		"description" : "A comment"
 	},
 	"pricing" : {
 		"cost_price" : 90.67,
 		"cost_gross" : 180,
-		"unit_price" : 15
+		"unit_price" : 15,
+		"extgross" : 1976,
+		"extnet" : 1936
 	},
 	"logistics" : {
 		"units_delivered_received" : 2,
@@ -73,14 +73,14 @@
 		"discount_percent" : 200,
 		"linetotal" : 3009,
 		"divisible" : false,
-		"description" : "A comment for Fanta",
-		"extgross" : 2334,
-		"extnet" : 333
+		"description" : "A comment for Fanta"
 	},
 	"pricing" : {
 		"cost_price" : 45,
 		"cost_gross" : 23,
-		"unit_price" : 2346
+		"unit_price" : 2346,
+		"extgross" : 2334,
+		"extnet" : 333
 	},
 	"logistics" : {
 		"units_delivered_received" : -7,

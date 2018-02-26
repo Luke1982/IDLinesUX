@@ -8,8 +8,6 @@
 	{$data.meta = []}
 	{$data.meta.discount_type = 'p'}
 	{$data.meta.discount_amount = 0}
-	{$data.meta.extgross = 0}
-	{$data.meta.extnet = 0}
 	{$data.meta.linetotal = 0}
 	{$data.meta.quantity = 0}
 	{$data.meta.description = ''}
@@ -18,6 +16,8 @@
 	{$data.pricing.cost_price = 0}
 	{$data.pricing.cost_gross = 0}
 	{$data.pricing.unit_price = 0}
+	{$data.pricing.extgross = 0}
+	{$data.pricing.extnet = 0}
 
 	{$data.logistics = []}
 	{$data.logistics.units_delivered_received = 0}
@@ -79,7 +79,7 @@
 						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon=$icon istemplate=$template type='number' error='Please input a numeric value into this field'}
 						<!-- // Discount number (percent/direct) form element -->
 						<!-- Discount amount form element -->
-						{$discount_total = $data.meta.extgross - $data.meta.extnet}
+						{$discount_total = $data.pricing.extgross - $data.pricing.extnet}
 						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template readonly=true}
 						<!-- // Discount amount form element -->
 						<!-- Line total form element -->
@@ -110,10 +110,24 @@
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
 				</div>
-				<div class="slds-form slds-form_stacked slds-grow">
-					{call name=ProductPanelSection fieldname='cost_price' label='Unit cost price' value=$data.pricing.cost_price symbol='euro' type='currency' error="Please enter a valid currency amount"}
-					{call name=ProductPanelSection fieldname='cost_gross' label='Line cost price' value=$data.pricing.cost_gross symbol='euro'}
-					{call name=ProductPanelSection fieldname='unit_price' label='Unit price' value=$data.pricing.unit_price symbol='euro' type='currency' error="Please enter a valid currency amount"}
+				<div class="slds-form slds-form_compound slds-grow">
+					<div class="slds-panel__section slds-border_bottom">
+						<div class="slds-form-element__row cbds-m-bottom_none">
+						{call name=ProductInputFormElement size='1-of-2' label='Unit cost price' fieldname='cost_price' value=$data.pricing.cost_price iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						{call name=ProductInputFormElement size='1-of-2' label='Line cost price' fieldname='cost_gross' value=$data.pricing.cost_gross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						</div>
+					</div>
+					<div class="slds-panel__section slds-border_bottom">
+						<div class="slds-form-element__row cbds-m-bottom_none">
+						{call name=ProductInputFormElement size='1-of-2' label='Gross line price' fieldname='extgross' value=$data.pricing.extgross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						{call name=ProductInputFormElement size='1-of-2' label='Net line price' fieldname='extnet' value=$data.pricing.extnet iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						</div>
+					</div>
+					<div class="slds-panel__section slds-border_bottom">
+						<div class="slds-form-element__row cbds-m-bottom_none">
+						{call name=ProductInputFormElement size='1-of-2' label='Unit price' fieldname='unit_price' value=$data.pricing.unit_price iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -125,9 +139,15 @@
 					<div class="slds-text-color_inverse slds-align_absolute-center">Logistics</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					{call name=ProductPanelSection fieldname='units_delivered_received' label='Units delivered / received' value=$data.logistics.units_delivered_received symbol='none'}
-					{call name=ProductPanelSection fieldname='qtyinstock' label='Qty in stock' value=$data.logistics.qtyinstock symbol='none'}
-					{call name=ProductPanelSection fieldname='qtyindemand' label='Currently ordered' value=$data.logistics.qtyindemand symbol='none'}
+					<div class="slds-panel__section slds-border_bottom">
+					{call name=ProductInputFormElement size='1-of-1' label='Units delivered / received' fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					</div>
+					<div class="slds-panel__section slds-border_bottom">
+					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					</div>
+					<div class="slds-panel__section slds-border_bottom">
+					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -170,34 +190,6 @@
 <!-- // LDS Detail line for inventorydetails -->
 {/function}
 
-
-{*
- * Function: ProductPanelSection
- * ----------------------------------------------------------------------
- * Creates a panel section for the product panels in the extra
- * line.
- *
- * @param: The fieldname, should be the internal coreBOS fieldname
- * @param: The label, should be the field label
- * @param: The value, should be the current value of the field, if any
- * @param: The symbol. Should be the symbol. Current options are 'percent',
- * 			'euro', of 'none' (prevents symbol output)
-*}
-{function name=ProductPanelSection fieldname='' label='' value='' symbol='euro' type='' error=''}
-<div class="slds-panel__section slds-border_bottom">
-	<div class="slds-form-element">
-		<label class="slds-form-element__label">{$label}</label>
-		<div class="slds-form-element__control{if $symbol != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
-			<input type="text" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$value}" data-type="{$type}" data-error-mess="{$error}" />
-			{if $symbol != 'none'}
-				{call name=LDSIcon lib='corebos' icon=$symbol align='left' size='x-small'}
-			{/if}
-		</div>
-		<div class="slds-form-element__help"></div>
-	</div>
-</div>
-{/function}
-
 {*
  * Function: ProductTaxPanelSection
  * ----------------------------------------------------------------------
@@ -237,6 +229,7 @@
  *
  * @param: The size of the form element, check LDS documentation
  * 			on: https://www.lightningdesignsystem.com/utilities/sizing
+ * @param: The label (Optional)
  * @param: The fieldname, should be the coreBOS fieldname
  * @param: The value, the value of the input field, if any
  * @param: The library for the icon, can be 'corebos' or one of the
@@ -254,9 +247,10 @@
  * @param: Max, only useful when type is 'number'. Indicates the
            maximum, otherwise the field will not validate
 *}
-{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
+{function name=ProductInputFormElement size='1-of-1' label='' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
 <div class="slds-form-element slds-size_{$size}">
-	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
+	{if $label != ''}<label class="slds-form-element__label">{$label}</label>{/if}
+	<div class="slds-form-element__control{if $icon != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
 		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small' extraclass=$productline_classprefix|cat:'__symbol--'|cat:$fieldname}
