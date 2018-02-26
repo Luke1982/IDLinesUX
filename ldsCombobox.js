@@ -19,7 +19,7 @@
 	 * @class ldsCombobox
 	 * @param {element}: Typically a wrapping element of an LDS combobox, like 'slds-combobox-picklist'
 	 */
-	function ldsCombobox(el) {
+	function ldsCombobox(el, params) {
 		/* Public attributes */
 		this.el 	= el,
 		this.input 	= el.getElementsByClassName("slds-combobox__input")[0],
@@ -27,7 +27,8 @@
 		this.optionNodes = el.getElementsByClassName("slds-listbox__item"),
 		this.active = false,
 		this.curSel = null,
-		this.curSelIndex = 0;
+		this.curSelIndex = 0,
+		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false;
 
 		/* Instance listeners */
 		_on(el, "click", this.handleClick, this);
@@ -202,6 +203,9 @@
 		select: function() {
 			this.input.value = this.curSel;
 			this.close();
+
+			if (this.onSelect)
+				this.onSelect();
 		},
 
 		/*
