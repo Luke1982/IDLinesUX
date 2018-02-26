@@ -143,10 +143,10 @@
 					{call name=ProductInputFormElement size='1-of-1' label='Units delivered / received' fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
 					</div>
 					<div class="slds-panel__section slds-border_bottom">
-					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 					<div class="slds-panel__section slds-border_bottom">
-					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 				</div>
 			</div>
