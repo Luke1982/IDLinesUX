@@ -177,11 +177,18 @@
 		return isNaN(val) ? false : true;
 	}
 
-	function _sanitizeNumberString(number) {
-		if (window.userDecimalSeparator == ".") {
-			return number.replace(/window.userCurrencySeparator/g, "");
+	function _sanitizeNumberString(numberString) {
+		if ( (numberString.match(/\./g) || []).length < 2 && numberString.indexOf(",") == -1) {
+			return numberString;
 		} else {
-			return number.replace(window.userDecimalSeparator, ".").replace(/window.userCurrencySeparator/g, "");
+			var numberString = numberString.toString(),
+				parts = numberString.split(window.userCurrencySeparator),
+				number = "";
+			for (var i = 0; i < parts.length; i++) {
+				number += parts[i];
+			}
+			number = number.replace(window.userDecimalSeparator, ".");
+			return number;
 		}
 	}
 
@@ -195,24 +202,22 @@
 	   t: thousands sep
 	   */
 	function _makeCurr(n, c, d, t){
-	var c = n.indexOf(".") == -1 ? 0 : c,
-		n = _sanitizeNumberString(n),
-		c = isNaN(c = Math.abs(c)) ? 2 : c,  
-		d = d == undefined ? "." : d, 
-		t = t == undefined ? "," : t, 
-		s = n < 0 ? "-" : "", 
-		i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
-		j = (j = i.length) > 3 ? j % 3 : 0;
-		return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		var n = n, 
+			c = isNaN(c = Math.abs(c)) ? 2 : c, 
+			d = d == undefined ? "." : d, 
+			t = t == undefined ? "," : t, 
+			s = n < 0 ? "-" : "", 
+			i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))), 
+			j = (j = i.length) > 3 ? j % 3 : 0;
+			return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
 	}
 
 	/* Returns the number of decimals in a number */
 	function _decNum(num) {
-		num = _sanitizeNumberString(num);
+		var num = _sanitizeNumberString(num);
 		var match = (''+num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
 		if (!match) { return 0; }
-		return Math.max(
-			0, (match[1] ? match[1].length : 0)	- (match[2] ? +match[2] : 0));
+		return Math.max(0, (match[1] ? match[1].length : 0)	- (match[2] ? +match[2] : 0));
 	}
 
 	var keyCodeMap = {

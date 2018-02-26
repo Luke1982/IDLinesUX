@@ -29,7 +29,7 @@
 		this.curSel = null,
 		this.curSelIndex = 0,
 		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false,
-		this._val = null;
+		this._val = this.optionNodes[this.curSelIndex].getAttribute("data-value");
 
 		/* Instance listeners */
 		_on(el, "click", this.handleClick, this);

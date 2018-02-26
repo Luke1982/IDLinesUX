@@ -133,12 +133,17 @@
 							use.setAttribute("xlink:href", symbol[0] + "#percent");
 						else
 							use.setAttribute("xlink:href", symbol[0] + "#euro");
+
+						this.calcLine();
 		},
 		calcLine 	: function() {
 						var validated = this.validate();
 
 						if (validated)
 							this.calcCostPrice();
+							this.calcLineGross();
+							this.calcDiscount();
+							this.calcLineNet();
 
 		},
 		validate 	: function() {
@@ -155,8 +160,31 @@
 		},
 		calcCostPrice: function() {
 						this.fields.cost_gross.el.value = this.fields.cost_price.getValue() * this.fields.quantity.getValue();
+						this.fireJsInput("cost_gross");
+		},
+		calcLineGross: function() {
+						this.fields.extgross.el.value = this.fields.quantity.getValue() * this.fields.unit_price.getValue();
+						this.fireJsInput("extgross");
+		},
+		calcDiscount: function() {
+						var type = this.getDiscType(),
+						 	gross = this.fields.extgross.getValue(),
+						 	disc = this.fields.discount_amount.getValue(),
+						 	amount = type == "p" ? _getPerc(gross, disc) : disc;
+
+					 	this.fields.discount_total.el.value = amount;
+					 	this.fireJsInput("discount_total");
+		},
+		calcLineNet: function() {
+						var gross = this.fields.extgross.getValue(),
+							disc = this.fields.discount_total.getValue();
+
+					 	this.fields.extnet.el.value = gross - disc;
+					 	this.fireJsInput("extnet");
+		},
+		fireJsInput	: function(fieldname) {
 						var evt = new CustomEvent("jsInput");
-						this.fields.cost_gross.el.dispatchEvent(evt);
+						this.fields[fieldname].el.dispatchEvent(evt);
 		}
 	}
 
@@ -171,6 +199,10 @@
 
 	function _deductPerc(base, percentage) {
 		return (base * (1 - (percentage / 100)));
+	}
+
+	function _getPerc(base, percentage) {
+		return base * (percentage / 100);
 	}
 
 	// ONLY FOR DEVELOPMENT, REMOVE WHEN USED IN COREBOS
