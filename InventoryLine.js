@@ -27,6 +27,7 @@
 		this.extraLine	= this.root.utils.getFirstClass(el, this.root.lineClass + "__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [],
+		this.discCombo 	= {},
 		this.fields 	= {};
 
 		/* Private properties */
@@ -45,9 +46,12 @@
 			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me, rootObj);
 
 			for (var i = 0; i < comboBoxes.length; i++) {
-				me.comboBoxes.push(new ldsCombobox(comboBoxes[i], {
-					"onSelect" : comboBoxes[i].getElementsByTagName("input")[0].classList.contains("cbds-inventoryline__input--discount_type") ? me.setDiscType.bind(me) : null
-				}));
+				var isDiscountBox = comboBoxes[i].getElementsByTagName("input")[0].classList.contains("cbds-inventoryline__input--discount_type"),
+					comboBox = new ldsCombobox(comboBoxes[i], {
+					"onSelect" : isDiscountBox ? me.setDiscType.bind(me) : null
+				});
+				if (isDiscountBox) me.discCombo = comboBox;
+				me.comboBoxes.push(comboBox);
 			}
 
 			for (var i = 0; i < inputs.length; i++) {
@@ -118,14 +122,14 @@
 						}
 		},
 		getDiscType: function(){
-						return this.root.utils.getFirstClass(this.el, this.root.inputPrefix + "--discount_type").value;
+						return this.discCombo.getVal();
 		},
 		setDiscType: function() {
 						var use = this.root.utils.getFirstClass(this.el, "cbds-inventoryline__symbol--discount_amount").getElementsByTagName("use")[0],
 							symbol = use.getAttribute("xlink:href").split("#"),
 							newType = this.getDiscType();
 
-						if (newType == "Percentage")
+						if (newType == "p")
 							use.setAttribute("xlink:href", symbol[0] + "#percent");
 						else
 							use.setAttribute("xlink:href", symbol[0] + "#euro");
