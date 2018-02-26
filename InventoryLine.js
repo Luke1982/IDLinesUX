@@ -159,12 +159,10 @@
 						return validated;
 		},
 		calcCostPrice: function() {
-						this.fields.cost_gross.el.value = this.fields.cost_price.getValue() * this.fields.quantity.getValue();
-						this.fireJsInput("cost_gross");
+						this.setField("cost_gross", this.fields.cost_price.getValue() * this.fields.quantity.getValue());
 		},
 		calcLineGross: function() {
-						this.fields.extgross.el.value = this.fields.quantity.getValue() * this.fields.unit_price.getValue();
-						this.fireJsInput("extgross");
+						this.setField("extgross", this.fields.quantity.getValue() * this.fields.unit_price.getValue());
 		},
 		calcDiscount: function() {
 						var type = this.getDiscType(),
@@ -172,15 +170,17 @@
 						 	disc = this.fields.discount_amount.getValue(),
 						 	amount = type == "p" ? _getPerc(gross, disc) : disc;
 
-					 	this.fields.discount_total.el.value = amount;
-					 	this.fireJsInput("discount_total");
+						this.setField("discount_total", amount);
 		},
 		calcLineNet: function() {
 						var gross = this.fields.extgross.getValue(),
 							disc = this.fields.discount_total.getValue();
 
-					 	this.fields.extnet.el.value = gross - disc;
-					 	this.fireJsInput("extnet");
+						this.setField("extnet", (gross - disc));
+		},
+		setField 	: function(fieldname, newVal) {
+						this.fields[fieldname].el.value = newVal;
+						this.fireJsInput(fieldname);
 		},
 		fireJsInput	: function(fieldname) {
 						var evt = new CustomEvent("jsInput");
