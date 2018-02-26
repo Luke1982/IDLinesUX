@@ -119,8 +119,8 @@
 					</div>
 					<div class="slds-panel__section slds-border_bottom">
 						<div class="slds-form-element__row cbds-m-bottom_none">
-						{call name=ProductInputFormElement size='1-of-2' label='Gross line price' fieldname='extgross' value=$data.pricing.extgross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
-						{call name=ProductInputFormElement size='1-of-2' label='Net line price' fieldname='extnet' value=$data.pricing.extnet iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
+						{call name=ProductInputFormElement size='1-of-2' label='Gross line price' fieldname='extgross' value=$data.pricing.extgross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
+						{call name=ProductInputFormElement size='1-of-2' label='Net line price' fieldname='extnet' value=$data.pricing.extnet iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
 						</div>
 					</div>
 					<div class="slds-panel__section slds-border_bottom">
