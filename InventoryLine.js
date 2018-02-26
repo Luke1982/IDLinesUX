@@ -150,8 +150,10 @@
 						for (var i = 0; i < this.inputs.length; i++) {
 							if (!this.inputs[i].validate()) {
 								validated = false;
+								this.inputs[i].setState("error");
 								break;
 							} else {
+								this.inputs[i].setState("normal");
 								validated = true;
 							}
 						}
