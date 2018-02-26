@@ -252,7 +252,7 @@
 <div class="slds-form-element slds-size_{$size}">
 	{if $label != ''}<label class="slds-form-element__label">{$label}</label>{/if}
 	<div class="slds-form-element__control{if $icon != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$value}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small' extraclass=$productline_classprefix|cat:'__symbol--'|cat:$fieldname}
 		{/if}
