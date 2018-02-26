@@ -28,7 +28,8 @@
 		this.active = false,
 		this.curSel = null,
 		this.curSelIndex = 0,
-		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false;
+		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false,
+		this._val = null;
 
 		/* Instance listeners */
 		_on(el, "click", this.handleClick, this);
@@ -201,11 +202,22 @@
 		 *
 		 */
 		select: function() {
+			this._val = this.optionNodes[this.curSelIndex].getAttribute("data-value");
 			this.input.value = this.curSel;
 			this.close();
 
 			if (this.onSelect)
 				this.onSelect();
+		},
+
+		/*
+		 * Method: 'getVal'
+		 * Returns the 'hidden' currently selected value, similar to
+		 * the 'value' property of a normal <option> element
+		 *
+		 */
+		getVal: function() {
+			return this._val;
 		},
 
 		/*

@@ -71,7 +71,8 @@
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
-						{$options = ['Direct', 'Percentage']}
+						{$options[] = ['val' => 'p', 'label' => 'Percentage']}
+						{$options[] = ['val' => 'd', 'label' => 'Direct']}
 						{call name=ProductDropdownFormElement size='1-of-8' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
 						<!-- // Discount type form element -->
 						<!-- Discount number (percent/direct) form element -->
@@ -285,10 +286,10 @@
 				<div role="listbox">
 					<ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
 						{foreach from=$options item=option key=key name=name}
-						<li role="presentation" class="slds-listbox__item">
+						<li role="presentation" class="slds-listbox__item" data-value="{$option.val}">
 							<div class="slds-listbox__option slds-listbox__option_plain" role="option">
 								<span class="slds-media__body">
-									<span class="slds-truncate" title="{$option}">{$option}</span>
+									<span class="slds-truncate" title="{$option}">{$option.label}</span>
 								</span>
 							</div>
 						</li>
