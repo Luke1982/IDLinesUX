@@ -78,7 +78,7 @@
 			var type = this.getType();
 			switch(type) {
 				case "number":
-					return this.isInRange();
+					return this.valNumber();
 					break;
 				case "currency":
 					return _isCurrency(this.val);
@@ -87,7 +87,7 @@
 			return true;
 		},
 
-		isInRange : function() {
+		valNumber : function() {
 			toCheck = _sanitizeNumberString(this.el.value);
 			if (!_isNumber(toCheck)) {
 				return false;
