@@ -27,7 +27,7 @@
 		this.optionNodes = el.getElementsByClassName("slds-listbox__item"),
 		this.active = false,
 		this.curSel = null,
-		this.curSelIndex = 0,
+		this.curSelIndex = this.getCurSelIndex(),
 		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false,
 		this._val = this.optionNodes[this.curSelIndex].getAttribute("data-value");
 
@@ -230,6 +230,17 @@
 		getIndexByNode: function(node) {
 			for (var i = 0; i < this.optionNodes.length; i++) {
 				if (node.isSameNode(this.optionNodes[i])) return i;
+			}
+		},
+		/*
+		 * Method: 'getCurSelIndex'
+		 * Returns the index of the option that matches
+		 * the value of the input field
+		 *
+		 */
+		getCurSelIndex: function() {
+			for (var i = 0; i < this.optionNodes.length; i++) {
+				if (this.optionNodes[i].getElementsByClassName("slds-truncate")[0].innerHTML == this.input.value) return i;
 			}
 		}
 	}
