@@ -132,6 +132,10 @@
 		},
 		calcLine 	: function() {
 						var validated = this.validate();
+
+						if (validated)
+							this.calcCostPrice();
+
 		},
 		validate 	: function() {
 						var validated = true;
@@ -144,6 +148,11 @@
 							}
 						}
 						return validated;
+		},
+		calcCostPrice: function() {
+						this.fields.cost_gross.el.value = this.fields.cost_price.getValue() * this.fields.quantity.getValue();
+						var evt = new CustomEvent("jsInput");
+						this.fields.cost_gross.el.dispatchEvent(evt);
 		}
 	}
 
