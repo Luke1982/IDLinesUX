@@ -34,7 +34,7 @@
 		this.errorSet 	= false,
 		this.errorMess  = this.el.hasAttribute("data-error-mess") ? this.el.getAttribute("data-error-mess") : "",
 		this.type 		= this.getType(),
-		this.val 		= _sanitizeNumberString(this.el.value),
+		this._val 		= _sanitizeNumberString(this.el.value),
 		this.specialKeys= [",", ".", "backspace"],
 		this.decimals 	= params.decimals || defaults.decimals,
 		this.decSep 	= params.decSep || defaults.decSep,
@@ -81,7 +81,7 @@
 					return this.valNumber();
 					break;
 				case "currency":
-					return _isCurrency(this.val);
+					return _isCurrency(this._val);
 					break;
 			}
 			return true;
@@ -143,25 +143,25 @@
 		},
 
 		handleCurKeyUp : function(e) {
-			if (_isNumber(e.key) && _decNum(this.val) < 2) {
-				this.val = this.val + e.key;
+			if (_isNumber(e.key) && _decNum(this._val) < 2) {
+				this._val = this._val + e.key;
 			} else if (this.isSpecialKey(e.keyCode)) {
 				if (e.key == "Backspace") {
-					this.val = this.val.substring(0, this.val.length -1);
-				} else if ((this.val.match(/\./g) || []).length < 1){
-					this.val = this.val + ".";
+					this._val = this._val.substring(0, this._val.length -1);
+				} else if ((this._val.match(/\./g) || []).length < 1){
+					this._val = this._val + ".";
 				}
 			}
 			this.el.value = this.getCurConvertedVal();
 		},
 
 		handleCurJsInput : function() {
-			this.val = this.el.value;
+			this._val = this.el.value;
 			this.el.value = this.getCurConvertedVal();
 		},
 
 		getCurConvertedVal: function() {
-			return _makeCurr(this.val, 2, this.decSep, this.curSep);
+			return _makeCurr(this._val, 2, this.decSep, this.curSep);
 		},
 
 		isSpecialKey : function(code) {
