@@ -203,7 +203,7 @@
 	   */
 	function _makeCurr(n, c, d, t){
 		var n = n, 
-			c = isNaN(c = Math.abs(c)) ? 2 : c, 
+			c = _decNum(n) == 0 ? 0 : 2, 
 			d = d == undefined ? "." : d, 
 			t = t == undefined ? "," : t, 
 			s = n < 0 ? "-" : "", 
