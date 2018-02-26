@@ -289,7 +289,7 @@
 						<li role="presentation" class="slds-listbox__item" data-value="{$option.val}">
 							<div class="slds-listbox__option slds-listbox__option_plain" role="option">
 								<span class="slds-media__body">
-									<span class="slds-truncate" title="{$option}">{$option.label}</span>
+									<span class="slds-truncate" title="{$option.label}">{$option.label}</span>
 								</span>
 							</div>
 						</li>
