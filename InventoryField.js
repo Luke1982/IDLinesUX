@@ -54,18 +54,36 @@
 			return this.el.hasAttribute("readonly");
 		},
 
+		getData : function(type) {
+			return this.el.getAttribute("data-" + type);
+		},
+
 		validate : function() {
 			if (this.isReadOnly()) return true;
 			var type = this.getType();
 			switch(type) {
 				case "number":
-					return _isNumber(this.el.value);
+					return this.isInRange();
 					break;
 				case "currency":
 					return _isCurrency(this.val);
 					break;
 			}
 			return true;
+		},
+
+		isInRange : function() {
+			toCheck = _sanitizeNumberString(this.el.value);
+			if (!_isNumber(toCheck)) {
+				return false;
+			} else {
+				var min = this.getData("min") != null ? Number(this.getData("min")) : (0 - Number.MAX_SAFE_INTEGER),
+					max = this.getData("max") != null ? Number(this.getData("max")) : Number.MAX_SAFE_INTEGER;
+				if (Number(toCheck) >= min && Number(toCheck) <= max)
+					return true;
+				else
+					return false;
+			}
 		},
 
 		format : function(e) {

@@ -67,7 +67,7 @@
 						</div>
 						<!-- // Product name form element -->
 						<!-- Product quantity form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number'}
+						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0'}
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
@@ -248,11 +248,15 @@
  *         fails the validation that belongs to the type.
  * @param: Readonly, boolean that indicates if the input should be
  *         readonly
+ * @param: Min, only useful when type is 'number'. Indicates the
+           minimum, otherwise the field will not validate
+ * @param: Max, only useful when type is 'number'. Indicates the
+           maximum, otherwise the field will not validate
 *}
-{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false}
+{function name=ProductInputFormElement size='1-of-1' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
 <div class="slds-form-element slds-size_{$size}">
 	<div class="slds-form-element__control {if $icon != 'none'}slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" data-type="{$type}"{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
+		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{if !$istemplate}{$value}{/if}"/>
 		{if $icon != 'none'}
 		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small'}
 		{/if}
