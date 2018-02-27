@@ -120,14 +120,22 @@
 	"custom" : {
 		"color" : {
 			"type" : "dropdown",
-			"available" : ["red", "white", "blue"],
-			"selected" : "red",
+			"available" : [
+				{"label": "Red", "val" : "red"},
+				{"label": "Blue", "val" : "blue"},
+				{"label": "White", "val" : "white"}
+			],
+			"selected" : "Blue",
 			"label" : "Color"
 		},
 		"size" : {
 			"type" : "dropdown",
-			"available" : ["S", "M", "L"],
-			"selected" : "L",
+			"available" : [
+				{"label" : "S", "val" : "s"},
+				{"label" : "M", "val" : "m"},
+				{"label" : "L", "val" : "l"}
+			],
+			"selected" : "M",
 			"label" : "Size"
 		},
 		"tag" : {
