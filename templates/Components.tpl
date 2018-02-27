@@ -194,6 +194,11 @@
 				<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium">
 				{foreach from=$data.custom item=customfield key=key name=name}
 					<div class="slds-col slds-size_1-of-4">
+					{if $customfield.type == 'dropdown'}
+						{call name=ProductDropdownFormElement size='1-of-1' fieldname=$key value=$customfield.selected placeholder='' options=$customfield.available istemplate=false label=$customfield.label}
+					{elseif $customfield.type == 'text'}
+						{call name=ProductInputFormElement size='1-of-1' label=$customfield.label fieldname=$key value=$customfield.value icon='none' istemplate=false type='text'}
+					{/if}
 					</div>
 				{/foreach}
 				</div>
