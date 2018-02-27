@@ -142,6 +142,11 @@
 			"type" : "text",
 			"value" : "I am fanta text",
 			"label" : "Tags"
+		},
+		"in_shop" : {
+			"type" : "checkbox",
+			"value" : "1",
+			"label" : "In workshop?"
 		}
 	}
 }]
