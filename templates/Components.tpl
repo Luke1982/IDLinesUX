@@ -191,7 +191,7 @@
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Custom fields</div>
 				</div>
-				<div class="slds-grid slds-gutters slds-wrap slds-align_absolute-center slds-p-vertical_medium">
+				<div class="slds-grid slds-gutters slds-wrap slds-grid_vertical-align-end slds-p-vertical_medium">
 				{foreach from=$data.custom item=customfield key=key name=name}
 					<div class="slds-col slds-size_1-of-4">
 					{if $customfield.type == 'dropdown'}

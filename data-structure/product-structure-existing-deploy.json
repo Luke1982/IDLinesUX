@@ -71,6 +71,16 @@
 			"type" : "checkbox",
 			"value" : "1",
 			"label" : "In workshop?"
+		},
+		"color2" : {
+			"type" : "dropdown",
+			"available" : [
+				{"label": "Purple", "val" : "purple"},
+				{"label": "Cyan", "val" : "cyan"},
+				{"label": "Magenta", "val" : "magenta"}
+			],
+			"selected" : "Cyan",
+			"label" : "Second Color"
 		}
 	}
 },
