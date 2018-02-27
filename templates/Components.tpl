@@ -104,7 +104,7 @@
 	</div>
 	<!-- // Main LDS inventory details line -->
 	<!-- Extra LDS inventory line -->
-	<div class="slds-grid slds-gutters slds-p-vertical_medium {$productline_classprefix}__extra">
+	<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium {$productline_classprefix}__extra">
 		<!-- LDS extra inventoryline column -->
 		<div class="slds-col slds-size_1-of-4">
 			<div class="slds-panel">
@@ -185,6 +185,21 @@
 			</div>
 		</div>
 		<!-- // LDS extra inventoryline column -->
+		<!-- Customfields LDS inventory line -->
+		<div class="slds-col slds-size_4-of-4 {$productline_classprefix}__custom">
+			<div class="slds-panel">
+				<div class="cbds-panelheader">
+					<div class="slds-text-color_inverse slds-align_absolute-center">Custom fields</div>
+				</div>
+				<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium">
+				{foreach from=$data.custom item=customfield key=key name=name}
+					<div class="slds-col slds-size_1-of-4">
+					</div>
+				{/foreach}
+				</div>
+			</div>
+		</div>
+		<!-- Customfields LDS inventory line -->
 	</div>
 	<!-- // Extra LDS inventory line -->
 </div>
