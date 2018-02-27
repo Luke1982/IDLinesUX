@@ -144,6 +144,7 @@
 							this.calcLineGross();
 							this.calcDiscount();
 							this.calcLineNet();
+							this.setField("linetotal", this.fields.extnet.getValue() + this.calcLineTax());
 
 		},
 		validate 	: function() {
@@ -177,6 +178,30 @@
 							disc = this.fields.discount_total.getValue();
 
 						this.setField("extnet", (gross - disc));
+		},
+		calcLineTax: function() {
+						var totalTax = 0;
+						for (var i = 0; i < this.noOfLineTaxes(); i++) {
+							totalTax = totalTax + this.calcIndivTax(i+1);
+						}
+						return Number(totalTax.toFixed(2));
+		},
+		calcIndivTax: function(i) {
+						var taxFieldName = "tax" + i,
+							taxPercent = this.fields[taxFieldName].getValue(),
+							lineNet = this.fields.extnet.getValue(),
+							taxAmount = _getPerc(lineNet, taxPercent);
+
+						this.setField("tax" + i + "-amount", taxAmount);
+						return taxAmount;
+		},
+		noOfLineTaxes : function() {
+						var no = 0;
+						for (field in this.fields) {
+							if (field.match(/["tax"][0-9]{1,2}$/))
+								no++;
+						}
+						return no;
 		},
 		setField 	: function(fieldname, newVal) {
 						this.fields[fieldname].el.value = newVal;
