@@ -49,13 +49,13 @@
 			</div>
 		</div>
 		<!-- Nested column with input fields -->
-		<div class="slds-col slds-size_9-of-12 slds-align-middle">
+		<div class="slds-col slds-size_9-of-12 slds-align-middle slds-p-right_none">
 			<fieldset class="slds-form slds-gutters slds-form_compound">
 				<legend class="slds-assistive-text">Edit inventorydetails record</legend>
 				<div class="slds-form-element__group">
 					<div class="slds-form-element__row">
 						<!-- Product name form element -->
-						<div class="slds-form-element slds-size_2-of-8">
+						<div class="slds-form-element slds-size_3-of-12">
 							<div class="slds-combobox_container slds-has-inline-listbox cbds-product-search">
 								<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-lookup" aria-expanded="false" aria-haspopup="listbox" role="combobox">
 									<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
@@ -67,24 +67,24 @@
 						</div>
 						<!-- // Product name form element -->
 						<!-- Product quantity form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0.5'}
+						{call name=ProductInputFormElement size='1-of-12' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0.5'}
 						<!-- // Product quantity form element -->
 						<!-- Discount type form element -->
 						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
 						{$options[] = ['val' => 'p', 'label' => 'Percentage']}
 						{$options[] = ['val' => 'd', 'label' => 'Direct']}
-						{call name=ProductDropdownFormElement size='1-of-8' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
+						{call name=ProductDropdownFormElement size='2-of-12' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
 						<!-- // Discount type form element -->
 						<!-- Discount number (percent/direct) form element -->
 						{if $data.meta.discount_type == 'p'}{$icon = 'percent'}{else}{$icon = 'euro'}{/if}
-						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon=$icon istemplate=$template type='number' error='Please input a numeric value into this field'}
+						{call name=ProductInputFormElement size='1-of-12' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon=$icon istemplate=$template type='number' error='Please input a numeric value into this field'}
 						<!-- // Discount number (percent/direct) form element -->
 						<!-- Discount amount form element -->
 						{$discount_total = $data.pricing.extgross - $data.pricing.extnet}
-						{call name=ProductInputFormElement size='1-of-8' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template type='currency' readonly=true}
+						{call name=ProductInputFormElement size='2-of-12' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template type='currency' readonly=true}
 						<!-- // Discount amount form element -->
 						<!-- Line total form element -->
-						{call name=ProductInputFormElement size='1-of-8' fieldname='linetotal' value=$data.meta.linetotal iconlib='corebos' icon='euro' istemplate=$template type='currency' readonly=true}
+						{call name=ProductInputFormElement size='2-of-12' fieldname='linetotal' value=$data.meta.linetotal iconlib='corebos' icon='euro' istemplate=$template type='currency' readonly=true}
 						<!-- // Line total form element -->
 					</div>
 				</div>
@@ -106,25 +106,25 @@
 	<!-- Extra LDS inventory line -->
 	<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium {$productline_classprefix}__extra">
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_1-of-4">
+		<div class="slds-col slds-size_4-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
 				</div>
 				<div class="slds-form slds-form_compound slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 						<div class="slds-form-element__row cbds-m-bottom_none">
 						{call name=ProductInputFormElement size='1-of-2' label='Unit cost price' fieldname='cost_price' value=$data.pricing.cost_price iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
 						{call name=ProductInputFormElement size='1-of-2' label='Line cost price' fieldname='cost_gross' value=$data.pricing.cost_gross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
 						</div>
 					</div>
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 						<div class="slds-form-element__row cbds-m-bottom_none">
 						{call name=ProductInputFormElement size='1-of-2' label='Gross line price' fieldname='extgross' value=$data.pricing.extgross iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
 						{call name=ProductInputFormElement size='1-of-2' label='Net line price' fieldname='extnet' value=$data.pricing.extnet iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
 						</div>
 					</div>
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 						<div class="slds-form-element__row cbds-m-bottom_none">
 						{call name=ProductInputFormElement size='1-of-2' label='Unit price' fieldname='unit_price' value=$data.pricing.unit_price iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
 						</div>
@@ -134,19 +134,19 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_1-of-4">
+		<div class="slds-col slds-size_2-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Logistics</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
-					{call name=ProductInputFormElement size='1-of-1' label='Units delivered / received' fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
+					{call name=ProductInputFormElement size='1-of-1' label='Units del. / rec.' fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
 					</div>
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 				</div>
@@ -154,7 +154,7 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_1-of-4">
+		<div class="slds-col slds-size_3-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Taxes</div>
@@ -168,13 +168,13 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_1-of-4">
+		<div class="slds-col slds-size_3-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Comments</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
-					<div class="slds-panel__section slds-border_bottom">
+					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 						<div class="slds-form-element">
 							<div class="slds-form-element__control">
 								<textarea rows="10" class="slds-textarea {$productline_classprefix}--comments" placeholder="Type a comment">{if $data.meta.description != ''}{$data.meta.description}{/if}</textarea>
@@ -225,7 +225,7 @@
  * @param: The symbol, should be the currency symbol for the current user.
 *}
 {function name=ProductTaxPanelSection fieldname='' label='' amount='' percent='' symbol='euro'}
-<div class="slds-panel__section slds-border_bottom">
+<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 	<span class="slds-form-element__label">{$label}</span>
 	<div class="slds-form-element__row cbds-m-bottom_none">
 		<div class="slds-form-element slds-size_5-of-12">
@@ -273,7 +273,7 @@
            maximum, otherwise the field will not validate
 *}
 {function name=ProductInputFormElement size='1-of-1' label='' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
-<div class="slds-form-element slds-size_{$size}">
+<div class="slds-form-element slds-size_{$size} slds-is-static">
 	{if $label != '' && $type != 'checkbox'}<label class="slds-form-element__label">{$label}</label>{/if}
 	<div class="slds-form-element__control{if $icon != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
 		{if $type != 'checkbox'}

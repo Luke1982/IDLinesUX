@@ -61,27 +61,27 @@
 			<!-- // Detail line preheader -->
 			<!-- LDS Detail line header -->
 			<div class="slds-grid slds-border_bottom slds-p-vertical_small cbds-detail-line-header">
-				<div class="slds-col slds-size_1-of-12 slds-p-left_medium">
+				<div class="slds-col slds-size_1-of-12 slds-p-left_small">
 					<div class="slds-text-title_caps slds-text-color_inverse">Image</div>
 				</div>
-				<div class="slds-col slds-gutters_x-large slds-size-9-of-12">
+				<div class="slds-col slds-size-9-of-12">
 					<div class="slds-grid">
 						<div class="slds-col slds-size_2-of-8">
 							<div class="slds-text-title_caps slds-text-color_inverse">Product name</div>
 						</div>
-						<div class="slds-col slds-size_1-of-8">
+						<div class="slds-col slds-size_1-of-8 slds-p-left_x-small">
 							<div class="slds-text-title_caps slds-text-color_inverse">Quantity</div>
 						</div>
 						<div class="slds-col slds-size_1-of-8">
 							<div class="slds-text-title_caps slds-text-color_inverse">Discount type</div>
 						</div>
-						<div class="slds-col slds-size_1-of-8">
+						<div class="slds-col slds-size_1-of-8 slds-p-left_large">
 							<div class="slds-text-title_caps slds-text-color_inverse">Discount</div>
 						</div>
-						<div class="slds-col slds-size_1-of-8">
+						<div class="slds-col slds-size_1-of-8 slds-p-left_large">
 							<div class="slds-text-title_caps slds-text-color_inverse">Discount amount</div>
 						</div>
-						<div class="slds-col slds-size_1-of-8">
+						<div class="slds-col slds-size_2-of-8 slds-p-left_xx-large">
 							<div class="slds-text-title_caps slds-text-color_inverse">Line total</div>
 						</div>
 					</div>

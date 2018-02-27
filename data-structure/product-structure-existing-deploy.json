@@ -81,6 +81,26 @@
 			],
 			"selected" : "Cyan",
 			"label" : "Second Color"
+		},
+		"color3" : {
+			"type" : "dropdown",
+			"available" : [
+				{"label": "Purple", "val" : "purple"},
+				{"label": "Cyan", "val" : "cyan"},
+				{"label": "Magenta", "val" : "magenta"}
+			],
+			"selected" : "Cyan",
+			"label" : "Second Color"
+		},
+		"color4" : {
+			"type" : "dropdown",
+			"available" : [
+				{"label": "Purple", "val" : "purple"},
+				{"label": "Cyan", "val" : "cyan"},
+				{"label": "Magenta", "val" : "magenta"}
+			],
+			"selected" : "Cyan",
+			"label" : "Second Color"
 		}
 	}
 },
