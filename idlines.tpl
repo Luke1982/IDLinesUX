@@ -96,6 +96,13 @@
 					{call name=InventoryLine data=$productline}
 				{/foreach}
 			</div>
+			<style>{strip}
+				{for $foo=1 to 100}
+				.cbds-inventoryline:nth-child({$foo}) {ldelim}
+					z-index: {100-$foo};
+				{rdelim}
+				{/for}{/strip}
+			</style>
 			<!-- LDS Aggregations block -->
 			<article class="slds-card">
 				<div class="slds-card__header slds-grid">

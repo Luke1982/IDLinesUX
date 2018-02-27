@@ -19,6 +19,7 @@
 }
 .cbds-inventoryline {
 	background-color: #ffffff;
+	position: relative;
 }
 .cbds-inventoryline__extra {
 	transform: scaleY(0);
