@@ -191,13 +191,15 @@
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Custom fields</div>
 				</div>
-				<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium">
+				<div class="slds-grid slds-gutters slds-wrap slds-align_absolute-center slds-p-vertical_medium">
 				{foreach from=$data.custom item=customfield key=key name=name}
 					<div class="slds-col slds-size_1-of-4">
 					{if $customfield.type == 'dropdown'}
-						{call name=ProductDropdownFormElement size='1-of-1' fieldname=$key value=$customfield.selected placeholder='' options=$customfield.available istemplate=false label=$customfield.label}
+						{call name=ProductDropdownFormElement fieldname=$key value=$customfield.selected placeholder='' options=$customfield.available istemplate=false label=$customfield.label}
 					{elseif $customfield.type == 'text'}
-						{call name=ProductInputFormElement size='1-of-1' label=$customfield.label fieldname=$key value=$customfield.value icon='none' istemplate=false type='text'}
+						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value icon='none' istemplate=false type='text'}
+					{elseif $customfield.type == 'checkbox'}
+						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value type='checkbox' icon='none'}
 					{/if}
 					</div>
 				{/foreach}
@@ -259,6 +261,8 @@
  * 			or 'none' (prevents icon output)
  * @param: Boolean that indicates if this is a build of the template
  * @param: 'text', 'number' or 'currency'. Sets the data-type attribute
+ *         A special case is 'checkbox', where a checkbox will display.
+ *         Beware in this case that the value should be '1' or '0'
  * @param: The error message that will be displayed when this input
  *         fails the validation that belongs to the type.
  * @param: Readonly, boolean that indicates if the input should be
@@ -270,11 +274,15 @@
 *}
 {function name=ProductInputFormElement size='1-of-1' label='' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
 <div class="slds-form-element slds-size_{$size}">
-	{if $label != ''}<label class="slds-form-element__label">{$label}</label>{/if}
+	{if $label != '' && $type != 'checkbox'}<label class="slds-form-element__label">{$label}</label>{/if}
 	<div class="slds-form-element__control{if $icon != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
-		<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$value}"/>
-		{if $icon != 'none'}
-		{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small' extraclass=$productline_classprefix|cat:'__symbol--'|cat:$fieldname}
+		{if $type != 'checkbox'}
+			<input type="text" data-type="{$type}"{if $min != ''} data-min="{$min}"{/if}{if $max != ''} data-max="{$max}"{/if}{if $readonly} readonly="readonly"{/if}data-error-mess="{$error}" class="slds-input {$productline_inputprefix}--{$fieldname}" value="{$value}"/>
+			{if $icon != 'none'}
+			{call name=LDSIcon lib=$iconlib icon=$icon align='left' size='x-small' extraclass=$productline_classprefix|cat:'__symbol--'|cat:$fieldname}
+			{/if}
+		{else}
+			{call name=LDSCheckbox label=$label value=$value fieldname=$fieldname}
 		{/if}
 	</div>
 	<div class="slds-form-element__help cbds-form-element__help--fixed"></div>
@@ -343,6 +351,25 @@
 		<use xlink:href="lib/LDS/icons/{$lib}-sprite/svg/symbols.svg#{$icon}" xmlns:xlink="http://www.w3.org/1999/xlink" />
 	</svg>
 {if $container}</span>{/if}
+{/function}
+
+{*
+ * Function: LDSCheckbox
+ * ----------------------------------------------------------------------
+ * Outputs a LDS checkbox inside a form element
+ *
+ * @param: The labeltext for the checkbox
+ * @param: The value, either '1' or '0'
+ * @param: the internal fieldname
+*}
+{function name=LDSCheckbox label='' value='' fieldname=''}
+<span class="slds-checkbox">
+	<input id="{$fieldname}" class="{$productline_inputprefix}--{$fieldname}" value="{if value == '1'}on{else}off{/if}" type="checkbox" />
+	<label class="slds-checkbox__label" for="{$fieldname}">
+		<span class="slds-checkbox_faux"></span>
+		<span class="slds-form-element__label">{$label}</span>
+	</label>
+</span>
 {/function}
 
 {*
