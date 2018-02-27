@@ -199,7 +199,7 @@
 					{elseif $customfield.type == 'text'}
 						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value icon='none' istemplate=false type='text'}
 					{elseif $customfield.type == 'checkbox'}
-						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value type='checkbox' icon='none'}
+						{call name=ProductInputFormElement label=$customfield.label fieldname=$data.meta.crmid|cat:'-'|cat:$key value=$customfield.value type='checkbox' icon='none'}
 					{/if}
 					</div>
 				{/foreach}
