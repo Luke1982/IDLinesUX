@@ -44,13 +44,21 @@
 	"custom" : {
 		"color" : {
 			"type" : "dropdown",
-			"available" : ["red", "white", "blue"],
-			"selected" : "blue",
+			"available" : [
+				{"label": "Red", "val" : "red"},
+				{"label": "Blue", "val" : "blue"},
+				{"label": "White", "val" : "white"}
+			],
+			"selected" : "Blue",
 			"label" : "Color"
 		},
 		"size" : {
 			"type" : "dropdown",
-			"available" : ["S", "M", "L"],
+			"available" : [
+				{"label" : "S", "val" : "s"},
+				{"label" : "M", "val" : "m"},
+				{"label" : "L", "val" : "l"}
+			],
 			"selected" : "M",
 			"label" : "Size"
 		},
@@ -58,6 +66,11 @@
 			"type" : "text",
 			"value" : "I am text",
 			"label" : "Tags"
+		},
+		"in_shop" : {
+			"type" : "checkbox",
+			"value" : "1",
+			"label" : "In workshop?"
 		}
 	}
 },
