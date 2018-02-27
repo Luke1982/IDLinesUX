@@ -68,7 +68,7 @@
 
 		getValue : function() {
 			if (this.getType() != "text")
-				return _sanitizeNumberString(this.el.value);
+				return Number(_sanitizeNumberString(this.el.value));
 			else
 				return this.el.value;
 		},
