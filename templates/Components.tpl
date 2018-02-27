@@ -288,9 +288,11 @@
  * @param: The placeholder text
  * @param: Flat array of options that the dropdown should include
  * @param: Boolean that indicates if this is a build of the template
+ * @param: String to optionally provide a label to the field
 *}
-{function name=ProductDropdownFormElement size='1-of-1' fieldname='' value='' placeholder='' options=[] istemplate=false}
+{function name=ProductDropdownFormElement size='1-of-1' fieldname='' value='' placeholder='' options=[] istemplate=false label=''}
 <div class="slds-form-element slds-size_{$size}">
+	{if $label != ''}<label class="slds-form-element__label">{$label}</label>{/if}
 	<div class="slds-form-element__control">
 		<div class="slds-combobox_container">
 			<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
