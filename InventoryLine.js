@@ -24,7 +24,8 @@
 		/* Public properties */
 		this.el 		= el,
 		this.root		= rootObj,
-		this.extraLine	= this.root.utils.getFirstClass(el, this.root.lineClass + "__extra"),
+		this.u 			= rootObj.utils,
+		this.extraLine	= this.u.getFirstClass(el, this.root.lineClass + "__extra"),
 		this.extraTool 	= _getTool(el, "extra"),
 		this.comboBoxes	= [],
 		this.discCombo 	= {},
@@ -43,7 +44,7 @@
 			me.root.inventoryLines.seq++,
 			me.root.inventoryLines[me.id] = me;
 
-			new ProductAutocomplete(me.root.utils.getFirstClass(me.el, "cbds-product-search"), me, rootObj);
+			new ProductAutocomplete(me.u.getFirstClass(me.el, "cbds-product-search"), me, rootObj);
 
 			for (var i = 0; i < comboBoxes.length; i++) {
 				var isDiscountBox = comboBoxes[i].getElementsByTagName("input")[0].classList.contains("cbds-inventoryline__input--discount_type"),
@@ -66,10 +67,10 @@
 		construct(this);
 
 		/* Instance listeners */
-		this.root.utils.on(copyTool, "click", this.copy, this);
-		this.root.utils.on(delTool, "click", this.delete, this);
-		this.root.utils.on(this.extraTool, "click", this.toggleExtra, this);
-		this.root.utils.on(el, "keyup", this.handleInput, this);
+		this.u.on(copyTool, "click", this.copy, this);
+		this.u.on(delTool, "click", this.delete, this);
+		this.u.on(this.extraTool, "click", this.toggleExtra, this);
+		this.u.on(el, "keyup", this.handleInput, this);
 	}
 
 	InventoryLine.prototype = {
@@ -79,13 +80,13 @@
 						var original = this.el,
 							newNode = original.cloneNode(true);
 
-						this.root.utils.insertAfter(original, newNode);
+						this.u.insertAfter(original, newNode);
 						new InventoryLine(newNode, this.root);
 					},
 
 		delete 		: function() {
 						this.el.parentNode.removeChild(this.el);
-						this.root.utils.off(this.extraTool, "click", this.toggleExtra);
+						this.u.off(this.extraTool, "click", this.toggleExtra);
 						delete this.root.inventoryLines[this.id];
 
 						this.el = null;
@@ -125,7 +126,7 @@
 						return this.discCombo.getVal();
 		},
 		setDiscType: function() {
-						var use = this.root.utils.getFirstClass(this.el, "cbds-inventoryline__symbol--discount_amount").getElementsByTagName("use")[0],
+						var use = this.u.getFirstClass(this.el, "cbds-inventoryline__symbol--discount_amount").getElementsByTagName("use")[0],
 							symbol = use.getAttribute("xlink:href").split("#"),
 							newType = this.getDiscType();
 
