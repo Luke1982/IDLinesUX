@@ -178,18 +178,9 @@
 	}
 
 	function _sanitizeNumberString(numberString) {
-		if ( (numberString.match(/\./g) || []).length < 2 && numberString.indexOf(",") == -1) {
-			return numberString;
-		} else {
-			var numberString = numberString.toString(),
-				parts = numberString.split(window.userCurrencySeparator),
-				number = "";
-			for (var i = 0; i < parts.length; i++) {
-				number += parts[i];
-			}
-			number = number.replace(window.userDecimalSeparator, ".");
-			return number;
-		}
+		numberString = numberString.toString(),
+		numberString = numberString.replace(/(,)([0-9]{1,2})$/g, ".$2").replace(/(,)([0-9]{3})/g, "$2").replace(/(\.)([0-9]{3})/g, "$2");
+		return numberString.replace(/ /g, "").replace(/,/g, "");
 	}
 
 	function _isCurrency(val) {
