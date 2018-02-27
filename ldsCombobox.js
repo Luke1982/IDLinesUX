@@ -78,7 +78,7 @@
 			window.setTimeout(function(){
 				_this.el.classList.remove("slds-is-open");
 				_this.active = false;
-			},150);
+			},50);
 		},
 
 		/*
