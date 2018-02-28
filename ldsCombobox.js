@@ -139,8 +139,8 @@
 		 * @param: Keycode INT
 		 */
 		isSpecialKey: function(code) {
-			if (window.keycodeMap[code] !== undefined)
-				return this.specialKeys.indexOf(window.keycodeMap[code]) == -1 ? false : true;
+			if (window.dropdownKeycodeMap[code] !== undefined)
+				return this.specialKeys.indexOf(window.dropdownKeycodeMap[code]) == -1 ? false : true;
 			else
 				return false;
 		},
@@ -250,7 +250,7 @@
 	}
 
 	function _getKey(code) {
-		return window.keycodeMap[code];
+		return window.dropdownKeycodeMap[code];
 	}
 
 	function _findUp(element, searchterm) {
@@ -269,8 +269,8 @@
 	/*
 	 * Globals
 	 */
-	if (!window.hasOwnProperty("keycodeMap")) {
-		window.keycodeMap = {
+	if (!window.hasOwnProperty("dropdownKeycodeMap")) {
+		window.dropdownKeycodeMap = {
 			38: "up",
 			40: "down",
 			37: "left",
