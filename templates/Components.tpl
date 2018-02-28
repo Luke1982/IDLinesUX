@@ -199,7 +199,7 @@
 					{elseif $customfield.type == 'text'}
 						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value icon='none' istemplate=false type='text'}
 					{elseif $customfield.type == 'checkbox'}
-						{call name=ProductInputFormElement label=$customfield.label fieldname=$data.meta.crmid|cat:'-'|cat:$key value=$customfield.value type='checkbox' icon='none'}
+						{call name=ProductInputFormElement label=$customfield.label fieldname=$key value=$customfield.value type='checkbox' icon='none'}
 					{/if}
 					</div>
 				{/foreach}
@@ -364,8 +364,8 @@
 *}
 {function name=LDSCheckbox label='' value='' fieldname=''}
 <span class="slds-checkbox">
-	<input id="{$fieldname}" class="{$productline_inputprefix}--{$fieldname}" value="{if value == '1'}on{else}off{/if}" type="checkbox" />
-	<label class="slds-checkbox__label" for="{$fieldname}">
+	<input id="" class="{$productline_inputprefix}--{$fieldname}" value="{if value == '1'}on{else}off{/if}" type="checkbox" />
+	<label class="slds-checkbox__label" for="">
 		<span class="slds-checkbox_faux"></span>
 		<span class="slds-form-element__label">{$label}</span>
 	</label>

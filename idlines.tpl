@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="InventoryBlock.js"></script>
 	<script type="text/javascript" src="ProductAutocomplete.js"></script>
 	<script type="text/javascript" src="ldsCombobox.js"></script>
+	<script type="text/javascript" src="ldsCheckbox.js"></script>
 </head>
 <body>
 	{include file='./templates/Components.tpl'}

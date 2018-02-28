@@ -45,6 +45,7 @@
 		this.utils.on(window, "click", this.handleClicks, this);
 		this.startSortable();
 		this.startLines();
+		ldsCheckbox.setUnique();
 
 	}
 

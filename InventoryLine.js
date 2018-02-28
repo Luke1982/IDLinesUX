@@ -63,6 +63,8 @@
 				});
 				me.fields[field.getFieldName()] = field;
 			}
+			
+			ldsCheckbox.setUnique();
 		}
 		construct(this);
 
