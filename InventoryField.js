@@ -178,6 +178,7 @@
 	}
 
 	function _sanitizeNumberString(numberString) {
+		numberString = isNaN(numberString) ? numberString : Number(numberString).toFixed(2),
 		numberString = numberString.toString(),
 		numberString = numberString.replace(/(,)([0-9]{1,2})$/g, ".$2").replace(/(,)([0-9]{3})/g, "$2").replace(/(\.)([0-9]{3})/g, "$2");
 		return numberString.replace(/ /g, "").replace(/,/g, "");
