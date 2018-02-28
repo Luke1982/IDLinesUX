@@ -236,6 +236,7 @@
 	// ONLY FOR DEVELOPMENT, REMOVE WHEN USED IN COREBOS
 	window.userDecimalSeparator = ",";
 	window.userCurrencySeparator = ".";
+	window.userNumberOfDecimals = "2";
 
 	/*
 	 * Export
