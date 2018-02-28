@@ -1,5 +1,5 @@
 /****
-	* ldsCombobox
+	* cbNumber
 	* @author: MajorLabel <info@majorlabel.nl>
 	* @license GNU
 	*/
