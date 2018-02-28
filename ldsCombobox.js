@@ -23,11 +23,13 @@
 		/* Public attributes */
 		this.el 	= el,
 		this.input 	= el.getElementsByClassName("slds-combobox__input")[0],
-		this.specialKeys = ["up","down","enter"],
+		this.specialKeys = ["up","down","enter","esc"],
 		this.optionNodes = el.getElementsByClassName("slds-listbox__item"),
 		this.active = false,
-		this.curSel = null,
+		this.curSel = this.input.value,
+		this.fallBackSel = null,
 		this.curSelIndex = this.getCurSelIndex(),
+		this.fallBackIndex = this.getCurSelIndex(),
 		this.onSelect = typeof params.onSelect == "function" ? params.onSelect : false,
 		this._val = this.optionNodes[this.curSelIndex].getAttribute("data-value");
 
@@ -63,6 +65,9 @@
 		 *
 		 */
 		open: function() {
+			this.fallBackIndex = this.getCurSelIndex(),
+			this.fallBackSel = this.curSel;
+
 			this.el.classList.add("slds-is-open");
 			this.setOptionState(this.curSelIndex, "selected");
 			this.active = true;
@@ -89,9 +94,7 @@
 			var isOption = _findUp(e.target, ".slds-listbox__item");
 			if (isOption != undefined) {
 				var index = this.getIndexByNode(isOption);
-				for (var i = 0; i < this.optionNodes.length; i++) {
-					this.setOptionState(i, "unselected");
-				}
+				this.unselectAll();
 				this.setOptionState(index, "selected");
 				this.curSelIndex = index;
 				this.select();
@@ -129,7 +132,25 @@
 				case "enter":
 					this.select();
 					break;
+				case "esc":
+					this.close();
+					this.fallBack();
+					break;
 			}
+		},
+
+		/*
+		 * Method: 'fallBack'
+		 * Used when a dropdown was opened, but cancelled
+		 * Typically by browsing through the list but pressing
+		 * 'esc' without selecting anything
+		 *
+		 */
+		fallBack: function() {
+			this.unselectAll();
+			this.curSelIndex = this.fallBackIndex,
+			this.curSel = this.fallBackSel;
+			this.select();
 		},
 
 		/*
@@ -143,6 +164,17 @@
 				return this.specialKeys.indexOf(window.dropdownKeycodeMap[code]) == -1 ? false : true;
 			else
 				return false;
+		},
+
+		/*
+		 * Method: 'unselectAll'
+		 * Convenience method to unselect all options
+		 *
+		 */
+		unselectAll: function() {
+			for (var i = 0; i < this.optionNodes.length; i++) {
+				this.setOptionState(i, "unselected");
+			}
 		},
 
 		/*
@@ -277,7 +309,8 @@
 			39: "right",
 			27: "esc",
 			9:  "tab",
-			13: "enter"
+			13: "enter",
+			27: "esc"
 		}
 	}
 
