@@ -221,7 +221,8 @@
 		</div>
 		<!-- Detail block -->
 		<!-- Template -->
-		{call name=InventoryLine template=true}
+		{$custom = $testarray[0].custom}
+		{call name=InventoryLine template=true custom=$custom}
 		<!-- // Template -->
 	</div>
 </body>

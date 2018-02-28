@@ -2,7 +2,7 @@
 {$productline_inputprefix = 'cbds-inventoryline__input' scope=global}
 
 {* Define the product line component *}
-{function name=InventoryLine template=false data=[]}
+{function name=InventoryLine template=false data=[] custom=[]}
 {* Set some defaults when this is a template call *}
 {if $template}
 	{$data.meta = []}
@@ -38,6 +38,8 @@
 	{$data.taxes.3.percent = 0}
 	{$data.taxes.3.amount = 0}
 	{$data.taxes.3.taxname = 'Service tax'}
+
+	{$data.custom = $custom}
 {/if}
 <!-- LDS Detail line for inventorydetails -->
 <div class="{$productline_classprefix} slds-p-vertical_small{if $template} {$productline_classprefix}--template{/if}">
