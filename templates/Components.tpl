@@ -195,7 +195,7 @@
 				</div>
 				<div class="slds-grid slds-gutters slds-wrap slds-grid_vertical-align-end slds-p-vertical_medium">
 				{foreach from=$data.custom item=customfield key=key name=name}
-					<div class="slds-col slds-size_1-of-4">
+					<div class="slds-col slds-size_1-of-4 slds-p-bottom_small">
 					{if $customfield.type == 'dropdown'}
 						{call name=ProductDropdownFormElement fieldname=$key value=$customfield.selected placeholder='' options=$customfield.available istemplate=false label=$customfield.label}
 					{elseif $customfield.type == 'text'}
