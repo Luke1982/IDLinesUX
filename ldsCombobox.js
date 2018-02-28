@@ -32,7 +32,7 @@
 		this._val = this.optionNodes[this.curSelIndex].getAttribute("data-value");
 
 		/* Instance listeners */
-		_on(el, "click", this.handleClick, this);
+		_on(el, "mousedown", this.handleClick, this);
 		_on(el, "click", this.trigger, this);
 		_on(this.input, "focus", this.trigger, this);
 		_on(this.input, "keyup", this.trigger, this);
@@ -70,15 +70,12 @@
 
 		/*
 		 * Method: 'close'
-		 * Closes the dropdown. Slight delay to allow selection events to occur
+		 * Closes the dropdown. 
 		 *
 		 */
-		close: function() {
-			var _this = this;
-			window.setTimeout(function(){
-				_this.el.classList.remove("slds-is-open");
-				_this.active = false;
-			},50);
+		close: function(e) {
+			this.el.classList.remove("slds-is-open");
+			this.active = false;
 		},
 
 		/*
@@ -198,7 +195,7 @@
 		/*
 		 * Method: 'select'
 		 * Performs the actual select based on the instance property
-		 * 'curSel'. Also closes the dropdown
+		 * 'curSel'. Also closes the dropdown.
 		 *
 		 */
 		select: function() {
