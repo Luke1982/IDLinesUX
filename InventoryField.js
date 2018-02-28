@@ -146,8 +146,10 @@
 			if (_isNumber(e.key) && _decNum(this._val) < 2) {
 				this._val = this._val + e.key;
 			} else if (this.isSpecialKey(e.keyCode)) {
-				if (keyCodeMap[e.keyCode] == "backspace") {
+				if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") != (this._val.length-1)) {
 					this._val = this._val.substring(0, this._val.length -1);
+				} else if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") == (this._val.length-1)) {
+					this._val = this._val.substring(0, this._val.length -2);
 				} else if ((this._val.match(/\./g) || []).length < 1){
 					this._val = this._val + ".";
 				}
