@@ -72,35 +72,23 @@
 			"value" : "1",
 			"label" : "In workshop?"
 		},
-		"color2" : {
-			"type" : "dropdown",
-			"available" : [
-				{"label": "Purple", "val" : "purple"},
-				{"label": "Cyan", "val" : "cyan"},
-				{"label": "Magenta", "val" : "magenta"}
-			],
-			"selected" : "Cyan",
-			"label" : "Second Color"
+		"ready_to_go" : {
+			"type" : "checkbox",
+			"value" : "0",
+			"label" : "Ready to go?"
 		},
-		"color3" : {
+		"type" : {
 			"type" : "dropdown",
 			"available" : [
-				{"label": "Purple", "val" : "purple"},
-				{"label": "Cyan", "val" : "cyan"},
-				{"label": "Magenta", "val" : "magenta"}
+				{"label": "Car", "val" : "car"},
+				{"label": "Plane", "val" : "plane"},
+				{"label": "Boat", "val" : "boat"},
+				{"label": "Segway", "val" : "segway"},
+				{"label": "Bicycle", "val" : "bike"},
+				{"label": "Harley", "val" : "harley"}
 			],
-			"selected" : "Cyan",
-			"label" : "Second Color"
-		},
-		"color4" : {
-			"type" : "dropdown",
-			"available" : [
-				{"label": "Purple", "val" : "purple"},
-				{"label": "Cyan", "val" : "cyan"},
-				{"label": "Magenta", "val" : "magenta"}
-			],
-			"selected" : "Cyan",
-			"label" : "Second Color"
+			"selected" : "Segway",
+			"label" : "Type"
 		}
 	}
 },
@@ -170,13 +158,31 @@
 		},
 		"tag" : {
 			"type" : "text",
-			"value" : "I am fanta text",
+			"value" : "I am text",
 			"label" : "Tags"
 		},
 		"in_shop" : {
 			"type" : "checkbox",
 			"value" : "1",
 			"label" : "In workshop?"
+		},
+		"ready_to_go" : {
+			"type" : "checkbox",
+			"value" : "0",
+			"label" : "Ready to go?"
+		},
+		"type" : {
+			"type" : "dropdown",
+			"available" : [
+				{"label": "Car", "val" : "car"},
+				{"label": "Plane", "val" : "plane"},
+				{"label": "Boat", "val" : "boat"},
+				{"label": "Segway", "val" : "segway"},
+				{"label": "Bicycle", "val" : "bike"},
+				{"label": "Harley", "val" : "harley"}
+			],
+			"selected" : "Segway",
+			"label" : "Type"
 		}
 	}
 }]
