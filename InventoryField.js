@@ -146,7 +146,7 @@
 			if (_isNumber(e.key) && _decNum(this._val) < 2) {
 				this._val = this._val + e.key;
 			} else if (this.isSpecialKey(e.keyCode)) {
-				if (e.key == "Backspace") {
+				if (keyCodeMap[e.keyCode] == "backspace") {
 					this._val = this._val.substring(0, this._val.length -1);
 				} else if ((this._val.match(/\./g) || []).length < 1){
 					this._val = this._val + ".";
@@ -164,8 +164,17 @@
 			return _makeCurr(this._val, 2, this.decSep, this.curSep);
 		},
 
-		isSpecialKey : function(code) {
-			return keyCodeMap[code] == undefined ? false : true;
+		/*
+		 * Method: 'isSpecialKey'
+		 * Tests if a keycode is in the list of special keys for the class
+		 *
+		 * @param: Keycode INT
+		 */
+		isSpecialKey: function(code) {
+			if (keyCodeMap[code] !== undefined)
+				return this.specialKeys.indexOf(keyCodeMap[code]) == -1 ? false : true;
+			else
+				return false;
 		}
 	}
 
@@ -173,7 +182,8 @@
 	 * Factory tools
 	 */
 	function _isNumber(val) {
-		val = _sanitizeNumberString(val);
+		val = _sanitizeNumberString(val),
+		val = val == "" ? "This was an empty string" : val;
 		return isNaN(val) ? false : true;
 	}
 
