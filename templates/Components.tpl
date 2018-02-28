@@ -273,7 +273,7 @@
            maximum, otherwise the field will not validate
 *}
 {function name=ProductInputFormElement size='1-of-1' label='' fieldname='' value='' iconlib='utility' icon='' istemplate=false type='text' error='' readonly=false min='' max=''}
-<div class="slds-form-element slds-size_{$size} slds-is-static">
+<div class="slds-form-element slds-size_{$size}">
 	{if $label != '' && $type != 'checkbox'}<label class="slds-form-element__label">{$label}</label>{/if}
 	<div class="slds-form-element__control{if $icon != 'none'} slds-input-has-icon slds-input-has-icon_left{/if}">
 		{if $type != 'checkbox'}
