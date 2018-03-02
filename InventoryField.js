@@ -67,10 +67,11 @@
 		},
 
 		getValue : function() {
-			if (this.getType() != "text")
-				return Number(_sanitizeNumberString(this.el.value));
-			else
+			if (this.getType() != "text") {
+				return cbNumber.isCur(this.el.value) ? cbNumber.curToNum(this.el.value) : this.el.value;
+			} else {
 				return this.el.value;
+			}
 		},
 
 		validate : function() {
