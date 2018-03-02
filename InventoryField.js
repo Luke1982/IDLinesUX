@@ -169,15 +169,13 @@
 
 		/*
 		 * Method: 'isSpecialKey'
-		 * Tests if a keycode is in the list of special keys for the class
+		 * Tests if a key is in the list of special keys for the class.
+		 * Takes either a keyname from the keycodeMap or a keyCode
 		 *
-		 * @param: Keyname
+		 * @param: Keyname OR keyCode
 		 */
 		isSpecialKey: function(key) {
-			if (keyCodeMap[code] !== undefined)
-				return this.specialKeys.indexOf(key) == -1 ? false : true;
-			else
-				return false;
+			return this.specialKeys.indexOf(key) != -1 || this.specialKeys.indexOf(keyCodeMap[key]) != -1 ? true : false;
 		}
 	}
 
