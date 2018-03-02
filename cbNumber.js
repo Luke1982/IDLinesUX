@@ -108,6 +108,30 @@
 		return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
 	}
 
+	/*
+	 * isFloat
+	 *--------------------------
+	 * Takes a number (or string formatted as a number)
+	 * and returns a boolean indicating whether it's a
+	 * floating point no. or not
+	 *
+	 */
+	cbNumber.isFloat = function(num) {
+		return this.decimalNum(num) > 0 ? true : false;
+	}
+
+	/*
+	 * isInt
+	 *--------------------------
+	 * Takes a number (or string formatted as a number)
+	 * and returns a boolean indicating whether it's a
+	 * integer or not
+	 *
+	 */
+	cbNumber.isInt = function(num) {
+		return this.decimalNum(num) === 0 && !isNaN(num) ? true : false;
+	}
+
 	cbNumber.prototype = {
 		constructor: cbNumber,
 	}
