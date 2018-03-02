@@ -158,11 +158,11 @@
 							this.curr.remove(1);
 						break;
 					case ".":
-						if (this.curr.dotNum() < 1)
+						if (this.curr.charNum(".") < 1)
 							this.curr.add(".");
 						break;
 					case ",":
-						if (this.curr.dotNum() < 1)
+						if (this.curr.charNum(".") < 1)
 							this.curr.add(".");
 						break;
 				}
@@ -177,7 +177,7 @@
 		},
 
 		getCurConvertedVal: function() {
-			return _makeCurr(this._val, 2, this.decSep, this.curSep);
+			return cbNumber.numToCurr(this._val, 2, this.decSep, this.curSep);
 		},
 
 		curr : function(parent) {
@@ -190,15 +190,16 @@
 			var remove = function(n) {
 				parent._val = parent._val.substring(0, parent._val.length - n);
 			}
-			var dotNum = function() {
-				return (parent._val.match(/\./g) || []).length
+			var charNum = function(c) {
+				var r = c == "." || c == "," ? new RegExp("\\" + c, "g") : new RegExp(c, "g");
+				return (parent._val.match(r) || []).length
 			}
 
 			return {
 				"isLast" : isLast,
 				"add" : add,
 				"remove" : remove,
-				"dotNum" : dotNum
+				"charNum" : charNum
 			};
 		},
 
