@@ -143,12 +143,13 @@
 		},
 
 		handleCurKeyUp : function(e) {
-			if (_isNumber(e.key) && _decNum(this._val) < 2) {
+			var key = keyCodeMap[e.keyCode];
+			if (cbNumber.isInt(key) && cbNumber.decimalNum(this._val) < 2) {
 				this._val = this._val + e.key;
 			} else if (this.isSpecialKey(e.keyCode)) {
-				if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") != (this._val.length-1)) {
+				if (keyCodeMap[e.keyCode] == "Backspace" && this._val.indexOf(".") != (this._val.length-1)) {
 					this._val = this._val.substring(0, this._val.length -1);
-				} else if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") == (this._val.length-1)) {
+				} else if (keyCodeMap[e.keyCode] == "Backspace" && this._val.indexOf(".") == (this._val.length-1)) {
 					this._val = this._val.substring(0, this._val.length -2);
 				} else if ((this._val.match(/\./g) || []).length < 1){
 					this._val = this._val + ".";
