@@ -38,7 +38,8 @@
 		this.specialKeys= [",", ".", "Backspace"],
 		this.decimals 	= params.decimals || defaults.decimals,
 		this.decSep 	= params.decSep || defaults.decSep,
-		this.curSep 	= params.curSep || defaults.curSep;
+		this.curSep 	= params.curSep || defaults.curSep,
+		this.curr	= this.curr(this);
 
 		this.u.on(this.el, "jsInput", this.format, this);
 	}
@@ -148,9 +149,11 @@
 			if (cbNumber.isInt(key) && cbNumber.decimalNum(this._val) < 2) {
 				this._val = this._val + e.key;
 			} else if (this.isSpecialKey(e.keyCode)) {
-				if (key == "Backspace" && this._val.indexOf(".") != (this._val.length-1)) {
+				if (key == "Backspace" && !this.curr.isLast(".")) {
+					// Decimals left
 					this._val = this._val.substring(0, this._val.length -1);
-				} else if (key == "Backspace" && this._val.indexOf(".") == (this._val.length-1)) {
+				} else if (key == "Backspace" && this.curr.isLast(".")) {
+					// No decimals left, remove the dot as well
 					this._val = this._val.substring(0, this._val.length -2);
 				} else if ((this._val.match(/\./g) || []).length < 1){
 					this._val = this._val + ".";
@@ -166,6 +169,16 @@
 
 		getCurConvertedVal: function() {
 			return _makeCurr(this._val, 2, this.decSep, this.curSep);
+		},
+
+		curr : function(parent) {
+			var isLast = function(digit) {
+				return parent._val.indexOf(digit) == (parent._val.length-1) ? true : false;
+			}
+
+			return {
+				"isLast" : isLast
+			};
 		},
 
 		/*
