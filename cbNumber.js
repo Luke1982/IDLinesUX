@@ -71,7 +71,7 @@
 	 * @return: Bool
 	 */
 	cbNumber.isCur = function(cur) {
-		var r = new RegExp("^[0-9]{1,3}(\\" + this.curSep + "[0-9]{3})+(\\" + this.decSep + "[0-9]{" + this.decNum + "})?$", "");
+		var r = new RegExp("^[0-9]{1,3}(\\" + this.curSep + "[0-9]{3})*(\\" + this.decSep + "[0-9]{" + this.decNum + "})?$", "");
 		return (cur.match(r) || []).length == 0 ? false : true;
 	}
 
