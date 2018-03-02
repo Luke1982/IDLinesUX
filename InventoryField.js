@@ -171,11 +171,11 @@
 		 * Method: 'isSpecialKey'
 		 * Tests if a keycode is in the list of special keys for the class
 		 *
-		 * @param: Keycode INT
+		 * @param: Keyname
 		 */
-		isSpecialKey: function(code) {
+		isSpecialKey: function(key) {
 			if (keyCodeMap[code] !== undefined)
-				return this.specialKeys.indexOf(keyCodeMap[code]) == -1 ? false : true;
+				return this.specialKeys.indexOf(key) == -1 ? false : true;
 			else
 				return false;
 		}
