@@ -35,7 +35,7 @@
 		this.errorMess  = this.el.hasAttribute("data-error-mess") ? this.el.getAttribute("data-error-mess") : "",
 		this.type 		= this.getType(),
 		this._val 		= _sanitizeNumberString(this.el.value),
-		this.specialKeys= [",", ".", "Backspace"],
+		this.specialKeys= [",", ".", "Backspace", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
 		this.decimals 	= params.decimals || defaults.decimals,
 		this.decSep 	= params.decSep || defaults.decSep,
 		this.curSep 	= params.curSep || defaults.curSep,
@@ -146,19 +146,28 @@
 
 		handleCurKeyUp : function(e) {
 			var key = keyCodeMap[e.keyCode];
-			if (cbNumber.isInt(key) && cbNumber.decimalNum(this._val) < 2) {
-				this._val = this._val + e.key;
-			} else if (this.isSpecialKey(e.keyCode)) {
-				if (key == "Backspace" && !this.curr.isLast(".")) {
-					// Decimals left
-					this._val = this._val.substring(0, this._val.length -1);
-				} else if (key == "Backspace" && this.curr.isLast(".")) {
-					// No decimals left, remove the dot as well
-					this._val = this._val.substring(0, this._val.length -2);
-				} else if ((this._val.match(/\./g) || []).length < 1){
-					this._val = this._val + ".";
+
+			if (this.isSpecialKey(key) && cbNumber.isInt(key)) {
+				this.curr.add(key);
+			} else if (this.isSpecialKey(key) && !cbNumber.isInt(key)) {
+				switch (key) {
+					case "Backspace":
+						if (this.curr.isLast("."))
+							this.curr.remove(2);
+						else
+							this.curr.remove(1);
+						break;
+					case ".":
+						if (this.curr.dotNum() < 1)
+							this.curr.add(".");
+						break;
+					case ",":
+						if (this.curr.dotNum() < 1)
+							this.curr.add(".");
+						break;
 				}
 			}
+
 			this.el.value = this.getCurConvertedVal();
 		},
 
@@ -175,9 +184,21 @@
 			var isLast = function(digit) {
 				return parent._val.indexOf(digit) == (parent._val.length-1) ? true : false;
 			}
+			var add = function(key) {
+				parent._val = cbNumber.decimalNum(parent._val) < 2 ? parent._val + key : parent._val;
+			}
+			var remove = function(n) {
+				parent._val = parent._val.substring(0, parent._val.length - n);
+			}
+			var dotNum = function() {
+				return (parent._val.match(/\./g) || []).length
+			}
 
 			return {
-				"isLast" : isLast
+				"isLast" : isLast,
+				"add" : add,
+				"remove" : remove,
+				"dotNum" : dotNum
 			};
 		},
 
