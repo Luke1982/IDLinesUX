@@ -69,7 +69,7 @@
 
 		getValue : function() {
 			if (this.getType() != "text") {
-				return cbNumber.isCur(this.el.value) ? cbNumber.curToNum(this.el.value) : this.el.value;
+				return cbNumber.isCurr(this.el.value) ? cbNumber.curToNum(this.el.value) : this.el.value;
 			} else {
 				return this.el.value;
 			}
@@ -83,7 +83,7 @@
 					return this.valNumber();
 					break;
 				case "currency":
-					return _isCurrency(this._val);
+					return cbNumber.isCurr(this.el.value);
 					break;
 			}
 			return true;
@@ -146,7 +146,6 @@
 
 		handleCurKeyUp : function(e) {
 			var key = keyCodeMap[e.keyCode];
-
 			if (this.isSpecialKey(key) && cbNumber.isInt(key)) {
 				this.curr.add(key);
 			} else if (this.isSpecialKey(key) && !cbNumber.isInt(key)) {
@@ -167,17 +166,13 @@
 						break;
 				}
 			}
-
-			this.el.value = this.getCurConvertedVal();
+			this._val = this._val.replace(/^0*/, "");
+			this.el.value = cbNumber.numToCurr(this._val || "0.00");
 		},
 
 		handleCurJsInput : function() {
 			this._val = this.el.value;
-			this.el.value = this.getCurConvertedVal();
-		},
-
-		getCurConvertedVal: function() {
-			return cbNumber.numToCurr(this._val);
+			this.el.value = cbNumber.numToCurr(this._val);
 		},
 
 		curr : function(parent) {
@@ -194,21 +189,12 @@
 				var r = c == "." || c == "," ? new RegExp("\\" + c, "g") : new RegExp(c, "g");
 				return (parent._val.match(r) || []).length
 			}
-			var selStart = function() {
-				var selSt = parent.el.selectionStart - 1,
-					precStr = parent.el.value.substr(0, selSt),
-					r = new RegExp("\\" + parent.curSep, "g"),
-					precCurSeps = (precStr.match(r) || []).length;
-
-				return selSt - precCurSeps;
-			}
 
 			return {
 				"isLast" : isLast,
 				"add" : add,
 				"remove" : remove,
-				"charNum" : charNum,
-				"selStart" : selStart
+				"charNum" : charNum
 			};
 		},
 
