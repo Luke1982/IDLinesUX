@@ -177,7 +177,7 @@
 		},
 
 		getCurConvertedVal: function() {
-			return cbNumber.numToCurr(this._val, 2, this.decSep, this.curSep);
+			return cbNumber.numToCurr(this._val);
 		},
 
 		curr : function(parent) {
@@ -194,12 +194,21 @@
 				var r = c == "." || c == "," ? new RegExp("\\" + c, "g") : new RegExp(c, "g");
 				return (parent._val.match(r) || []).length
 			}
+			var selStart = function() {
+				var selSt = parent.el.selectionStart - 1,
+					precStr = parent.el.value.substr(0, selSt),
+					r = new RegExp("\\" + parent.curSep, "g"),
+					precCurSeps = (precStr.match(r) || []).length;
+
+				return selSt - precCurSeps;
+			}
 
 			return {
 				"isLast" : isLast,
 				"add" : add,
 				"remove" : remove,
-				"charNum" : charNum
+				"charNum" : charNum,
+				"selStart" : selStart
 			};
 		},
 
