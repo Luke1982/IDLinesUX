@@ -84,6 +84,7 @@
 
 						this.u.insertAfter(original, newNode);
 						new InventoryLine(newNode, this.root);
+						this.root.updateCount();
 					},
 
 		delete 		: function() {
@@ -92,6 +93,7 @@
 						delete this.root.inventoryLines[this.id];
 
 						this.el = null;
+						this.root.updateCount();
 					},
 
 		toggleExtra : function() {

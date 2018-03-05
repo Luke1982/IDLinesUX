@@ -39,6 +39,7 @@
 		this.linesContainer = el.getElementsByClassName(this.linesContClass)[0],
 		this.inventoryLines = {},
 		this.inventoryLines.seq = 0;
+		this.countCont = this.utils.getFirstClass(el, "cbds-inventoryaggr--linecount");
 
 
 		// Constructor function
@@ -86,6 +87,7 @@
 			for (var i = 0; i < lines.length; i++) {
 				var line = new InventoryLine(lines[i], this);
 			}
+			this.updateCount();
 		},
 
 		expandAllLines : function() {
@@ -110,6 +112,7 @@
 				if (prop != "seq")
 					this.inventoryLines[prop].delete();
 			}
+			this.updateCount();
 		},
 
 		insertNew : function() {
@@ -119,6 +122,11 @@
 			newNode.classList.remove(this.lineClass + "--template");
 			container.appendChild(newNode);
 			new InventoryLine(newNode, this);
+			this.updateCount();
+		},
+
+		updateCount : function() {
+			this.countCont.innerHTML = this.el.getElementsByClassName(this.lineClass).length;
 		},
 
 		/*

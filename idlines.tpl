@@ -119,7 +119,7 @@
 						<div class="slds-media__body">
 							<h2>
 								<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Total number of lines">
-									<span class="slds-text-heading_small">Lines (<span class="cbds-inventoryaggr--lineno">3</span>)</span>
+									<span class="slds-text-heading_small">Lines (<span class="cbds-inventoryaggr--linecount">3</span>)</span>
 								</a>
 							</h2>
 						</div>
