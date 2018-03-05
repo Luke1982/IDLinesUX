@@ -175,7 +175,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total discount">Total discount</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" class="slds-input cbds-inventoryaggr__input--totaldiscount" value="5.000,98" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--totaldiscount" value="5.000,98" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
