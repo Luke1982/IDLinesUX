@@ -82,13 +82,13 @@
 				case "currency":
 					try {
 						if (!cbNumber.isFloat(value) || !cbNumber.isInt(value))
-							throw value + "is not a correct number";
+							throw value + " is not a correct number";
 					}
 					catch(err) {
 						console.log(err);
 					}
 					this._val = value;
-					this.el.value = cbNumber.numtoCurr(value);
+					this.el.value = cbNumber.numToCurr(value);
 					break;
 			}
 		},
