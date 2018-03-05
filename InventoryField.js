@@ -82,7 +82,7 @@
 				case "currency":
 					try {
 						if (!cbNumber.isFloat(value) && !cbNumber.isInt(value))
-							throw value + " is not a correct number";
+							throw "'" + value + "' is not a correct number";
 						else
 							this._val = value;
 							this.el.value = cbNumber.numToCurr(value);

@@ -46,10 +46,19 @@
 		this.countCont = this.utils.getFirstClass(el, "cbds-inventoryaggr--linecount");
 
 		// Aggregation fields
-		this.grossField = this.getField("subtotal"),
-		this.totalDiscField = this.getField("totaldiscount"),
-		this.taxTotalField = this.getField("taxtotal"),
-		this.totalField = this.getField("total");
+		this.fields = {};
+		var inputs = el.getElementsByTagName("input"),
+			r = new RegExp(this.aggrInputPrefix + "--[\\w]*", "g");
+		for (var i = 0; i < inputs.length; i++) {
+			if ((inputs[i].className.match(r) || []).length != 0) {
+				var field = new InventoryField(inputs[i], this, {
+					"decimals" : 2,
+					"decSep" : window.userDecimalSeparator,
+					"curSep" : window.userCurrencySeparator
+				});
+				this.fields[field.getFieldName(this.aggrInputPrefix)] = field;
+			}
+		}
 
 		// Constructor function
 		this.utils.on(window, "click", this.handleClicks, this);
@@ -138,14 +147,6 @@
 			this.countCont.innerHTML = this.el.getElementsByClassName(this.lineClass).length;
 		},
 
-		getField : function(name) {
-			return this.utils.getFirstClass(this.el, this.aggrInputPrefix + "--" + name);
-		},
-
-		updateField : function(name, value) {
-			this.getField(name).value = value;
-		},
-
 		updateAggr : function() {
 			this.calcGross();
 		},
@@ -155,7 +156,7 @@
 			for (line in this.inventoryLines) {
 				sum = sum + (this.inventoryLines[line].fields != undefined ? Number(this.inventoryLines[line].fields.extgross._val) : 0);
 			}
-			this.updateField("subtotal", cbNumber.numToCurr(sum));
+			this.fields.subtotal.update(sum);
 		},
 
 		/*
