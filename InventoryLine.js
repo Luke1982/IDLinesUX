@@ -151,6 +151,7 @@
 							this.calcDiscount();
 							this.calcLineNet();
 							this.setField("linetotal", this.fields.extnet.getValue() + this.calcLineTax());
+							this.root.updateAggr();
 
 		},
 		validate 	: function() {

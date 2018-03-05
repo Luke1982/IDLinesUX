@@ -138,8 +138,24 @@
 			this.countCont.innerHTML = this.el.getElementsByClassName(this.lineClass).length;
 		},
 
-		getField(name) {
+		getField : function(name) {
 			return this.utils.getFirstClass(this.el, this.aggrInputPrefix + "--" + name);
+		},
+
+		updateField : function(name, value) {
+			this.getField(name).value = value;
+		},
+
+		updateAggr : function() {
+			this.calcGross();
+		},
+
+		calcGross : function() {
+			var sum = 0;
+			for (line in this.inventoryLines) {
+				sum = sum + (this.inventoryLines[line].fields != undefined ? Number(this.inventoryLines[line].fields.extgross._val) : 0);
+			}
+			this.updateField("subtotal", cbNumber.numToCurr(sum));
 		},
 
 		/*
