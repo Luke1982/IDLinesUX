@@ -35,10 +35,11 @@
 		this.errorMess  = this.el.hasAttribute("data-error-mess") ? this.el.getAttribute("data-error-mess") : "",
 		this.type 		= this.getType(),
 		this._val 		= _sanitizeNumberString(this.el.value),
-		this.specialKeys= [",", ".", "backspace"],
+		this.specialKeys= [",", ".", "Backspace", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
 		this.decimals 	= params.decimals || defaults.decimals,
 		this.decSep 	= params.decSep || defaults.decSep,
-		this.curSep 	= params.curSep || defaults.curSep;
+		this.curSep 	= params.curSep || defaults.curSep,
+		this.curr	= this.curr(this);
 
 		this.u.on(this.el, "jsInput", this.format, this);
 	}
@@ -67,10 +68,11 @@
 		},
 
 		getValue : function() {
-			if (this.getType() != "text")
-				return Number(_sanitizeNumberString(this.el.value));
-			else
+			if (this.getType() != "text") {
+				return cbNumber.isCurr(this.el.value) ? cbNumber.curToNum(this.el.value) : this.el.value;
+			} else {
 				return this.el.value;
+			}
 		},
 
 		validate : function() {
@@ -81,7 +83,7 @@
 					return this.valNumber();
 					break;
 				case "currency":
-					return _isCurrency(this._val);
+					return cbNumber.isCurr(this.el.value);
 					break;
 			}
 			return true;
@@ -143,40 +145,68 @@
 		},
 
 		handleCurKeyUp : function(e) {
-			if (_isNumber(e.key) && _decNum(this._val) < 2) {
-				this._val = this._val + e.key;
-			} else if (this.isSpecialKey(e.keyCode)) {
-				if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") != (this._val.length-1)) {
-					this._val = this._val.substring(0, this._val.length -1);
-				} else if (keyCodeMap[e.keyCode] == "backspace" && this._val.indexOf(".") == (this._val.length-1)) {
-					this._val = this._val.substring(0, this._val.length -2);
-				} else if ((this._val.match(/\./g) || []).length < 1){
-					this._val = this._val + ".";
+			var key = keyCodeMap[e.keyCode];
+			if (this.isSpecialKey(key) && cbNumber.isInt(key)) {
+				this.curr.add(key);
+			} else if (this.isSpecialKey(key) && !cbNumber.isInt(key)) {
+				switch (key) {
+					case "Backspace":
+						if (this.curr.isLast("."))
+							this.curr.remove(2);
+						else
+							this.curr.remove(1);
+						break;
+					case ".":
+						if (this.curr.charNum(".") < 1)
+							this.curr.add(".");
+						break;
+					case ",":
+						if (this.curr.charNum(".") < 1)
+							this.curr.add(".");
+						break;
 				}
 			}
-			this.el.value = this.getCurConvertedVal();
+			this._val = this._val.replace(/^0*/, "");
+			this.el.value = cbNumber.numToCurr(this._val || "0.00");
 		},
 
 		handleCurJsInput : function() {
 			this._val = this.el.value;
-			this.el.value = this.getCurConvertedVal();
+			this.el.value = cbNumber.numToCurr(this._val);
 		},
 
-		getCurConvertedVal: function() {
-			return _makeCurr(this._val, 2, this.decSep, this.curSep);
+		curr : function(parent) {
+			var isLast = function(digit) {
+				return parent._val.indexOf(digit) == (parent._val.length-1) ? true : false;
+			}
+			var add = function(key) {
+				parent._val = cbNumber.decimalNum(parent._val) < 2 ? parent._val + key : parent._val;
+			}
+			var remove = function(n) {
+				parent._val = parent._val.substring(0, parent._val.length - n);
+			}
+			var charNum = function(c) {
+				var r = c == "." || c == "," ? new RegExp("\\" + c, "g") : new RegExp(c, "g");
+				return (parent._val.match(r) || []).length
+			}
+
+			return {
+				"isLast" : isLast,
+				"add" : add,
+				"remove" : remove,
+				"charNum" : charNum
+			};
 		},
 
 		/*
 		 * Method: 'isSpecialKey'
-		 * Tests if a keycode is in the list of special keys for the class
+		 * Tests if a key is in the list of special keys for the class.
+		 * Takes either a keyname from the keycodeMap or a keyCode
 		 *
-		 * @param: Keycode INT
+		 * @param: Keyname OR keyCode
 		 */
-		isSpecialKey: function(code) {
-			if (keyCodeMap[code] !== undefined)
-				return this.specialKeys.indexOf(keyCodeMap[code]) == -1 ? false : true;
-			else
-				return false;
+		isSpecialKey: function(key) {
+			return this.specialKeys.indexOf(key) != -1 || this.specialKeys.indexOf(keyCodeMap[key]) != -1 ? true : false;
 		}
 	}
 
@@ -223,12 +253,7 @@
 		return Math.max(0, (match[1] ? match[1].length : 0) - (match[2] ? +match[2] : 0));
 	}
 
-	var keyCodeMap = {
-		8 : "backspace",
-		188 : ",",
-		190 : ".",
-		110 : "."
-	}
+	var keyCodeMap = {8:"Backspace",9:"Tab",13:"Enter",16:"Shift",17:"Ctrl",18:"Alt",19:"Pause/Break",20:"Caps Lock",27:"Esc",32:"Space",33:"Page Up",34:"Page Down",35:"End",36:"Home",37:"Left",38:"Up",39:"Right",40:"Down",45:"Insert",46:"Delete",48:"0",49:"1",50:"2",51:"3",52:"4",53:"5",54:"6",55:"7",56:"8",57:"9",65:"A",66:"B",67:"C",68:"D",69:"E",70:"F",71:"G",72:"H",73:"I",74:"J",75:"K",76:"L",77:"M",78:"N",79:"O",80:"P",81:"Q",82:"R",83:"S",84:"T",85:"U",86:"V",87:"W",88:"X",89:"Y",90:"Z",91:"Windows",93:"Right Click",96:"Numpad 0",97:"Numpad 1",98:"Numpad 2",99:"Numpad 3",100:"Numpad 4",101:"Numpad 5",102:"Numpad 6",103:"Numpad 7",104:"Numpad 8",105:"Numpad 9",106:"Numpad *",107:"Numpad +",109:"Numpad -",110:"Numpad .",111:"Numpad /",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"Num Lock",145:"Scroll Lock",182:"My Computer",183:"My Calculator",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'"};
 
 	/*
 	 * Export

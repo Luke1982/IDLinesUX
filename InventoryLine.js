@@ -109,13 +109,14 @@
 						this.extraTool.children[0].classList.remove("cbds-exp-coll-icon--expanded");
 					},
 		handleInput	: function(e) {
-						var input = this.getInputObj(e.target),
-							validated = input.validate();
+						var input = this.getInputObj(e.target);
+						input.format(e);
+						var validated = input.validate();
 
-						if (validated)
-							input.format(e);
-
-						this.calcLine();
+						if (!validated)
+							input.setState("error");
+						else
+							this.calcLine();
 		},
 		getInputObj : function(node) {
 						for (field in this.fields) {

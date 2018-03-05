@@ -70,7 +70,7 @@
 	 *
 	 * @return: Bool
 	 */
-	cbNumber.isCur = function(cur) {
+	cbNumber.isCurr = function(cur) {
 		var r = new RegExp("^\\d{1,3}(\\" + this.curSep + "\\d{3})*(\\" + this.decSep + "\\d{" + this.decNum + "})?$", "");
 		return (cur.match(r) || []).length == 0 ? false : true;
 	}
