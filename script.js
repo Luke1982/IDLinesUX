@@ -4,6 +4,8 @@ window.addEventListener("load", function(){
 			"linesContClass" : "cbds-inventorylines",
 			"lineClass" : "cbds-inventoryline",
 			"linePrefix" : "cbds-inventoryline",
-			"inputPrefix" : "cbds-inventoryline__input"
+			"inputPrefix" : "cbds-inventoryline__input",
+			"aggrPrefix" : "cbds-inventoryaggr",
+			"aggrInputPrefix" : "cbds-inventoryaggr__input"
 	});
 });

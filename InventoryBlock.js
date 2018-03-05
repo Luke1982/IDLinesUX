@@ -25,7 +25,9 @@
 			"linesContClass" : "cbds-inventorylines",
 			"lineClass" : "cbds-inventoryline",
 			"linePrefix" : "cbds-inventoryline",
-			"inputPrefix" : "cbds-inventoryline__input"
+			"inputPrefix" : "cbds-inventoryline__input",
+			"aggrPrefix" : "cbds-inventoryaggr",
+			"aggrInputPrefix" : "cbds-inventoryaggr__input"
 		};
 
 		params = params == undefined ? defaults : params;
@@ -35,12 +37,19 @@
 		this.lineClass = params.lineClass,
 		this.linePrefix = params.linePrefix,
 		this.inputPrefix = params.inputPrefix,
+		this.aggrPrefix = params.aggrPrefix,
+		this.aggrInputPrefix = params.aggrInputPrefix,
 		this.el = el,
 		this.linesContainer = el.getElementsByClassName(this.linesContClass)[0],
 		this.inventoryLines = {},
-		this.inventoryLines.seq = 0;
+		this.inventoryLines.seq = 0,
 		this.countCont = this.utils.getFirstClass(el, "cbds-inventoryaggr--linecount");
 
+		// Aggregation fields
+		this.grossField = this.getField("subtotal"),
+		this.totalDiscField = this.getField("totaldiscount"),
+		this.taxTotalField = this.getField("taxtotal"),
+		this.totalField = this.getField("total");
 
 		// Constructor function
 		this.utils.on(window, "click", this.handleClicks, this);
@@ -127,6 +136,10 @@
 
 		updateCount : function() {
 			this.countCont.innerHTML = this.el.getElementsByClassName(this.lineClass).length;
+		},
+
+		getField(name) {
+			return this.utils.getFirstClass(this.el, this.aggrInputPrefix + "--" + name);
 		},
 
 		/*
