@@ -76,6 +76,23 @@
 			}
 		},
 
+		update : function(value) {
+			var type = this.getType();
+			switch (type) {
+				case "currency":
+					try {
+						if (!cbNumber.isFloat(value) || !cbNumber.isInt(value))
+							throw value + "is not a correct number";
+					}
+					catch(err) {
+						console.log(err);
+					}
+					this._val = value;
+					this.el.value = cbNumber.numtoCurr(value);
+					break;
+			}
+		},
+
 		validate : function() {
 			if (this.isReadOnly()) return true;
 			var type = this.getType();
