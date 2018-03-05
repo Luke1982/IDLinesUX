@@ -51,10 +51,11 @@
 			return this.el.hasAttribute("data-type") ? this.el.getAttribute("data-type") : false;
 		},
 
-		getFieldName : function() {
-			var classes = this.el.classList;
+		getFieldName : function(prefix) {
+			var classes = this.el.classList,
+				prefix = prefix || this.root.inputPrefix;
 			for (var i = 0; i < classes.length; i++) {
-				if (classes[i].indexOf(this.root.inputPrefix) > -1)
+				if (classes[i].indexOf(prefix) > -1)
 					return classes[i].split("--")[1];
 			}
 		},
