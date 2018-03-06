@@ -162,7 +162,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="slds-card__body">
+				<div class="slds-card__body cbds-inventoryaggr">
 					<ul class="slds-card__body_inner slds-grid slds-wrap slds-grid_pull-padded">
 						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-4">
 							<article class="slds-tile slds-tile_board">
