@@ -85,6 +85,7 @@
 						this.u.insertAfter(original, newNode);
 						new InventoryLine(newNode, this.root);
 						this.root.updateCount();
+						this.root.updateAggr();
 					},
 
 		delete 		: function() {
@@ -94,6 +95,7 @@
 
 						this.el = null;
 						this.root.updateCount();
+						this.root.updateAggr();
 					},
 
 		toggleExtra : function() {
