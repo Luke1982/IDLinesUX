@@ -66,11 +66,13 @@
 	 *--------------------------
 	 * Tests if a string is formatted to the current
 	 * user's currency settings. Respects the fact that
-	 * decimals are optional
+	 * decimals are optional. Also respects negative
+	 * currencies.
 	 *
 	 * @return: Bool
 	 */
 	cbNumber.isCurr = function(cur) {
+		cur = cur.replace(/^-/, "");
 		var r = new RegExp("^\\d{1,3}(\\" + this.curSep + "\\d{3})*(\\" + this.decSep + "\\d{" + this.decNum + "})?$", "");
 		return (cur.match(r) || []).length == 0 ? false : true;
 	}
