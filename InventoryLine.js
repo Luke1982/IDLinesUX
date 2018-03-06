@@ -147,13 +147,14 @@
 		calcLine 	: function() {
 						var validated = this.validate();
 
-						if (validated)
+						if (validated) {
 							this.calcCostPrice();
 							this.calcLineGross();
 							this.calcDiscount();
 							this.calcLineNet();
 							this.setField("linetotal", Number(this.fields.extnet.getValue()) + this.calcLineTax());
 							this.root.updateAggr();
+						}
 		},
 		validate 	: function() {
 						var validated = true;
