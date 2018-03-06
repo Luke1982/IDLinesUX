@@ -71,16 +71,18 @@
 						<!-- Product quantity form element -->
 						{call name=ProductInputFormElement size='1-of-12' fieldname='quantity' value=$data.meta.quantity iconlib='corebos' icon='none' istemplate=$template type='number' error='Please input a number greater than 0' min='0.5'}
 						<!-- // Product quantity form element -->
-						<!-- Discount type form element -->
-						{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
-						{$options[] = ['val' => 'p', 'label' => 'Percentage']}
-						{$options[] = ['val' => 'd', 'label' => 'Direct']}
-						{call name=ProductDropdownFormElement size='2-of-12' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
-						<!-- // Discount type form element -->
-						<!-- Discount number (percent/direct) form element -->
-						{if $data.meta.discount_type == 'p'}{$icon = 'percent'}{else}{$icon = 'euro'}{/if}
-						{call name=ProductInputFormElement size='1-of-12' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon=$icon istemplate=$template type='number' error='Please input a numeric value into this field'}
-						<!-- // Discount number (percent/direct) form element -->
+						<div class="slds-grid slds-size_3-of-12 slds-p-left_x-small">
+							<!-- Discount type form element -->
+							{if $data.meta.discount_type == 'p'}{$curval = 'Percentage'}{else}{$curval = 'Direct'}{/if}
+							{$options[] = ['val' => 'p', 'label' => 'Percentage']}
+							{$options[] = ['val' => 'd', 'label' => 'Direct']}
+							{call name=ProductDropdownFormElement size='5-of-12' fieldname='discount_type' value=$curval placeholder='Discount type' options=$options istemplate=$template}
+							<!-- // Discount type form element -->
+							<!-- Discount number (percent/direct) form element -->
+							{if $data.meta.discount_type == 'p'}{$icon = 'percent'}{else}{$icon = 'euro'}{/if}
+							{call name=ProductInputFormElement size='6-of-12' fieldname='discount_amount' value=$data.meta.discount_amount iconlib='corebos' icon=$icon istemplate=$template type='number' error='Please input a numeric value into this field'}
+							<!-- // Discount number (percent/direct) form element -->
+						</div>
 						<!-- Discount amount form element -->
 						{$discount_total = $data.pricing.extgross - $data.pricing.extnet}
 						{call name=ProductInputFormElement size='2-of-12' fieldname='discount_total' value=$discount_total iconlib='corebos' icon='euro' istemplate=$template type='currency' readonly=true}
