@@ -22,13 +22,20 @@
 		<div class="cbds-detail-block cbds-inventory-block">
 			<!-- Detail line preheader -->
 			<div class="slds-grid slds-p-vertical_medium cbds-detail-line-preheader">
-				<div class="slds-col slds-size_10-of-12 slds-p-left_medium">
+				<div class="slds-col slds-size_8-of-12 slds-p-left_medium">
 					<span class="slds-icon_container slds-icon-utility-shopping_bag" title="Add products or services">
 						<svg class="slds-icon slds-icon-text-default slds-icon slds-icon-text-light" aria-hidden="true">
 							<use xlink:href="lib/LDS/icons/utility-sprite/svg/symbols.svg#shopping_bag" xmlns:xlink="http://www.w3.org/1999/xlink" />
 						</svg>
 						<span class="slds-assistive-text">Description of icon when needed</span>
 					</span>						
+				</div>
+				<div class="slds-col slds-size_2-of-12 slds-p-right_medium">
+					<!-- Group/individual dropdown -->
+					{$taxtypes[] = ['val' => 'group', 'label' => 'Group']}
+					{$taxtypes[] = ['val' => 'individual', 'label' => 'Individual']}
+					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Group' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
+					<!-- // Group/individual dropdown -->
 				</div>
 				<div class="slds-col slds-size_1-of-12">
 					<div class="slds-button-group">
