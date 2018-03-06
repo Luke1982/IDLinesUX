@@ -230,7 +230,7 @@
 						<li class="slds-p-horizontal_small slds-size_2-of-4 cbds-inventoryaggr__taxfees--grouptaxes">
 							<div class="slds-panel">
 								<div class="cbds-panelheader">
-									<div class="slds-text-color_inverse slds-align_absolute-center">Taxes</div>
+									<div class="slds-text-color_inverse slds-align_absolute-center">Group taxes</div>
 								</div>
 								<div class="slds-form slds-form_compound slds-grow">
 									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
@@ -314,11 +314,11 @@
 						<li class="slds-p-horizontal_small slds-size_2-of-4 cbds-inventoryaggr__taxfees--fees">
 							<div class="slds-panel">
 								<div class="cbds-panelheader">
-									<div class="slds-text-color_inverse slds-align_absolute-center">Taxes</div>
+									<div class="slds-text-color_inverse slds-align_absolute-center">Fees</div>
 								</div>
 								<div class="slds-form slds-form_compound slds-grow">
 									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
+										<span class="slds-form-element__label">Transport</span>
 										<div class="slds-form-element__row cbds-m-bottom_none">
 											<div class="slds-form-element slds-size_5-of-12">
 												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
@@ -343,7 +343,7 @@
 										</div>
 									</div>
 									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
+										<span class="slds-form-element__label">Sales</span>
 										<div class="slds-form-element__row cbds-m-bottom_none">
 											<div class="slds-form-element slds-size_5-of-12">
 												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
@@ -368,7 +368,7 @@
 										</div>
 									</div>
 									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
+										<span class="slds-form-element__label">Service</span>
 										<div class="slds-form-element__row cbds-m-bottom_none">
 											<div class="slds-form-element slds-size_5-of-12">
 												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
