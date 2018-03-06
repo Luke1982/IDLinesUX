@@ -149,14 +149,45 @@
 
 		updateAggr : function() {
 			this.calcGross();
+			this.calcTotalDiscount();
+			this.calcTotalTax();
+			this.calcTotal();
 		},
 
 		calcGross : function() {
+			this.fields.subtotal.update(this.getLinesSum("extgross"));
+		},
+
+		calcTotalDiscount : function() {
+			this.fields.totaldiscount.update(this.getLinesSum("discount_total"));
+		},
+
+		calcTotalTax : function() {
+			this.fields.taxtotal.update(this.getLineTaxes());
+		},
+
+		calcTotal : function() {
+			this.fields.total.update(this.getLinesSum("linetotal"));
+		},
+
+		getLinesSum : function(fieldname) {
 			var sum = 0;
 			for (line in this.inventoryLines) {
-				sum = sum + (this.inventoryLines[line].fields != undefined ? Number(this.inventoryLines[line].fields.extgross._val) : 0);
+				sum = sum + (this.inventoryLines[line].fields != undefined ? Number(this.inventoryLines[line].fields[fieldname]._val) : 0);
 			}
-			this.fields.subtotal.update(sum);
+			return sum;
+		},
+
+		getLineTaxes : function() {
+			var sum = 0,
+				r = new RegExp("tax[\\d]{1,2}-amount", "");
+			for (line in this.inventoryLines) {
+				for (field in this.inventoryLines[line].fields) {
+					if ((field.match(r) || []).length > 0)
+						sum = sum + Number(this.inventoryLines[line].fields[field]._val);
+				}
+			}
+			return sum;
 		},
 
 		/*
