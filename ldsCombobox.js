@@ -236,7 +236,7 @@
 			this.close();
 
 			if (this.onSelect)
-				this.onSelect();
+				this.onSelect(this._val);
 		},
 
 		/*

@@ -193,8 +193,8 @@
 			return sum;
 		},
 
-		changeTaxType : function () {
-			console.log("Changing taxtype");
+		changeTaxType : function(val) {
+			console.log("Changing taxtype to " + val);
 		},
 
 		/*
