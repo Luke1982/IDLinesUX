@@ -125,3 +125,15 @@
 .cbds-m-bottom_none {
 	margin-bottom: 0;
 }
+
+/* Aggregations */
+.cbds-inventoryaggr__taxfees {
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 100ms linear;
+}
+.cbds-inventoryaggr__taxfees.active {
+	height: auto;
+	opacity: 1;
+}

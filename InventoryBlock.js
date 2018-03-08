@@ -65,7 +65,7 @@
 		this.startSortable();
 		this.startLines();
 		this.taxType = new ldsCombobox(this.utils.getFirstClass(el, "slds-combobox-picklist"), {
-			"onSelect" : this.changeTaxType
+			"onSelect" : this.changeTaxType.bind(this)
 		});
 		ldsCheckbox.setUnique();
 
@@ -194,7 +194,11 @@
 		},
 
 		changeTaxType : function(val) {
-			console.log("Changing taxtype to " + val);
+			if (val == "individual") {
+				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxfees").classList.remove("active");
+			} else if (val == "group") {
+				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxfees").classList.add("active");
+			}
 		},
 
 		/*
