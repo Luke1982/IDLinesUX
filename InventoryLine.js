@@ -165,9 +165,12 @@
 							this.calcLineGross();
 							this.calcDiscount();
 							this.calcLineNet();
-							this.setField("linetotal", Number(this.fields.extnet.getValue()) + this.calcLineTax());
+							this.setTotal();
 							this.root.updateAggr();
 						}
+		},
+		setTotal	: function() {
+						this.setField("linetotal", Number(this.fields.extnet.getValue()) + this.calcLineTax());
 		},
 		validate 	: function() {
 						var validated = true;

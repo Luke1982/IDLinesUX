@@ -253,7 +253,10 @@
 			}
 
 			for (line in this.inventoryLines) {
-				if (line != "seq") this.inventoryLines[line].setTaxType();
+				if (line != "seq") {
+					this.inventoryLines[line].setTaxType();
+					this.inventoryLines[line].setTotal();
+				}
 			}
 
 			this.updateAggr();
