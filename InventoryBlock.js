@@ -69,7 +69,7 @@
 		ldsCheckbox.setUnique();
 
 		var taxtypeInput = this.utils.getFirstClass(el, "cbds-inventory-block__input--taxtype");
-		this.taxType = new ldsCombobox(this.utils.findUp(taxtypeInput, ".slds-combobox-picklist"), {
+		this.taxTypeCombo = new ldsCombobox(this.utils.findUp(taxtypeInput, ".slds-combobox-picklist"), {
 			"onSelect" : this.changeTaxType.bind(this)
 		});
 	}
@@ -99,7 +99,16 @@
 		},
 
 		handleAggrInput: function(e) {
-			var isTaxOrFee = this.isTaxField(e.target);
+			var isTax = _isTaxField(e.target),
+				fieldName = isTax ? e.target.getAttribute("data-taxname") : false,
+				value = fieldName != false ? this.fields[fieldName].getValue() : 0;
+
+			if (isTax) {
+				var taxAmount = this.utils.getPerc(this.fields.subtotal.getValue() - this.fields.totaldiscount.getValue(), this.fields[fieldName].getValue());
+				this.fields[fieldName + "-amount"].update(taxAmount);
+			}
+
+			this.updateAggr();
 		},
 
 		startSortable: function() {
@@ -173,7 +182,7 @@
 		},
 
 		calcTotalTax : function() {
-			this.fields.taxtotal.update(this.getLineTaxes());
+			this.fields.taxtotal.update(this.getTaxes() + this.getSHTaxes());
 		},
 
 		calcTotal : function() {
@@ -188,14 +197,33 @@
 			return sum;
 		},
 
-		getLineTaxes : function() {
+		getTaxes : function() {
 			var sum = 0,
-				r = new RegExp("tax[\\d]{1,2}-amount", "");
-			for (line in this.inventoryLines) {
-				for (field in this.inventoryLines[line].fields) {
-					if ((field.match(r) || []).length > 0)
-						sum = sum + Number(this.inventoryLines[line].fields[field]._val);
+				r = new RegExp("^tax[\\d]{1,2}-amount", ""),
+				type = this.taxTypeCombo.getVal();
+
+			if (type == "individual") {
+				for (line in this.inventoryLines) {
+					for (field in this.inventoryLines[line].fields) {
+						if ((field.match(r) || []).length > 0)
+							sum = sum + Number(this.inventoryLines[line].fields[field]._val);
+					}
 				}
+			} else if (type == "group") {
+				for (field in this.fields) {
+					if ((field.match(r) || []).length > 0)
+						sum = sum + Number(this.fields[field]._val);
+				}
+			}
+			return sum;
+		},
+
+		getSHTaxes : function() {
+			var sum = 0,
+				r = new RegExp("^shtax[\\d]{1,2}-amount", "");
+			for (field in this.fields) {
+				if ((field.match(r) || []).length > 0)
+					sum = sum + Number(this.fields[field].getValue());
 			}
 			return sum;
 		},
@@ -206,6 +234,7 @@
 			} else if (val == "group") {
 				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxes--group").classList.add("active");
 			}
+			this.updateAggr();
 		},
 
 		/*
