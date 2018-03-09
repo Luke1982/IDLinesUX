@@ -175,6 +175,7 @@
 			this.calcGroupTaxes();
 			this.calcTotalTax();
 			this.calcTotal();
+			this.calcGrandTotal();
 		},
 
 		calcGross : function() {
@@ -199,6 +200,13 @@
 
 		calcTotal : function() {
 			this.fields.total.update(this.getLinesSum("linetotal"));
+		},
+
+		calcGrandTotal : function() {
+			if (this.taxTypeCombo.getVal() == "group")
+				this.fields.grandtotal.update(this.fields.total.getValue() + this.fields.taxtotal.getValue());
+			else if (this.taxTypeCombo.getVal() == "individual")
+				this.fields.grandtotal.update(this.fields.total.getValue());
 		},
 
 		calcTax: function(name) {
