@@ -110,7 +110,7 @@
 	<!-- Extra LDS inventory line -->
 	<div class="slds-grid slds-gutters slds-wrap slds-p-vertical_medium {$productline_classprefix}__extra">
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_4-of-12">
+		<div class="slds-col slds-size_3-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Pricing</div>
@@ -138,20 +138,21 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_2-of-12">
+		<div class="slds-col slds-size_3-of-12">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Logistics</div>
 				</div>
 				<div class="slds-form slds-form_stacked slds-grow">
+					{$usageunitspan = ' (<span class="'|cat:$productline_classprefix|cat:'--usageunit">'|cat:$data.logistics.usageunit|cat:'</span>)'}
 					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-					{call name=ProductInputFormElement size='1-of-1' label='Units del. / rec.' fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
+					{call name=ProductInputFormElement size='1-of-1' label='Units del. / rec. '|cat:$usageunitspan fieldname='units_delivered_received' value=$data.logistics.units_delivered_received iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=false}
 					</div>
 					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
+					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock'|cat:$usageunitspan fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 					<div class="slds-panel__section slds-p-horizontal_none">
-					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
+					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered'|cat:$usageunitspan fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 				</div>
 			</div>

@@ -61,7 +61,8 @@
 			"logistics" : {
 				"units_delivered_received" : 2,
 				"qtyinstock" : 9,
-				"qtyindemand" : 3
+				"qtyindemand" : 3,
+				"usageunit" : "Box"
 			},
 			"taxes" : {
 				"1" : {
@@ -155,7 +156,8 @@
 			"logistics" : {
 				"units_delivered_received" : -7,
 				"qtyinstock" : 3,
-				"qtyindemand" : 89
+				"qtyindemand" : 89,
+				"usageunit" : "Very large and long can"
 			},
 			"taxes" : {
 				"1" : {
