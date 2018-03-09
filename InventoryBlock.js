@@ -99,10 +99,10 @@
 		},
 
 		handleAggrInput: function(e) {
-			var isTaxOrFee = this.isTaxOrFee(e.target);
+			var isTaxOrFee = this.isTaxField(e.target);
 		},
 
-		isTaxOrFee: function(el) {
+		isTaxField: function(el) {
 			return el.className.match(/--tax\d{1,2}$|--shtax\d{1,2}$/) == null ? false : true;
 		},
 
