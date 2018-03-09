@@ -64,11 +64,12 @@
 		this.utils.on(window, "click", this.handleClicks, this);
 		this.startSortable();
 		this.startLines();
-		this.taxType = new ldsCombobox(this.utils.getFirstClass(el, "slds-combobox-picklist"), {
-			"onSelect" : this.changeTaxType.bind(this)
-		});
 		ldsCheckbox.setUnique();
 
+		var taxtypeInput = this.utils.getFirstClass(el, "cbds-inventory-block__input--taxtype");
+		this.taxType = new ldsCombobox(this.utils.findUp(taxtypeInput, ".slds-combobox-picklist"), {
+			"onSelect" : this.changeTaxType.bind(this)
+		});
 	}
 
 	InventoryBlock.prototype = {

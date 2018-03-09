@@ -32,9 +32,9 @@
 				</div>
 				<div class="slds-col slds-size_2-of-12 slds-p-right_medium">
 					<!-- Group/individual dropdown -->
-					{$taxtypes[] = ['val' => 'group', 'label' => 'Group']}
 					{$taxtypes[] = ['val' => 'individual', 'label' => 'Individual']}
-					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Group' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
+					{$taxtypes[] = ['val' => 'group', 'label' => 'Group']}
+					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Individual' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
 					<!-- // Group/individual dropdown -->
 				</div>
 				<div class="slds-col slds-size_1-of-12">
