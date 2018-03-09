@@ -269,7 +269,7 @@
 			 */
 			insertAfter: function(referenceNode, newNode) {
 				referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
-			}
+			},
 			/*
 			 * Util: 'deductPerc'
 			 * deducts a percentage from a number
