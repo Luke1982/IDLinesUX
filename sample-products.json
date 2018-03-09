@@ -13,7 +13,8 @@
 	},
 	"logistics" : {
 		"qty_in_stock" : 9,
-		"curr_ordered" : 3
+		"curr_ordered" : 3,
+		"usageunit" : "Very large and long can"
 	},
 	"taxes" : {
 		"tax1" : {
@@ -41,7 +42,8 @@
 	},
 	"logistics" : {
 		"qty_in_stock" : 3,
-		"curr_ordered" : 90
+		"curr_ordered" : 90,
+		"usageunit" : "Box"
 	},
 	"taxes" : {
 		"tax1" : {
@@ -69,7 +71,8 @@
 	},
 	"logistics" : {
 		"qty_in_stock" : 56,
-		"curr_ordered" : 2
+		"curr_ordered" : 2,
+		"usageunit" : "Underpants"
 	},
 	"taxes" : {
 		"tax1" : {

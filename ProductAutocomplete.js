@@ -308,7 +308,8 @@
 		},
 
 		fillLine: function(result) {
-			var lineNode = this.root.utils.findUp(result.node, "." + this.root.lineClass);
+			var lineNode = this.root.utils.findUp(result.node, "." + this.root.lineClass),
+				usageunits = this.root.el.getElementsByClassName(this.root.lineClass + "--usageunit");
 
 			this.root.utils.getFirstClass(lineNode, "cbds-product-line-image").src = result.obj.meta.image;
 
@@ -319,6 +320,10 @@
 
 			this.root.utils.getFirstClass(lineNode, this.root.linePrefix + "--comments").innerHTML = result.obj.meta.comments;
 			this.input.value = result.obj.meta.name;
+
+			for (var i = usageunits.length - 1; i >= 0; i--) {
+				usageunits[i].innerHTML = result.obj.logistics.usageunit;
+			}
 
 			this.parent.expandExtra();
 			this.parent.calcLine();
