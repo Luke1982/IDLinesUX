@@ -179,7 +179,7 @@
 		},
 
 		calcGross : function() {
-			this.fields.subtotal.update(this.getLinesSum("extgross"));
+			this.fields.grosstotal.update(this.getLinesSum("extgross"));
 		},
 
 		calcTotalDiscount : function() {
@@ -199,18 +199,18 @@
 		},
 
 		calcTotal : function() {
-			this.fields.total.update(this.getLinesSum("linetotal"));
+			this.fields.subtotal.update(this.getLinesSum("linetotal"));
 		},
 
 		calcGrandTotal : function() {
 			if (this.taxTypeCombo.getVal() == "group")
-				this.fields.grandtotal.update(this.fields.total.getValue() + this.fields.taxtotal.getValue());
+				this.fields.total.update(this.fields.subtotal.getValue() + this.fields.taxtotal.getValue());
 			else if (this.taxTypeCombo.getVal() == "individual")
-				this.fields.grandtotal.update(this.fields.total.getValue());
+				this.fields.total.update(this.fields.subtotal.getValue());
 		},
 
 		calcTax: function(name) {
-			var taxAmount = this.utils.getPerc(this.fields.subtotal.getValue() - this.fields.totaldiscount.getValue(), this.fields[name].getValue());
+			var taxAmount = this.utils.getPerc(this.fields.grosstotal.getValue() - this.fields.totaldiscount.getValue(), this.fields[name].getValue());
 			this.fields[name + "-amount"].update(taxAmount);
 		},
 
