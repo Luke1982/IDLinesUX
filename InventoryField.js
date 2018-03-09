@@ -160,7 +160,8 @@
 		},
 
 		setHelp : function(text) {
-			this.helpCont.innerHTML = text;
+			if (this.helpCont != undefined)
+				this.helpCont.innerHTML = text;
 		},
 
 		handleCurKeyUp : function(e) {

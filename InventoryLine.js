@@ -144,6 +144,19 @@
 
 						this.calcLine();
 		},
+		setTaxType: function() {
+						var type = this.root.taxTypeCombo.getVal(),
+							taxCol = this.u.getFirstClass(this.el, this.root.linePrefix + "--taxcol"),
+							commentCol = this.u.getFirstClass(this.el, this.root.linePrefix + "--commentcol");
+
+						if (type == "individual") {
+							taxCol.classList.remove(this.root.linePrefix + "--taxcol-hidden");
+							commentCol.classList.remove("slds-size_6-of-12");
+						} else if (type == "group") {
+							taxCol.classList.add(this.root.linePrefix + "--taxcol-hidden");
+							commentCol.classList.add("slds-size_6-of-12");
+						}
+		},
 		calcLine 	: function() {
 						var validated = this.validate();
 

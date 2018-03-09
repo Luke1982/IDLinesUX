@@ -41,6 +41,11 @@
 	z-index: 1;
 	padding: 0 10px;
 }
+.cbds-inventoryline--taxcol-hidden {
+	width: 0;
+	padding: 0;
+	display: none;
+}
 
 /* Images */
 .cbds-image-container {
@@ -132,8 +137,12 @@
 	overflow: hidden;
 	opacity: 0;
 	transition: opacity 100ms linear;
+	background-color: #e3e6ea;
 }
 .cbds-inventoryaggr__taxes--group.active {
 	height: auto;
 	opacity: 1;
+}
+.cbds-inventoryaggr__taxes--sh {
+	background-color: #ebeef4;
 }

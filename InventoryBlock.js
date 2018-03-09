@@ -39,6 +39,7 @@
 		this.inputPrefix = params.inputPrefix,
 		this.aggrPrefix = params.aggrPrefix,
 		this.aggrInputPrefix = params.aggrInputPrefix,
+
 		this.el = el,
 		this.linesContainer = el.getElementsByClassName(this.linesContClass)[0],
 		this.inventoryLines = {},
@@ -99,16 +100,18 @@
 		},
 
 		handleAggrInput: function(e) {
-			var isTax = _isTaxField(e.target),
-				fieldName = isTax ? e.target.getAttribute("data-taxname") : false,
-				value = fieldName != false ? this.fields[fieldName].getValue() : 0;
-
-			if (isTax) {
-				var taxAmount = this.utils.getPerc(this.fields.subtotal.getValue() - this.fields.totaldiscount.getValue(), this.fields[fieldName].getValue());
-				this.fields[fieldName + "-amount"].update(taxAmount);
+			var validated = true;
+			for (field in this.fields) {
+				this.fields[field].setNormal();
+				if (!this.fields[field].validate()) {
+					validated = false;
+					this.fields[field].setError();
+					break;
+				}
 			}
 
-			this.updateAggr();
+			if (validated)
+				this.updateAggr();
 		},
 
 		startSortable: function() {
@@ -169,6 +172,7 @@
 		updateAggr : function() {
 			this.calcGross();
 			this.calcTotalDiscount();
+			this.calcGroupTaxes();
 			this.calcTotalTax();
 			this.calcTotal();
 		},
@@ -181,12 +185,25 @@
 			this.fields.totaldiscount.update(this.getLinesSum("discount_total"));
 		},
 
+		calcGroupTaxes : function() {
+			for (field in this.fields) {
+				if (field.match(/tax[\d]{1,2}$/) != null) {
+					this.calcTax(field);
+				}
+			}
+		},
+
 		calcTotalTax : function() {
 			this.fields.taxtotal.update(this.getTaxes() + this.getSHTaxes());
 		},
 
 		calcTotal : function() {
 			this.fields.total.update(this.getLinesSum("linetotal"));
+		},
+
+		calcTax: function(name) {
+			var taxAmount = this.utils.getPerc(this.fields.subtotal.getValue() - this.fields.totaldiscount.getValue(), this.fields[name].getValue());
+			this.fields[name + "-amount"].update(taxAmount);
 		},
 
 		getLinesSum : function(fieldname) {
@@ -230,10 +247,15 @@
 
 		changeTaxType : function(val) {
 			if (val == "individual") {
-				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxes--group").classList.remove("active");
+				this.utils.getFirstClass(this.el, this.aggrPrefix + "__taxes--group").classList.remove("active");
 			} else if (val == "group") {
-				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxes--group").classList.add("active");
+				this.utils.getFirstClass(this.el, this.aggrPrefix + "__taxes--group").classList.add("active");
 			}
+
+			for (line in this.inventoryLines) {
+				if (line != "seq") this.inventoryLines[line].setTaxType();
+			}
+
 			this.updateAggr();
 		},
 
@@ -331,17 +353,6 @@
 	/*
 	 * Factory tools
 	 */
-
-	/*
-	 * Function: '_isTaxField'
-	 * Tests if an input has the classname that makes
-	 * is a tax field.
-	 *
-	 * @param: el: 		Input element
-	 */
-	function _isTaxField(el) {
-		return el.className.match(/--tax\d{1,2}$|--shtax\d{1,2}$/) == null ? false : true;
-	}
 
 	/*
 	 * Export
