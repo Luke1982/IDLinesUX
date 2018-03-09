@@ -164,7 +164,7 @@
 				</div>
 				<div class="slds-card__body cbds-inventoryaggr">
 					<ul class="slds-card__body_inner slds-grid slds-wrap slds-grid_pull-padded">
-						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-4">
+						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-5">
 							<article class="slds-tile slds-tile_board">
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Gross total">Gross total</h3>
 								<div class="slds-tile__detail">
@@ -179,7 +179,7 @@
 								</div>
 							</article>
 						</li>
-						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-4">
+						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-5">
 							<article class="slds-tile slds-tile_board">
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total discount">Total discount</h3>
 								<div class="slds-tile__detail">
@@ -194,7 +194,7 @@
 								</div>
 							</article>
 						</li>
-						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-4">
+						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-5">
 							<article class="slds-tile slds-tile_board">
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total taxes">Total taxes</h3>
 								<div class="slds-tile__detail">
@@ -209,12 +209,27 @@
 								</div>
 							</article>
 						</li>
-						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-4">
+						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-5">
 							<article class="slds-tile slds-tile_board">
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Net total">Net total</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
 										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--total" value="7.400,38" />
+										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
+											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
+											</svg>
+										</span>
+									</div>
+								</div>
+							</article>
+						</li>
+						<li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-5">
+							<article class="slds-tile slds-tile_board">
+								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total">Total</h3>
+								<div class="slds-tile__detail">
+									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--grandtotal" value="7.400,38" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
