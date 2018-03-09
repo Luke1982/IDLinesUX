@@ -15,7 +15,7 @@ This repo is used as a simple way to collaborate on a HTML/CSS/JS structure that
 ## To-do
 * ~~Implement auto-creation of an autocomplete instance in the InventoryLine module.~~
 * ~~Create a module for the collection of lines~~
-* Implement Smarty to better create a Component for the line and test PHP arrays
-* Create aggregations (and a module for it)
+* ~~Implement Smarty to better create a Component for the line and test PHP arrays
+* ~~Create aggregations (and a module for it)
 * Merge all JS modules into a single file
 * Create a throttle function in the JS modules to avoid slow screen response
