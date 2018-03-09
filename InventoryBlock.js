@@ -103,7 +103,7 @@
 		},
 
 		isTaxOrFee: function(el) {
-			return el.className.match(/tax\d{1,2}$|fee\d{1,2}$/) == null ? false : true;
+			return el.className.match(/--tax\d{1,2}$|--shtax\d{1,2}$/) == null ? false : true;
 		},
 
 		startSortable: function() {
