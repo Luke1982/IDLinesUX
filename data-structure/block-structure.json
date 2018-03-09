@@ -52,7 +52,7 @@
 				"description" : "A comment"
 			},
 			"pricing" : {
-				"cost_price" : 90.67,
+				"cost_price" : "90,67",
 				"cost_gross" : 180,
 				"unit_price" : 15,
 				"extgross" : 1976,
