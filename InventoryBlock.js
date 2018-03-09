@@ -102,10 +102,6 @@
 			var isTaxOrFee = this.isTaxField(e.target);
 		},
 
-		isTaxField: function(el) {
-			return el.className.match(/--tax\d{1,2}$|--shtax\d{1,2}$/) == null ? false : true;
-		},
-
 		startSortable: function() {
 			Sortable.create(this.linesContainer, {
 				draggable: "." + this.lineClass,
@@ -301,6 +297,21 @@
 				return base * (percentage / 100);
 			}
 		}
+	}
+
+	/*
+	 * Factory tools
+	 */
+
+	/*
+	 * Function: '_isTaxField'
+	 * Tests if an input has the classname that makes
+	 * is a tax field.
+	 *
+	 * @param: el: 		Input element
+	 */
+	function _isTaxField(el) {
+		return el.className.match(/--tax\d{1,2}$|--shtax\d{1,2}$/) == null ? false : true;
 	}
 
 	/*
