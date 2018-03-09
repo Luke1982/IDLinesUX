@@ -34,7 +34,7 @@
 					<!-- Group/individual dropdown -->
 					{$taxtypes[] = ['val' => 'individual', 'label' => 'Individual']}
 					{$taxtypes[] = ['val' => 'group', 'label' => 'Group']}
-					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Individual' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
+					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Group' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
 					<!-- // Group/individual dropdown -->
 				</div>
 				<div class="slds-col slds-size_1-of-12">
@@ -227,7 +227,7 @@
 					</ul>
 					<!-- Aggregation tax block -->
 					<div class="cbds-inventoryaggr__taxes">
-						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--group">
+						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--group active">
 							<div class="slds-form-element__row">
 								<div class="slds-text-heading_medium">Group Taxes</div>
 							</div>
@@ -238,7 +238,7 @@
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax1" value="21" type="text" data-type="number">
+												<input class="slds-input cbds-inventoryaggr__input--tax1" value="21" type="text" data-type="number" data-taxname="tax1">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -264,7 +264,7 @@
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax2" value="21" type="text" data-type="number">
+												<input class="slds-input cbds-inventoryaggr__input--tax2" value="21" type="text" data-type="number" data-taxname="tax2">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -290,7 +290,7 @@
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax3" value="21" type="text" data-type="number">
+												<input class="slds-input cbds-inventoryaggr__input--tax3" value="21" type="text" data-type="number" data-taxname="tax3">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -323,7 +323,7 @@
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax1" value="21" type="text" data-type="number">
+												<input class="slds-input cbds-inventoryaggr__input--shtax1" value="21" type="text" data-type="number" data-taxname="shtax1">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -349,7 +349,7 @@
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax2" value="21" type="text" data-type="number">
+												<input class="slds-input cbds-inventoryaggr__input--shtax2" value="21" type="text" data-type="number" data-taxname="shtax2">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
