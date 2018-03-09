@@ -206,9 +206,9 @@
 
 		changeTaxType : function(val) {
 			if (val == "individual") {
-				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxfees").classList.remove("active");
+				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxes--group").classList.remove("active");
 			} else if (val == "group") {
-				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxfees").classList.add("active");
+				this.utils.getFirstClass(this.el, "cbds-inventoryaggr__taxes--group").classList.add("active");
 			}
 		},
 

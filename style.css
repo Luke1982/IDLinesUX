@@ -127,13 +127,13 @@
 }
 
 /* Aggregations */
-.cbds-inventoryaggr__taxfees {
+.cbds-inventoryaggr__taxes--group {
 	height: 0;
 	overflow: hidden;
 	opacity: 0;
 	transition: opacity 100ms linear;
 }
-.cbds-inventoryaggr__taxfees.active {
+.cbds-inventoryaggr__taxes--group.active {
 	height: auto;
 	opacity: 1;
 }

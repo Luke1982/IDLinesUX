@@ -225,178 +225,154 @@
 							</article>
 						</li>
 					</ul>
-					<!-- Group tax block in aggregations -->
-					<ul class="slds-card__body_inner slds-grid slds-wrap slds-grid_pull-padded cbds-inventoryaggr__taxfees">
-						<li class="slds-p-horizontal_small slds-size_2-of-4 cbds-inventoryaggr__taxfees--grouptaxes">
-							<div class="slds-panel">
-								<div class="cbds-panelheader">
-									<div class="slds-text-color_inverse slds-align_absolute-center">Group taxes</div>
+					<!-- Aggregation tax block -->
+					<div class="cbds-inventoryaggr__taxes">
+						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--group">
+							<div class="slds-form-element__row">
+								<div class="slds-text-heading_medium">Group Taxes</div>
+							</div>
+							<div class="slds-form-element__row">
+								<div class="slds-form-element__group slds-size_1-of-4">
+									<fieldset class="slds-form-element">
+										<legend class="slds-form-element__label slds-text-title_caps">VAT</legend>
+										<div class="slds-grid">
+										<div class="slds-col slds-form-element slds-size_5-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax1" value="21" type="text">
+												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
+											</div>
+										</div>
+										<div class="slds-col slds-form-element slds-size_7-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax1-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
+											</div>
+										</div>
+									</fieldset>
 								</div>
-								<div class="slds-form slds-form_compound slds-grow">
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax1" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax1-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
+								<div class="slds-form-element__group slds-size_1-of-4">
+									<fieldset class="slds-form-element">
+										<legend class="slds-form-element__label slds-text-title_caps">Tourist tax</legend>
+										<div class="slds-grid">
+										<div class="slds-col slds-form-element slds-size_5-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax2" value="21" type="text">
+												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
 											</div>
 										</div>
-									</div>
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax2" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax2-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
+										<div class="slds-col slds-form-element slds-size_7-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax2-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
 											</div>
 										</div>
-									</div>
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">VAT</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax3" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--tax3-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
+									</fieldset>
+								</div>
+								<div class="slds-form-element__group slds-size_1-of-4">
+									<fieldset class="slds-form-element">
+										<legend class="slds-form-element__label slds-text-title_caps">Administration</legend>
+										<div class="slds-grid">
+										<div class="slds-col slds-form-element slds-size_5-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax3" value="21" type="text">
+												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
 											</div>
 										</div>
-									</div>
+										<div class="slds-col slds-form-element slds-size_7-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--tax3-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
+											</div>
+										</div>
+									</fieldset>
 								</div>
 							</div>
-						</li>
-						<li class="slds-p-horizontal_small slds-size_2-of-4 cbds-inventoryaggr__taxfees--fees">
-							<div class="slds-panel">
-								<div class="cbds-panelheader">
-									<div class="slds-text-color_inverse slds-align_absolute-center">Fees</div>
+						</div>
+						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--sh">
+							<div class="slds-form-element__row">
+								<div class="slds-text-heading_medium">Sales and Handling Taxes</div>
+							</div>
+							<div class="slds-form-element__row">
+								<div class="slds-form-element__group slds-size_1-of-4">
+									<fieldset class="slds-form-element">
+										<legend class="slds-form-element__label slds-text-title_caps">Sales</legend>
+										<div class="slds-grid">
+										<div class="slds-col slds-form-element slds-size_5-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--shtax1" value="21" type="text">
+												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
+											</div>
+										</div>
+										<div class="slds-col slds-form-element slds-size_7-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--shtax1-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
+											</div>
+										</div>
+									</fieldset>
 								</div>
-								<div class="slds-form slds-form_compound slds-grow">
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">Transport</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee1" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee1-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
+								<div class="slds-form-element__group slds-size_1-of-4">
+									<fieldset class="slds-form-element">
+										<legend class="slds-form-element__label slds-text-title_caps">Handling</legend>
+										<div class="slds-grid">
+										<div class="slds-col slds-form-element slds-size_5-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--shtax2" value="21" type="text">
+												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
 											</div>
 										</div>
-									</div>
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">Sales</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee2" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee2-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
+										<div class="slds-col slds-form-element slds-size_7-of-12">
+											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+												<input class="slds-input cbds-inventoryaggr__input--shtax2-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
+													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+													</svg>
+												</span>
 											</div>
 										</div>
-									</div>
-									<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
-										<span class="slds-form-element__label">Service</span>
-										<div class="slds-form-element__row cbds-m-bottom_none">
-											<div class="slds-form-element slds-size_5-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee3" value="21" type="text">
-													<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-											<div class="slds-form-element slds-size_7-of-12">
-												<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-													<input class="slds-input cbds-inventoryaggr__input--fee3-amount" data-type="currency" readonly="readonly" value="200" type="text">
-													<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-														<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-															<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-														</svg>
-													</span>
-												</div>
-											</div>
-										</div>
-									</div>
+									</fieldset>
 								</div>
 							</div>
-						</li>
-					</ul>
-					<!-- // Group tax block in aggregations -->
+						</div>
+					</div>
+					<!-- // Aggregation tax block -->
 				</div>
 			</article>
 			<!-- // LDS Aggregations block -->
