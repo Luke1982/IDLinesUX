@@ -63,6 +63,7 @@
 
 		// Construction
 		this.utils.on(window, "click", this.handleClicks, this);
+		this.utils.on(this.aggrCont, "keyup", this.handleAggrInput, this);
 		this.startSortable();
 		this.startLines();
 		ldsCheckbox.setUnique();
@@ -95,6 +96,14 @@
 						break;
 				}
 			}
+		},
+
+		handleAggrInput: function(e) {
+			var isTaxOrFee = this.isTaxOrFee(e.target);
+		},
+
+		isTaxOrFee: function(el) {
+			return el.className.match(/tax\d{1,2}$|fee\d{1,2}$/) == null ? false : true;
 		},
 
 		startSortable: function() {
