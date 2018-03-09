@@ -158,7 +158,7 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_3-of-12 {$productline_classprefix}--taxcol {$productline_classprefix}--taxcol-hidden">
+		<div class="slds-col slds-size_3-of-12 {$productline_classprefix}--taxcol{if $inventoryblock.taxtype == 'group'} {$productline_classprefix}--taxcol-hidden{/if}">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Taxes</div>
@@ -172,7 +172,7 @@
 		</div>
 		<!-- // LDS extra inventoryline column -->
 		<!-- LDS extra inventoryline column -->
-		<div class="slds-col slds-size_3-of-12 {$productline_classprefix}--commentcol slds-size_6-of-12">
+		<div class="slds-col slds-size_3-of-12 {$productline_classprefix}--commentcol{if $inventoryblock.taxtype == 'group'} slds-size_6-of-12{/if}">
 			<div class="slds-panel">
 				<div class="cbds-panelheader">
 					<div class="slds-text-color_inverse slds-align_absolute-center">Comments</div>

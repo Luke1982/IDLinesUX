@@ -34,7 +34,8 @@
 					<!-- Group/individual dropdown -->
 					{$taxtypes[] = ['val' => 'individual', 'label' => 'Individual']}
 					{$taxtypes[] = ['val' => 'group', 'label' => 'Group']}
-					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value='Group' placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
+					{if $inventoryblock.taxtype == 'group'}{$curtaxtype = 'Group'}{else}{$curtaxtype = 'Individual'}{/if}
+					{call name=ProductDropdownFormElement size='1-of-1' fieldname='taxtype' value=$curtaxtype placeholder='Tax type' options=$taxtypes prefix='cbds-inventory-block__input'}
 					<!-- // Group/individual dropdown -->
 				</div>
 				<div class="slds-col slds-size_1-of-12">
@@ -103,7 +104,7 @@
 			</div>
 			<!-- // LDS Detail line header -->
 			<div class="cbds-detail-lines cbds-inventorylines">
-				{foreach from=$testarray item=productline}
+				{foreach from=$inventoryblock.lines item=productline}
 					{call name=InventoryLine data=$productline}
 				{/foreach}
 			</div>
@@ -128,7 +129,7 @@
 						<div class="slds-media__body">
 							<h2>
 								<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Total number of lines">
-									<span class="slds-text-heading_small">Lines (<span class="cbds-inventoryaggr--linecount">3</span>)</span>
+									<span class="slds-text-heading_small">Lines (<span class="cbds-inventoryaggr--linecount">{count($inventoryblock.lines)}</span>)</span>
 								</a>
 							</h2>
 						</div>
@@ -169,7 +170,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Gross total">Gross total</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--grosstotal" value="8.065,34" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--grosstotal" value="{$inventoryblock.aggr.grosstotal}" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -184,7 +185,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total discount">Total discount</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--totaldiscount" value="5.000,98" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--totaldiscount" value="{$inventoryblock.aggr.totaldiscount}" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -199,7 +200,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total taxes">Total taxes</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--taxtotal" value="882,45" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--taxtotal" value="{$inventoryblock.aggr.taxtotal}" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -214,7 +215,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Net total">Net total</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--subtotal" value="7.400,38" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--subtotal" value="{$inventoryblock.aggr.subtotal}" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -229,7 +230,7 @@
 								<h3 class="slds-tile__title slds-truncate slds-text-heading_small" title="Total">Total</h3>
 								<div class="slds-tile__detail">
 									<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--total" value="7.400,38" />
+										<input type="text" readonly="readonly" data-type="currency" class="slds-input cbds-inventoryaggr__input--total" value="{$inventoryblock.aggr.total}" />
 										<span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_left">
 											<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 												<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink" />
@@ -242,18 +243,20 @@
 					</ul>
 					<!-- Aggregation tax block -->
 					<div class="cbds-inventoryaggr__taxes">
-						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--group active">
+						<!-- Group aggregation taxes -->
+						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--group{if $inventoryblock.taxtype == 'group'} active{/if}">
 							<div class="slds-form-element__row">
 								<div class="slds-text-heading_medium">Group Taxes</div>
 							</div>
-							<div class="slds-form-element__row">
+							<div class="slds-form-element__row slds-wrap">
+								{foreach from=$inventoryblock.grouptaxes item=tax key=key name=name}
 								<div class="slds-form-element__group slds-size_1-of-4">
 									<fieldset class="slds-form-element">
-										<legend class="slds-form-element__label slds-text-title_caps">VAT</legend>
+										<legend class="slds-form-element__label slds-text-title_caps">{$tax.taxname}</legend>
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax1" value="21" type="text" data-type="number" data-taxname="tax1" data-error-mess="Please insert a valid number">
+												<input class="slds-input cbds-inventoryaggr__input--tax{$key}" value="{$tax.percent}" type="text" data-type="number" data-taxname="tax{$key}" data-error-mess="Please insert a valid number">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -264,7 +267,7 @@
 										</div>
 										<div class="slds-col slds-form-element slds-size_7-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax1-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<input class="slds-input cbds-inventoryaggr__input--tax{$key}-amount" data-type="currency" readonly="readonly" value="{$tax.amount}" type="text">
 												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -274,74 +277,24 @@
 										</div>
 									</fieldset>
 								</div>
-								<div class="slds-form-element__group slds-size_1-of-4">
-									<fieldset class="slds-form-element">
-										<legend class="slds-form-element__label slds-text-title_caps">Tourist tax</legend>
-										<div class="slds-grid">
-										<div class="slds-col slds-form-element slds-size_5-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax2" value="21" type="text" data-type="number" data-taxname="tax2" data-error-mess="Please insert a valid number">
-												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-											<div class="slds-form-element__help"></div>
-										</div>
-										<div class="slds-col slds-form-element slds-size_7-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax2-amount" data-type="currency" readonly="readonly" value="200" type="text">
-												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-										</div>
-									</fieldset>
-								</div>
-								<div class="slds-form-element__group slds-size_1-of-4">
-									<fieldset class="slds-form-element">
-										<legend class="slds-form-element__label slds-text-title_caps">Administration</legend>
-										<div class="slds-grid">
-										<div class="slds-col slds-form-element slds-size_5-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax3" value="21" type="text" data-type="number" data-taxname="tax3" data-error-mess="Please insert a valid number">
-												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-											<div class="slds-form-element__help"></div>
-										</div>
-										<div class="slds-col slds-form-element slds-size_7-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--tax3-amount" data-type="currency" readonly="readonly" value="200" type="text">
-												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-										</div>
-									</fieldset>
-								</div>
+								{/foreach}
 							</div>
 						</div>
+						<!-- // Group aggregation taxes -->
+						<!-- Shipping and handling aggregation taxes -->
 						<div class="slds-form slds-form_compound slds-p-around_medium cbds-inventoryaggr__taxes--sh">
 							<div class="slds-form-element__row">
 								<div class="slds-text-heading_medium">Sales and Handling Taxes</div>
 							</div>
-							<div class="slds-form-element__row">
+							<div class="slds-form-element__row slds-wrap">
+								{foreach from=$inventoryblock.shtaxes item=shtax key=key name=name}
 								<div class="slds-form-element__group slds-size_1-of-4">
 									<fieldset class="slds-form-element">
-										<legend class="slds-form-element__label slds-text-title_caps">Sales</legend>
+										<legend class="slds-form-element__label slds-text-title_caps">{$shtax.taxname}</legend>
 										<div class="slds-grid">
 										<div class="slds-col slds-form-element slds-size_5-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax1" value="21" type="text" data-type="number" data-taxname="shtax1" data-error-mess="Please insert a valid number">
+												<input class="slds-input cbds-inventoryaggr__input--shtax{$key}" value="{$shtax.percent}" type="text" data-type="number" data-taxname="shtax{$key}" data-error-mess="Please insert a valid number">
 												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -352,7 +305,7 @@
 										</div>
 										<div class="slds-col slds-form-element slds-size_7-of-12">
 											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax1-amount" data-type="currency" readonly="readonly" value="200" type="text">
+												<input class="slds-input cbds-inventoryaggr__input--shtax{$key}-amount" data-type="currency" readonly="readonly" value="{$shtax.amount}" type="text">
 												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
 													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
 														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
@@ -362,35 +315,10 @@
 										</div>
 									</fieldset>
 								</div>
-								<div class="slds-form-element__group slds-size_1-of-4">
-									<fieldset class="slds-form-element">
-										<legend class="slds-form-element__label slds-text-title_caps">Handling</legend>
-										<div class="slds-grid">
-										<div class="slds-col slds-form-element slds-size_5-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax2" value="21" type="text" data-type="number" data-taxname="shtax2" data-error-mess="Please insert a valid number">
-												<span class="slds-icon_container slds-icon-corebos-percent slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#percent" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-											<div class="slds-form-element__help"></div>
-										</div>
-										<div class="slds-col slds-form-element slds-size_7-of-12">
-											<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
-												<input class="slds-input cbds-inventoryaggr__input--shtax2-amount" data-type="currency" readonly="readonly" value="200" type="text">
-												<span class="slds-icon_container slds-icon-corebos-euro slds-input__icon slds-input__icon_left">
-													<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-														<use xlink:href="lib/LDS/icons/corebos-sprite/svg/symbols.svg#euro" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-													</svg>
-												</span>
-											</div>
-										</div>
-									</fieldset>
-								</div>
+								{/foreach}
 							</div>
 						</div>
+						<!-- // Shipping and handling aggregation taxes -->
 					</div>
 					<!-- // Aggregation tax block -->
 				</div>
@@ -399,7 +327,7 @@
 		</div>
 		<!-- Detail block -->
 		<!-- Template -->
-		{$custom = $testarray[0].custom}
+		{$custom = $inventoryblock.lines[0].custom}
 		{call name=InventoryLine template=true custom=$custom}
 		<!-- // Template -->
 	</div>
