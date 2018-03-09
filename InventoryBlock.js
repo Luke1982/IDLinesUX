@@ -43,7 +43,8 @@
 		this.linesContainer = el.getElementsByClassName(this.linesContClass)[0],
 		this.inventoryLines = {},
 		this.inventoryLines.seq = 0,
-		this.countCont = this.utils.getFirstClass(el, "cbds-inventoryaggr--linecount");
+		this.countCont = this.utils.getFirstClass(el, "cbds-inventoryaggr--linecount"),
+		this.aggrCont = this.utils.getFirstClass(el, this.aggrPrefix);
 
 		// Aggregation fields
 		this.fields = {};
