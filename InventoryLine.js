@@ -206,7 +206,7 @@
 						for (var i = 0; i < this.noOfLineTaxes(); i++) {
 							totalTax = totalTax + this.calcIndivTax(i+1);
 						}
-						return Number(totalTax.toFixed(2));
+						return this.root.taxTypeCombo.getVal() == "individual" ? Number(totalTax.toFixed(2)) : 0;
 		},
 		calcIndivTax: function(i) {
 						var taxFieldName = "tax" + i,
