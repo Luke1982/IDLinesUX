@@ -270,6 +270,26 @@
 			insertAfter: function(referenceNode, newNode) {
 				referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
 			}
+			/*
+			 * Util: 'deductPerc'
+			 * deducts a percentage from a number
+			 *
+			 * @param: base: 		The base '100%' number
+			 * @param: percentage: 	The percentage to deduct
+			 */
+			deductPerc: function(base, percentage) {
+				return (base * (1 - (percentage / 100)));
+			},
+			/*
+			 * Util: 'getPerc'
+			 * Returns a percentage of a base no.
+			 *
+			 * @param: base: 		The base '100%' number
+			 * @param: percentage: 	The percentage to return
+			 */
+			getPerc: function(base, percentage) {
+				return base * (percentage / 100);
+			}
 		}
 	}
 
