@@ -20,6 +20,7 @@
 .cbds-inventoryline {
 	background-color: #ffffff;
 	position: relative;
+	border-top: 3px solid #9eacc1;
 }
 .cbds-inventoryline__extra {
 	transform: scaleY(0);
@@ -115,6 +116,7 @@
 .cbds-panelheader {
 	background-color: #3f5a82;
 	padding: 0.5rem;
+	border-radius: 0.25rem 0.25rem 0 0;
 }
 .cbds-detail-line-extratool svg {
 	transition: transform 100ms linear;

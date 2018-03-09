@@ -42,7 +42,7 @@
 	{$data.custom = $custom}
 {/if}
 <!-- LDS Detail line for inventorydetails -->
-<div class="{$productline_classprefix} slds-p-vertical_small{if $template} {$productline_classprefix}--template{/if}">
+<div class="{$productline_classprefix} slds-card slds-m-vertical_small slds-p-vertical_small slds-p-horizontal_x-small{if $template} {$productline_classprefix}--template{/if}">
 	<!-- Main LDS inventory details line -->
 	<div class="slds-grid slds-gutters cbds-detail-line__main">
 		<div class="slds-col slds-size_1-of-12">
@@ -128,7 +128,7 @@
 						{call name=ProductInputFormElement size='1-of-2' label='Net line price' fieldname='extnet' value=$data.pricing.extnet iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=true}
 						</div>
 					</div>
-					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
+					<div class="slds-panel__section slds-p-horizontal_none">
 						<div class="slds-form-element__row cbds-m-bottom_none">
 						{call name=ProductInputFormElement size='1-of-2' label='Unit price' fieldname='unit_price' value=$data.pricing.unit_price iconlib='corebos' icon='euro' istemplate=$template type='currency' error='Please enter a valid currency amount' readonly=false}
 						</div>
@@ -150,7 +150,7 @@
 					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
 					{call name=ProductInputFormElement size='1-of-1' label='Qty in stock' fieldname='qtyinstock' value=$data.logistics.qtyinstock iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
-					<div class="slds-panel__section slds-border_bottom slds-p-horizontal_none">
+					<div class="slds-panel__section slds-p-horizontal_none">
 					{call name=ProductInputFormElement size='1-of-1' label='Currently ordered' fieldname='qtyindemand' value=$data.logistics.qtyindemand iconlib='corebos' icon='none' istemplate=$template type='number' error='Please enter a valid number' readonly=true}
 					</div>
 				</div>
